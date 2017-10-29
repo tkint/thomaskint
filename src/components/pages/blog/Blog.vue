@@ -22,11 +22,11 @@
 </template>
 
 <script>
-  import ArticleDialog from '@/components/blog/ArticleDialog';
-  import ArticleItem from '@/components/blog/ArticleItem';
+  import ArticleDialog from './components/ArticleDialog';
+  import ArticleItem from './components/ArticleItem';
 
   export default {
-    name: 'Home',
+    name: 'Blog',
     components: { ArticleDialog, ArticleItem },
     data() {
       return {

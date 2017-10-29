@@ -72,11 +72,15 @@
 </template>
 
 <script>
+  import RouteNames from '@/router/names';
+
   export default {
     name: 'ArticleDialog',
     props: ['article'],
     data() {
-      return {};
+      return {
+        RouteNames,
+      };
     },
     computed: {
       show: {
@@ -92,7 +96,7 @@
       closeArticle() {
         this.$parent.article = null;
         if (this.$route.params.id) {
-          this.$router.push({ name: 'Blog' });
+          this.$router.push({ name: RouteNames.BLOG });
         }
       },
     },

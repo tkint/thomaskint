@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/components/pages/Home';
-import Blog from '@/components/pages/Blog';
+import Pages from '@/components/pages';
+import Names from './names';
 
 Vue.use(Router);
 
@@ -9,18 +9,28 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home,
+      name: Names.HOME,
+      component: Pages.Home,
     },
     {
       path: '/blog',
-      name: 'Blog',
-      component: Blog,
+      name: Names.BLOG,
+      component: Pages.Blog,
     },
     {
       path: '/blog/:id',
-      name: 'BlogArticle',
-      component: Blog,
+      name: Names.BLOG_ARTICLE,
+      component: Pages.Blog,
+    },
+    {
+      path: '/portfolio',
+      name: Names.PORTFOLIO,
+      component: Pages.Portfolio,
+    },
+    {
+      path: '/portfolio/:id',
+      name: Names.PORTFOLIO_WORK,
+      component: Pages.Portfolio,
     },
   ],
 });
