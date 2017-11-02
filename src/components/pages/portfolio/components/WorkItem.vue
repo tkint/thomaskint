@@ -6,7 +6,7 @@
     ripple
   >
     <v-card-media
-      src="/static/material2.jpg"
+      src="/static/img/material2.jpg"
       height="200px"
     >
     </v-card-media>

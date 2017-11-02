@@ -32,5 +32,14 @@ export default new Router({
       name: Names.PORTFOLIO_WORK,
       component: Pages.Portfolio,
     },
+    {
+      path: '*',
+      redirect: Names.ERROR_404,
+    },
+    {
+      path: '/404',
+      name: Names.ERROR_404,
+      component: Pages.Redirection.Error404,
+    },
   ],
 });

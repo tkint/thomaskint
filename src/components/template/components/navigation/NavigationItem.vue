@@ -1,5 +1,5 @@
 <template>
-  <v-list-tile @click.stop="$main.openRoute(item.route)">
+  <v-list-tile @click.stop="$global.openRoute(item.route)">
     <v-list-tile-action>
       <v-icon>{{ item.icon }}</v-icon>
     </v-list-tile-action>

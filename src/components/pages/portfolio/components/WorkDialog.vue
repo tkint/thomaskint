@@ -9,7 +9,7 @@
     <v-card v-if="work">
       <v-card-media
         height="200px"
-        src="/static/material2.jpg"
+        src="/static/img/material2.jpg"
       >
         <v-container fluid>
           <v-layout row wrap>
@@ -19,7 +19,7 @@
               small
               color="primary"
             >
-              <v-icon>share</v-icon>
+              <v-icon>{{ $global.icons.SHARE }}</v-icon>
             </v-btn>
             <v-spacer></v-spacer>
             <h3>{{ work.title }}</h3>
@@ -31,7 +31,7 @@
               color="red"
               @click.stop="show = false"
             >
-              <v-icon>close</v-icon>
+              <v-icon>{{ $global.icons.CLOSE }}</v-icon>
             </v-btn>
           </v-layout>
         </v-container>

@@ -3,7 +3,7 @@ import Getters from './getters';
 const UserStore = {
   state: {
     user: {
-      id_user: null,
+      id_user: 0,
       email: null,
       password: null,
       pseudo: null,

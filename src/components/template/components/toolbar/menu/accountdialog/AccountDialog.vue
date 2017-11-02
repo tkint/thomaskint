@@ -6,13 +6,14 @@
       slot="activator"
       v-model="loginDialog"
     >
-      <v-icon>power_settings_new</v-icon>
+      <v-icon>{{ $global.icons.LOGIN }}</v-icon>
     </v-btn>
     <v-card>
       <v-tabs dark grow>
         <v-tabs-bar>
           <v-tabs-item href="#signin">Sign in</v-tabs-item>
           <v-tabs-item href="#signup">Sign up</v-tabs-item>
+          <v-tabs-slider></v-tabs-slider>
         </v-tabs-bar>
         <v-tabs-items>
           <v-tabs-content id="signin">

@@ -13,7 +13,7 @@
           large
           round
           flat
-          @click.stop="$main.openRoute(RouteNames.HOME)"
+          @click.stop="$global.openRoute(RouteNames.HOME)"
         >
           {{ title }}
         </v-btn>
@@ -24,7 +24,7 @@
       <!--<v-btn-->
         <!--icon-->
         <!--large-->
-        <!--@click.stop="$main.openRoute('Home')"-->
+        <!--@click.stop="$global.openRoute('Home')"-->
       <!--&gt;-->
         <!--<v-avatar size="32px" tile>-->
           <!--<img-->

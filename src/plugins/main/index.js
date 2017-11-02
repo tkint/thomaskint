@@ -1,21 +1,30 @@
-const mainPlugin = {
+import Icons from './icons';
+
+const globalPlugin = {
   install(Vue, options) {
     /**
-     * main object
-     * Contains main and fields used in the page editor and page display
+     * global object
+     * Contains global and fields used in the page editor and page display
      * @type {{}}
      */
-    const main = {};
+    const global = {};
+    global.icons = {};
+    /**
+     * Adding icons
+     */
+    Object.keys(Icons).forEach((key) => {
+      global.icons[key] = Icons[key];
+    });
     /**
      * Method to open a route
      * @param route
      */
-    main.openRoute = (route) => {
+    global.openRoute = (route) => {
       options.router.push({ name: route });
     };
-    // Adding the main object in Vue
-    Vue.prototype.$main = main;
+    // Adding the global object in Vue
+    Vue.prototype.$global = global;
   },
 };
 
-export default mainPlugin;
+export default globalPlugin;

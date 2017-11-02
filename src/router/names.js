@@ -7,4 +7,5 @@ export default {
   PORTFOLIO: 'Portfolio',
   PORTFOLIO_WORK: 'PortfolioWork',
   CONTACT: 'Contact',
+  ERROR_404: '404',
 };
