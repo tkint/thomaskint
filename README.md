@@ -1,6 +1,6 @@
-# thomaskint-v1
+# thomaskint
 
-> A Vue.js project
+> Professional website
 
 ## Build Setup
 
