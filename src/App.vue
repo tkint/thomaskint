@@ -16,7 +16,8 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex';
+  import { mapState, mapActions } from 'vuex';
+  import ActionTypes from '@/store/user/actions/types';
   import ComingSoon from '@/components/pages/redirection/ComingSoon';
   import Template from '@/components/template';
 
@@ -36,7 +37,14 @@
         comingSoon: state => state.ConfigStore.comingSoon,
       }),
     },
-    methods: {},
+    created() {
+      this.getUserById(1);
+    },
+    methods: {
+      ...mapActions({
+        getUserById: ActionTypes.GET_USER_BY_ID,
+      }),
+    },
   };
 </script>
 

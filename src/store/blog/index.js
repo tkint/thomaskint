@@ -1,15 +1,11 @@
-import Getters from './getters';
 import Actions from './actions';
 import Mutations from './mutations';
 
-const UserStore = {
+export default {
   state: {
-    user: null,
-    users: null,
+    articles: null,
   },
-  getters: Getters,
   actions: Actions,
   mutations: Mutations,
 };
 
-export default UserStore;

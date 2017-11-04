@@ -22,6 +22,8 @@
 </template>
 
 <script>
+  import { mapState, mapActions } from 'vuex';
+  import ActionTypes from '@/store/blog/actions/types';
   import ArticleDialog from './components/ArticleDialog';
   import ArticleItem from './components/ArticleItem';
 
@@ -31,33 +33,16 @@
     data() {
       return {
         article: null,
-        articles: [
-          {
-            id_article: 1,
-            title: 'First Article',
-          },
-          {
-            id_article: 2,
-            title: 'Second Article',
-          },
-          {
-            id_article: 3,
-            title: 'Third Article',
-          },
-          {
-            id_article: 4,
-            title: 'Fourth Article',
-          },
-          {
-            id_article: 5,
-            title: 'Fifth Article',
-          },
-        ],
-        showArticle: true,
       };
     },
     created() {
       this.openArticleFromUrl();
+      this.getArticles();
+    },
+    computed: {
+      ...mapState({
+        articles: state => state.BlogStore.articles,
+      }),
     },
     methods: {
       openArticleFromUrl() {
@@ -79,6 +64,9 @@
         }
         return article;
       },
+      ...mapActions({
+        getArticles: ActionTypes.GET_ARTICLES,
+      }),
     },
   };
 </script>

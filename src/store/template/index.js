@@ -1,7 +1,7 @@
 import Actions from './actions';
 import Mutations from './mutations';
 
-export default {
+const TemplateStore = {
   state: {
     drawer: true,
     progressBar: false,
@@ -10,3 +10,5 @@ export default {
   actions: Actions,
   mutations: Mutations,
 };
+
+export default TemplateStore;

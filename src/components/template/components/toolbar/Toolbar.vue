@@ -41,7 +41,7 @@
   import { mapState, mapGetters, mapActions } from 'vuex';
   import RouteNames from '@/router/names';
   import UserGetterTypes from '@/store/user/getters/types';
-  import ActionTypes from '../../store/actions/types';
+  import ActionTypes from '@/store/template/actions/types';
   import ProgressBar from './ProgressBar';
   import MainMenu from './menu/MainMenu';
   import AccountDialog from './menu/accountdialog/AccountDialog';

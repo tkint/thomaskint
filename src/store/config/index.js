@@ -1,6 +1,6 @@
 const ConfigStore = {
   state: {
-    comingSoon: true,
+    comingSoon: false,
   },
 };
 
