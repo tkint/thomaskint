@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <coming-soon v-if="comingSoon"></coming-soon>
+    <coming-soon v-if="getComingSoon()"></coming-soon>
     <div v-else>
       <navigation></navigation>
       <toolbar></toolbar>
@@ -16,8 +16,10 @@
 </template>
 
 <script>
-  import { mapState, mapActions } from 'vuex';
-  import ActionTypes from '@/store/user/actions/types';
+  import { mapGetters, mapActions } from 'vuex';
+  import SettingGetterTypes from '@/store/setting/getters/types';
+  import SettingActionTypes from '@/store/setting/actions/types';
+  import UserActionTypes from '@/store/user/actions/types';
   import ComingSoon from '@/components/pages/redirection/ComingSoon';
   import Template from '@/components/template';
 
@@ -32,17 +34,17 @@
     data() {
       return {};
     },
-    computed: {
-      ...mapState({
-        comingSoon: state => state.ConfigStore.comingSoon,
-      }),
-    },
     created() {
+      this.getSettings();
       this.getUserById(1);
     },
     methods: {
+      ...mapGetters({
+        getComingSoon: SettingGetterTypes.GET_COMING_SOON,
+      }),
       ...mapActions({
-        getUserById: ActionTypes.GET_USER_BY_ID,
+        getSettings: SettingActionTypes.GET_SETTINGS,
+        getUserById: UserActionTypes.GET_USER_BY_ID,
       }),
     },
   };
