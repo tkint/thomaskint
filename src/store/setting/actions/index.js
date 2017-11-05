@@ -6,5 +6,6 @@ export default {
   async [Types.GET_SETTINGS]({ commit }) {
     const settings = await Services.setting.getSettings();
     commit(MutationTypes.SET_COMING_SOON, settings);
+    commit(MutationTypes.SET_SITE_TITLE, settings);
   },
 };

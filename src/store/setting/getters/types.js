@@ -1,3 +1,4 @@
 export default {
   GET_COMING_SOON: 'GET_COMING_SOON',
+  GET_SITE_TITLE: 'GET_SITE_TITLE',
 };

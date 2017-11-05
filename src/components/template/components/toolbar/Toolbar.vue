@@ -15,7 +15,7 @@
           flat
           @click.stop="$global.openRoute(RouteNames.HOME)"
         >
-          {{ title }}
+          {{ getSiteTitle() }}
         </v-btn>
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -40,6 +40,7 @@
 <script>
   import { mapState, mapGetters, mapActions } from 'vuex';
   import RouteNames from '@/router/names';
+  import SettingGetterTypes from '@/store/setting/getters/types';
   import UserGetterTypes from '@/store/user/getters/types';
   import ActionTypes from '@/store/template/actions/types';
   import ProgressBar from './ProgressBar';
@@ -52,7 +53,6 @@
     data() {
       return {
         RouteNames,
-        title: 'Thomas Kint',
       };
     },
     computed: {
@@ -63,6 +63,7 @@
     methods: {
       ...mapGetters({
         isConnected: UserGetterTypes.IS_CONNECTED,
+        getSiteTitle: SettingGetterTypes.GET_SITE_TITLE,
       }),
       ...mapActions({
         switchDrawer: ActionTypes.SWITCH_DRAWER,

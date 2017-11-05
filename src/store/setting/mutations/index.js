@@ -17,4 +17,7 @@ export default {
   [Types.SET_COMING_SOON](state, settings) {
     state[Names.COMING_SOON] = getSettingByName(settings, Names.COMING_SOON);
   },
+  [Types.SET_SITE_TITLE](state, settings) {
+    state[Names.SITE_TITLE] = getSettingByName(settings, Names.SITE_TITLE);
+  },
 };
