@@ -3,13 +3,13 @@
     <v-layout row wrap>
       <v-flex xs12>
         <v-layout justify-center align-center>
-          <h2 class="text-xs-center coming-soon"><span class="coming-soon-text" v-for="(letter, index) in textArray"
-                                        :key="index">{{ letter }}</span></h2>
+          <h2 class="text-xs-center coming-soon"><span class="coming-soon-title" v-for="(letter, index) in textArray"
+                                                       :key="index">{{ letter }}</span></h2>
         </v-layout>
       </v-flex>
       <v-flex xs12>
         <v-layout justify-center>
-          <h2 class="text-xs-center thomas-kint">Thomas Kint</h2>
+          <h2 class="text-xs-center thomas-kint">{{ getSiteTitle() }}</h2>
         </v-layout>
       </v-flex>
       <v-flex xs12>
@@ -19,14 +19,14 @@
       </v-flex>
       <v-flex xs12>
         <v-layout justify-center>
-          <a href="https://www.linkedin.com/in/thomas-kint">
-            <v-icon large class="social-icon">fa-linkedin-square</v-icon>
+          <a :href="`mailto:${getEmailAdress()}`">
+            <v-icon large class="social-icon">mail</v-icon>
           </a>
-          <a href="https://github.com/tkint">
+          <a :href="getGithubUrl()">
             <v-icon large class="social-icon">fa-github</v-icon>
           </a>
-          <a href="mailto:thomaskint.pro@gmail.com">
-            <v-icon large class="social-icon">mail</v-icon>
+          <a :href="getLinkedinUrl()">
+            <v-icon large class="social-icon">fa-linkedin-square</v-icon>
           </a>
         </v-layout>
       </v-flex>
@@ -35,17 +35,27 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex';
+  import SettingGetterTypes from '@/store/setting/getters/types';
+
   export default {
     name: 'ComingSoon',
-    data() {
-      return {
-        text: 'Coming Soon',
-      };
-    },
     computed: {
       textArray() {
-        return this.text.split('');
+        if (this.getComingSoonTitle()) {
+          return this.getComingSoonTitle().split('');
+        }
+        return [];
       },
+    },
+    methods: {
+      ...mapGetters({
+        getComingSoonTitle: SettingGetterTypes.GET_COMING_SOON_TITLE,
+        getSiteTitle: SettingGetterTypes.GET_SITE_TITLE,
+        getEmailAdress: SettingGetterTypes.GET_EMAIL_ADRESS,
+        getGithubUrl: SettingGetterTypes.GET_GITHUB_URL,
+        getLinkedinUrl: SettingGetterTypes.GET_LINKEDIN_URL,
+      }),
     },
   };
 </script>
@@ -73,34 +83,34 @@
     backface-visibility: hidden;
   }
 
-  .coming-soon-text {
+  .coming-soon-title {
     font-family: Monoton, cursive;
     text-transform: uppercase;
     text-shadow: 0 0 10px #ffffff, 0 0 20px #008000, 0 0 6px #0000ff;
     color: #fff;
   }
 
-  .coming-soon-text:nth-of-type(1) {
+  .coming-soon-title:nth-of-type(1) {
     animation: light 15s linear infinite;
   }
 
-  .coming-soon-text:nth-of-type(2) {
+  .coming-soon-title:nth-of-type(2) {
     animation: light 11s linear infinite;
   }
 
-  .coming-soon-text:nth-of-type(4) {
+  .coming-soon-title:nth-of-type(4) {
     animation: light 20s linear infinite;
   }
 
-  .coming-soon-text:nth-of-type(5) {
+  .coming-soon-title:nth-of-type(5) {
     animation: light 7s linear infinite;
   }
 
-  .coming-soon-text:nth-of-type(9) {
+  .coming-soon-title:nth-of-type(9) {
     animation: light 5s linear infinite;
   }
 
-  .coming-soon-text:nth-of-type(11) {
+  .coming-soon-title:nth-of-type(11) {
     animation: light 9s linear infinite;
   }
 

@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <coming-soon v-if="getComingSoon()"></coming-soon>
-    <div v-else>
+    <div v-else-if="getComingSoon() !== null">
       <navigation></navigation>
       <toolbar></toolbar>
       <main>
