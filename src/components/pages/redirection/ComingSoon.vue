@@ -148,11 +148,11 @@
     padding: 15px;
   }
 
-  .social-icon {
-    font-size: 50px !important;
+  a:hover {
+    text-shadow: 0 0 10px #fff;
   }
 
-  .social-icon:hover {
-    text-shadow: 0 0 10px #fff;
+  .social-icon {
+    font-size: 50px !important;
   }
 </style>
