@@ -1,21 +1,39 @@
 <template>
-  <v-list>
+  <div>
     <v-list-tile @click="">
       <v-list-tile-title>Profile</v-list-tile-title>
     </v-list-tile>
-    <v-list-tile @click="">
-      <v-list-tile-title>Settings</v-list-tile-title>
+    <v-list-tile @click="signout">
+      <v-list-tile-title>Signout</v-list-tile-title>
     </v-list-tile>
-  </v-list>
+  </div>
 </template>
 
 <script>
+  import { mapState, mapActions } from 'vuex';
+  import UserActionTypes from '@/store/user/actions/types';
+
   export default {
     name: 'UserMenu',
     data() {
       return {};
     },
-    computed: {},
+    computed: {
+      ...mapState({
+        user: state => state.UserStore.user,
+      }),
+    },
+    methods: {
+      signout() {
+        if (this.user && this.user.id_user) {
+          this.$cookie.delete('id_user');
+          this.signoutUser();
+        }
+      },
+      ...mapActions({
+        signoutUser: UserActionTypes.SIGNOUT,
+      }),
+    },
   };
 </script>
 

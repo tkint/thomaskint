@@ -4,7 +4,15 @@ import Mutations from './mutations';
 
 const UserStore = {
   state: {
-    user: null,
+    user: {
+      id_user: null,
+      email: null,
+      password: null,
+      pseudo: null,
+      firstname: null,
+      lastname: null,
+      role: null,
+    },
     users: null,
   },
   getters: Getters,

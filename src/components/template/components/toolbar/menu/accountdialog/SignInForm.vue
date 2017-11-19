@@ -9,29 +9,63 @@
       <v-container grid-list-md>
         <v-layout wrap>
           <v-flex xs12 sm6>
-            <v-text-field label="Email" required autofocus></v-text-field>
+            <v-text-field
+              label="Email"
+              required
+              autofocus
+              :value="user.email"
+              @input="updateEmail"
+            ></v-text-field>
           </v-flex>
           <v-flex xs12 sm6>
-            <v-text-field label="Password" required type="password"></v-text-field>
+            <v-text-field
+              label="Password"
+              required
+              type="password"
+              :value="user.password"
+              @input="updatePassword"
+            ></v-text-field>
           </v-flex>
         </v-layout>
       </v-container>
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="blue darken-3" @click="">Sign in</v-btn>
+      <v-btn color="blue darken-3" @click="signin">Sign in</v-btn>
       <v-spacer></v-spacer>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
+  import { mapState, mapActions, mapMutations } from 'vuex';
+  import UserActionTypes from '@/store/user/actions/types';
+  import UserMutationTypes from '@/store/user/mutations/types';
+
   export default {
-    name: 'SignUpForm',
+    name: 'SignInForm',
     data() {
       return {};
     },
     computed: {
+      ...mapState({
+        user: state => state.UserStore.user,
+      }),
+    },
+    methods: {
+      async signin() {
+        const newUser = await this.signinUser(this.user);
+        if (newUser && newUser.id_user) {
+          this.$cookie.set('id_user', newUser.id_user);
+        }
+      },
+      ...mapActions({
+        signinUser: UserActionTypes.SIGNIN,
+      }),
+      ...mapMutations({
+        updateEmail: UserMutationTypes.UPDATE_USER_EMAIL,
+        updatePassword: UserMutationTypes.UPDATE_USER_PASSWORD,
+      }),
     },
   };
 </script>

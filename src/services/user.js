@@ -12,4 +12,8 @@ export default class UserService {
   getUserByIdUser(id) {
     return this.axios.get(`/user/${id}`).then(response => response.data);
   }
+
+  signin(user) {
+    return this.axios.post('/user/signin', user).then(response => response.data);
+  }
 }

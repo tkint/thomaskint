@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <coming-soon v-if="getComingSoon()"></coming-soon>
+    <coming-soon v-if="isComingSoon"></coming-soon>
     <div v-else-if="getComingSoon() !== null">
       <navigation></navigation>
       <toolbar></toolbar>
@@ -36,9 +36,22 @@
     },
     created() {
       this.getSettings();
-      this.getUserById(1);
+      this.autoSignin();
+    },
+    computed: {
+      isComingSoon() {
+        if (process.env.NODE_ENV === 'development') {
+          return false;
+        }
+        return this.getComingSoon();
+      },
     },
     methods: {
+      autoSignin() {
+        if (this.$cookie.get('id_user')) {
+          this.getUserById(this.$cookie.get('id_user'));
+        }
+      },
       ...mapGetters({
         getComingSoon: SettingGetterTypes.GET_COMING_SOON,
       }),

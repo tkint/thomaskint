@@ -7,8 +7,10 @@
     >
       <v-icon>{{ $global.icons.PROFILE }}</v-icon>
     </v-btn>
-    <admin-menu v-if="isAdmin"></admin-menu>
-    <user-menu v-else></user-menu>
+    <v-list>
+      <admin-menu v-if="isAdmin"></admin-menu>
+      <user-menu></user-menu>
+    </v-list>
   </v-menu>
 </template>
 

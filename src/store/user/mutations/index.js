@@ -1,10 +1,16 @@
 import Types from './types';
 
 export default {
-  [Types.GET_USERS](state, users) {
+  [Types.SET_USERS](state, users) {
     state.users = users;
   },
-  [Types.GET_USER_BY_ID](state, user) {
+  [Types.SET_USER](state, user) {
     state.user = user;
+  },
+  [Types.UPDATE_USER_EMAIL](state, email) {
+    state.user.email = email;
+  },
+  [Types.UPDATE_USER_PASSWORD](state, password) {
+    state.user.password = password;
   },
 };
