@@ -63,7 +63,7 @@
 <style scoped>
   h2.thomas-kint {
     font-weight: bold;
-    text-shadow: 0px 0px 10px #000;
+    text-shadow: 0 0 10px #000;
   }
 
   h2.coming-soon {

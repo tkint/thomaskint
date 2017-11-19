@@ -38,7 +38,7 @@ const globalPlugin = {
      * Contains global and fields used in the page editor and page display
      * @type {{}}
      */
-    const global = {};
+    const global = { icons: null, openRoute: null };
     global.icons = {};
     /**
      * Adding icons
