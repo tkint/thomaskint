@@ -16,16 +16,12 @@ export default {
     commit(MutationTypes.SET_USER, newUser);
     return newUser;
   },
+  async [Types.SIGNUP]({ commit }, user) {
+    const newUser = await Service.user.signup(user);
+    commit(MutationTypes.SET_USER, newUser);
+    return newUser;
+  },
   async [Types.SIGNOUT]({ commit }) {
-    const user = {
-      id_user: null,
-      email: null,
-      password: null,
-      pseudo: null,
-      firstname: null,
-      lastname: null,
-      role: null,
-    };
-    commit(MutationTypes.SET_USER, user);
+    commit(MutationTypes.RESET_USER);
   },
 };

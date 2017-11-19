@@ -16,4 +16,8 @@ export default class UserService {
   signin(user) {
     return this.axios.post('/user/signin', user).then(response => response.data);
   }
+
+  signup(user) {
+    return this.axios.post('/user/signup', user).then(response => response.data);
+  }
 }
