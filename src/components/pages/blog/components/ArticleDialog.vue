@@ -1,9 +1,8 @@
 <template>
   <v-dialog
     v-model="show"
-    max-width="100%"
+    max-width="60%"
     scrollable
-    fullscreen
     id="article-dialog"
   >
     <v-card v-if="article">

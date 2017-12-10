@@ -6,9 +6,11 @@
       app
       clipped-left
       fixed
+      height="50"
     >
+      <toolbar-navigation></toolbar-navigation>
       <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
-        <v-toolbar-side-icon @click.stop="switchDrawer"></v-toolbar-side-icon>
+        <!--<v-toolbar-side-icon @click.stop="switchDrawer"></v-toolbar-side-icon>-->
         <v-btn
           large
           round
@@ -21,18 +23,6 @@
       <v-spacer></v-spacer>
       <main-menu v-if="isConnected()"></main-menu>
       <account-dialog v-else></account-dialog>
-      <!--<v-btn-->
-        <!--icon-->
-        <!--large-->
-        <!--@click.stop="$global.openRoute('Home')"-->
-      <!--&gt;-->
-        <!--<v-avatar size="32px" tile>-->
-          <!--<img-->
-            <!--src="../../../../assets/logo.png"-->
-            <!--alt="Thomas Kint"-->
-          <!--&gt;-->
-        <!--</v-avatar>-->
-      <!--</v-btn>-->
     </v-toolbar>
   </div>
 </template>
@@ -46,10 +36,11 @@
   import ProgressBar from './ProgressBar';
   import MainMenu from './menu/MainMenu';
   import AccountDialog from './menu/accountdialog/AccountDialog';
+  import ToolbarNavigation from './navigation/ToolbarNavigation';
 
   export default {
     name: 'Toolbar',
-    components: { MainMenu, AccountDialog, ProgressBar },
+    components: { MainMenu, AccountDialog, ProgressBar, ToolbarNavigation },
     data() {
       return {
         RouteNames,

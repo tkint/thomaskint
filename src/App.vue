@@ -2,15 +2,12 @@
   <v-app dark>
     <coming-soon v-if="isComingSoon"></coming-soon>
     <div v-else-if="getComingSoon() !== null">
-      <navigation></navigation>
-      <toolbar></toolbar>
-      <main>
-        <v-content>
-          <v-layout>
-            <router-view clipped-left></router-view>
-          </v-layout>
-        </v-content>
-      </main>
+      <!--<template-navigation></template-navigation>-->
+      <template-toolbar></template-toolbar>
+      <v-content>
+        <router-view clipped-left></router-view>
+      </v-content>
+      <template-footer></template-footer>
     </div>
   </v-app>
 </template>
@@ -27,8 +24,9 @@
 
   export default {
     components: {
-      Navigation: Template.Navigation,
-      Toolbar: Template.Toolbar,
+      TemplateToolbar: Template.Toolbar,
+      TemplateNavigation: Template.Navigation,
+      TemplateFooter: Template.Footer,
       ComingSoon,
     },
     data() {

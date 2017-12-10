@@ -13,6 +13,11 @@ export default new Router({
       component: Pages.Home,
     },
     {
+      path: '/resume',
+      name: Names.RESUME,
+      component: Pages.Resume,
+    },
+    {
       path: '/blog',
       name: Names.BLOG,
       component: Pages.Blog,

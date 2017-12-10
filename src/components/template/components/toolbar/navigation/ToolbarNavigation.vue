@@ -1,25 +1,16 @@
 <template>
-  <v-navigation-drawer
-    persistent
-    clipped
-    app
-    v-model="drawer"
-  >
-    <v-list dense>
-      <navigation-item v-for="(item, index) in items" :key="index" :item="item"></navigation-item>
-    </v-list>
-    <template-footer></template-footer>
-  </v-navigation-drawer>
+  <v-layout>
+    <toolbar-navigation-item v-for="(item, index) in items" :key="index" :item="item"></toolbar-navigation-item>
+  </v-layout>
 </template>
 
 <script>
   import RouteNames from '@/router/names';
-  import NavigationItem from './NavigationItem';
-  import TemplateFooter from '../footer/Footer';
+  import ToolbarNavigationItem from './ToolbarNavigationItem';
 
   export default {
-    name: 'Navigation',
-    components: { NavigationItem, TemplateFooter },
+    name: 'ToolbarNavigation',
+    components: { ToolbarNavigationItem },
     data() {
       return {
         items: [
@@ -31,17 +22,8 @@
         ],
       };
     },
-    computed: {
-      drawer: {
-        get() {
-          return this.$store.state.TemplateStore.drawer;
-        },
-        set() {
-        },
-      },
-    },
-    methods: {
-    },
+    computed: {},
+    methods: {},
   };
 </script>
 
