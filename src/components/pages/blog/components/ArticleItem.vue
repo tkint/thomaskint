@@ -19,13 +19,13 @@
 </template>
 
 <script>
-  export default {
-    name: 'ArticleItem',
-    props: ['article'],
-    data() {
-      return {};
-    },
-  };
+export default {
+  name: 'ArticleItem',
+  props: ['article'],
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style scoped>

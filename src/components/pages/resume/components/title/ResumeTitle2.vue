@@ -13,18 +13,18 @@
 
 <script>
 
-  export default {
-    name: 'ResumeTitle2',
-    components: {},
-    props: ['content', 'icon'],
-    data() {
-      return {};
-    },
-    created() {
-    },
-    computed: {},
-    methods: {},
-  };
+export default {
+  name: 'ResumeTitle2',
+  components: {},
+  props: ['content', 'icon'],
+  data() {
+    return {};
+  },
+  created() {
+  },
+  computed: {},
+  methods: {},
+};
 </script>
 
 <style scoped>

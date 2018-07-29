@@ -12,35 +12,35 @@
 </template>
 
 <script>
-  import ResumeEducationItem from './ResumeEducationItem';
+import ResumeEducationItem from './ResumeEducationItem';
 
-  export default {
-    name: 'ResumeEducation',
-    components: { ResumeEducationItem },
-    props: [],
-    data() {
-      return {
-        items: [
-          {
-            title: 'Master Informatique',
-            school: 'EPSI Montpellier',
-          },
-          {
-            title: 'Bachelor 3ème année',
-            school: 'EPSI Montpellier',
-          },
-          {
-            title: 'BTS SIO - SLAM',
-            school: 'ESICAD Montpellier',
-          },
-        ],
-      };
-    },
-    created() {
-    },
-    computed: {},
-    methods: {},
-  };
+export default {
+  name: 'ResumeEducation',
+  components: { ResumeEducationItem },
+  props: [],
+  data() {
+    return {
+      items: [
+        {
+          title: 'Master Informatique',
+          school: 'EPSI Montpellier',
+        },
+        {
+          title: 'Bachelor 3ème année',
+          school: 'EPSI Montpellier',
+        },
+        {
+          title: 'BTS SIO - SLAM',
+          school: 'ESICAD Montpellier',
+        },
+      ],
+    };
+  },
+  created() {
+  },
+  computed: {},
+  methods: {},
+};
 </script>
 
 <style scoped>

@@ -26,19 +26,19 @@
 </template>
 
 <script>
-  import ResumeDrawerItem from './ResumeDrawerItem';
+import ResumeDrawerItem from './ResumeDrawerItem';
 
-  export default {
-    name: 'ResumeDrawer',
-    components: { ResumeDrawerItem },
-    data() {
-      return {};
-    },
-    created() {
-    },
-    computed: {},
-    methods: {},
-  };
+export default {
+  name: 'ResumeDrawer',
+  components: { ResumeDrawerItem },
+  data() {
+    return {};
+  },
+  created() {
+  },
+  computed: {},
+  methods: {},
+};
 </script>
 
 <style scoped>

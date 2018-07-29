@@ -9,7 +9,7 @@
       height="50"
     >
       <toolbar-navigation></toolbar-navigation>
-      <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
+      <v-toolbar-title>
         <!--<v-toolbar-side-icon @click.stop="switchDrawer"></v-toolbar-side-icon>-->
         <v-btn
           large
@@ -17,50 +17,49 @@
           flat
           @click.stop="$global.openRoute(RouteNames.HOME)"
         >
-          {{ getSiteTitle() }}
+          {{ siteTitle }}
         </v-btn>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <main-menu v-if="isConnected()"></main-menu>
-      <account-dialog v-else></account-dialog>
+      <v-spacer></v-spacer>
     </v-toolbar>
   </div>
 </template>
 
 <script>
-  import { mapState, mapGetters, mapActions } from 'vuex';
-  import RouteNames from '@/router/names';
-  import SettingGetterTypes from '@/store/setting/getters/types';
-  import UserGetterTypes from '@/store/user/getters/types';
-  import ActionTypes from '@/store/template/actions/types';
-  import ProgressBar from './ProgressBar';
-  import MainMenu from './menu/MainMenu';
-  import AccountDialog from './menu/accountdialog/AccountDialog';
-  import ToolbarNavigation from './navigation/ToolbarNavigation';
+import Services from '@/services';
+import SettingNames from '@/services/settings/names';
 
-  export default {
-    name: 'Toolbar',
-    components: { MainMenu, AccountDialog, ProgressBar, ToolbarNavigation },
-    data() {
-      return {
-        RouteNames,
-      };
+import RouteNames from '@/router/names';
+
+import { mapState, mapActions } from 'vuex';
+import ActionTypes from '@/store/template/actions/types';
+
+import ProgressBar from './ProgressBar';
+import ToolbarNavigation from './navigation/ToolbarNavigation';
+
+export default {
+  name: 'Toolbar',
+  components: { ProgressBar, ToolbarNavigation },
+  data() {
+    return {
+      RouteNames,
+    };
+  },
+  computed: {
+    ...mapState({
+      progressBar: state => state.TemplateStore.progressBar,
+    }),
+    siteTitle() {
+      return Services.settings.getSettingValue(SettingNames.SITE_TITLE);
     },
-    computed: {
-      ...mapState({
-        progressBar: state => state.TemplateStore.progressBar,
-      }),
-    },
-    methods: {
-      ...mapGetters({
-        isConnected: UserGetterTypes.IS_CONNECTED,
-        getSiteTitle: SettingGetterTypes.GET_SITE_TITLE,
-      }),
-      ...mapActions({
-        switchDrawer: ActionTypes.SWITCH_DRAWER,
-      }),
-    },
-  };
+  },
+  methods: {
+    ...mapActions({
+      switchDrawer: ActionTypes.SWITCH_DRAWER,
+    }),
+  },
+};
 </script>
 
 <style scoped>

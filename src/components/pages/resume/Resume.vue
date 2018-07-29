@@ -14,23 +14,23 @@
 </template>
 
 <script>
-  import ResumeDrawer from './components/drawer/ResumeDrawer';
-  import ResumeTitle from './components/title/ResumeTitle';
-  import ResumeTitle2 from './components/title/ResumeTitle2';
-  import ResumeExperience from './components/experience/ResumeExperience';
-  import ResumeEducation from './components/education/ResumeEducation';
+import ResumeDrawer from './components/drawer/ResumeDrawer';
+import ResumeTitle from './components/title/ResumeTitle';
+import ResumeTitle2 from './components/title/ResumeTitle2';
+import ResumeExperience from './components/experience/ResumeExperience';
+import ResumeEducation from './components/education/ResumeEducation';
 
-  export default {
-    name: 'Resume',
-    components: { ResumeDrawer, ResumeTitle, ResumeTitle2, ResumeExperience, ResumeEducation },
-    data() {
-      return {};
-    },
-    created() {
-    },
-    computed: {},
-    methods: {},
-  };
+export default {
+  name: 'Resume',
+  components: { ResumeDrawer, ResumeTitle, ResumeTitle2, ResumeExperience, ResumeEducation },
+  data() {
+    return {};
+  },
+  created() {
+  },
+  computed: {},
+  methods: {},
+};
 </script>
 
 <style scoped>

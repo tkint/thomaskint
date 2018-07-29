@@ -41,35 +41,35 @@
 </template>
 
 <script>
-  import RouteNames from '@/router/names';
+import RouteNames from '@/router/names';
 
-  export default {
-    name: 'ArticleDialog',
-    props: ['article'],
-    data() {
-      return {
-        RouteNames,
-      };
-    },
-    computed: {
-      show: {
-        get() {
-          return this.article !== null;
-        },
-        set() {
-          this.$parent.article = null;
-        },
+export default {
+  name: 'ArticleDialog',
+  props: ['article'],
+  data() {
+    return {
+      RouteNames,
+    };
+  },
+  computed: {
+    show: {
+      get() {
+        return this.article !== null;
       },
-    },
-    methods: {
-      closeArticle() {
+      set() {
         this.$parent.article = null;
-        if (this.$route.params.id) {
-          this.$router.push({ name: RouteNames.BLOG });
-        }
       },
     },
-  };
+  },
+  methods: {
+    closeArticle() {
+      this.$parent.article = null;
+      if (this.$route.params.id) {
+        this.$router.push({ name: RouteNames.BLOG });
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>

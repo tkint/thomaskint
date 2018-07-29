@@ -4,7 +4,7 @@
       <v-flex xs12>
         <v-layout justify-center align-center>
           <h2 class="text-xs-center error-404"><span class="error-404-title" v-for="(letter, index) in titleArray"
-                                                       :key="index">{{ letter }}</span></h2>
+                                                     :key="index">{{ letter }}</span></h2>
         </v-layout>
       </v-flex>
       <v-flex xs12>
@@ -17,20 +17,20 @@
 </template>
 
 <script>
-  export default {
-    name: 'Error404',
-    data() {
-      return {
-        title: 'Error 404',
-        text: "This page doesn't exist",
-      };
+export default {
+  name: 'Error404',
+  data() {
+    return {
+      title: 'Error 404',
+      text: "This page doesn't exist",
+    };
+  },
+  computed: {
+    titleArray() {
+      return this.title.split('');
     },
-    computed: {
-      titleArray() {
-        return this.title.split('');
-      },
-    },
-  };
+  },
+};
 </script>
 
 <style scoped>

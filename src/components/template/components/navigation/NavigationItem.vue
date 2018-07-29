@@ -12,10 +12,10 @@
 </template>
 
 <script>
-  export default {
-    name: 'Navigation',
-    props: ['item'],
-  };
+export default {
+  name: 'Navigation',
+  props: ['item'],
+};
 </script>
 
 <style scoped>

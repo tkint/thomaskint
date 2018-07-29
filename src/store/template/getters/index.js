@@ -1,4 +1,3 @@
 // import Types from './types';
 
-export default {
-};
+export default {};

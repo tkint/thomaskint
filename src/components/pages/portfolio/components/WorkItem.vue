@@ -19,13 +19,13 @@
 </template>
 
 <script>
-  export default {
-    name: 'WorkItem',
-    props: ['work'],
-    data() {
-      return {};
-    },
-  };
+export default {
+  name: 'WorkItem',
+  props: ['work'],
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style scoped>

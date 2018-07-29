@@ -58,6 +58,10 @@ const globalPlugin = {
       options.router.push({ name: RouteNames.ERROR_404 });
     };
     /**
+     *
+     */
+    global.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+    /**
      * Add this plugin to Vue instance
      * @type {{}}
      */

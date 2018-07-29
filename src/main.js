@@ -3,6 +3,8 @@
 import Vue from 'vue';
 
 import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css';
+
 import VueCookie from 'vue-cookie';
 import VueScrollTo from 'vue-scrollto';
 

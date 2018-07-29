@@ -3,13 +3,17 @@
     <v-layout row wrap>
       <v-flex xs12>
         <v-layout justify-center align-center>
-          <h2 class="text-xs-center coming-soon"><span class="coming-soon-title" v-for="(letter, index) in textArray"
-                                                       :key="index">{{ letter }}</span></h2>
+          <h2 class="text-xs-center coming-soon">
+            <span
+              class="coming-soon-title"
+              v-for="(letter, index) in textArray"
+              :key="index">{{ letter }}</span>
+          </h2>
         </v-layout>
       </v-flex>
       <v-flex xs12>
         <v-layout justify-center>
-          <h2 class="text-xs-center thomas-kint">{{ getSiteTitle() }}</h2>
+          <h2 class="text-xs-center thomas-kint">{{ siteTitle }}</h2>
         </v-layout>
       </v-flex>
       <v-flex xs12>
@@ -19,13 +23,13 @@
       </v-flex>
       <v-flex xs12>
         <v-layout justify-center>
-          <a :href="`mailto:${getEmailAdress()}`">
+          <a :href="`mailto:${emailAdress}`">
             <v-icon large class="social-icon">mail</v-icon>
           </a>
-          <a :href="getGithubUrl()">
+          <a :href="gitUrl">
             <v-icon large class="social-icon">fa-github</v-icon>
           </a>
-          <a :href="getLinkedinUrl()">
+          <a :href="linkedinUrl">
             <v-icon large class="social-icon">fa-linkedin-square</v-icon>
           </a>
         </v-layout>
@@ -35,29 +39,36 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import SettingGetterTypes from '@/store/setting/getters/types';
+import Services from '@/services';
+import SettingNames from '@/services/settings/names';
 
-  export default {
-    name: 'ComingSoon',
-    computed: {
-      textArray() {
-        if (this.getComingSoonTitle()) {
-          return this.getComingSoonTitle().split('');
-        }
-        return [];
-      },
+export default {
+  name: 'ComingSoon',
+  computed: {
+    textArray() {
+      if (this.comingSoonTitle) {
+        return this.comingSoonTitle.split('');
+      }
+      return [];
     },
-    methods: {
-      ...mapGetters({
-        getComingSoonTitle: SettingGetterTypes.GET_COMING_SOON_TITLE,
-        getSiteTitle: SettingGetterTypes.GET_SITE_TITLE,
-        getEmailAdress: SettingGetterTypes.GET_EMAIL_ADRESS,
-        getGithubUrl: SettingGetterTypes.GET_GITHUB_URL,
-        getLinkedinUrl: SettingGetterTypes.GET_LINKEDIN_URL,
-      }),
+    comingSoonTitle() {
+      return Services.settings.getSettingValue(SettingNames.COMING_SOON_TITLE);
     },
-  };
+    siteTitle() {
+      return Services.settings.getSettingValue(SettingNames.SITE_TITLE);
+    },
+    emailAdress() {
+      return Services.settings.getSettingValue(SettingNames.EMAIL_ADRESS);
+    },
+    gitUrl() {
+      return Services.settings.getSettingValue(SettingNames.GIT_URL);
+    },
+    linkedinUrl() {
+      return Services.settings.getSettingValue(SettingNames.LINKEDIN_URL);
+    },
+  },
+  methods: {},
+};
 </script>
 
 <style scoped>

@@ -10,18 +10,18 @@
 </template>
 
 <script>
-  export default {
-    name: 'ResumeDrawer',
-    components: {},
-    props: ['content'],
-    data() {
-      return {};
-    },
-    created() {
-    },
-    computed: {},
-    methods: {},
-  };
+export default {
+  name: 'ResumeDrawer',
+  components: {},
+  props: ['content'],
+  data() {
+    return {};
+  },
+  created() {
+  },
+  computed: {},
+  methods: {},
+};
 </script>
 
 <style scoped>

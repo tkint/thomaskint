@@ -23,57 +23,57 @@
 </template>
 
 <script>
-  import WorkDialog from './components/WorkDialog';
-  import WorkItem from './components/WorkItem';
+import WorkDialog from './components/WorkDialog';
+import WorkItem from './components/WorkItem';
 
-  export default {
-    name: 'Portfolio',
-    components: { WorkDialog, WorkItem },
-    data() {
-      return {
-        work: null,
-        works: [
-          {
-            id_work: 1,
-            title: 'First Work',
-          },
-          {
-            id_work: 2,
-            title: 'Second Work',
-          },
-          {
-            id_work: 3,
-            title: 'Third Work',
-          },
-        ],
-        showWork: true,
-      };
+export default {
+  name: 'Portfolio',
+  components: { WorkDialog, WorkItem },
+  data() {
+    return {
+      work: null,
+      works: [
+        {
+          id_work: 1,
+          title: 'First Work',
+        },
+        {
+          id_work: 2,
+          title: 'Second Work',
+        },
+        {
+          id_work: 3,
+          title: 'Third Work',
+        },
+      ],
+      showWork: true,
+    };
+  },
+  created() {
+    this.openWorkFromUrl();
+  },
+  methods: {
+    openWorkFromUrl() {
+      if (this.$route.params.id) {
+        this.work = this.getWorkById(this.$route.params.id);
+      }
     },
-    created() {
-      this.openWorkFromUrl();
+    openWork(work) {
+      this.work = work;
     },
-    methods: {
-      openWorkFromUrl() {
-        if (this.$route.params.id) {
-          this.work = this.getWorkById(this.$route.params.id);
+    getWorkById(id) {
+      let i = 0;
+      let work = null;
+      while (i < this.works.length && !work) {
+        if (this.works[i].id_work === parseInt(id, 10)) {
+          work = this.works[i];
         }
-      },
-      openWork(work) {
-        this.work = work;
-      },
-      getWorkById(id) {
-        let i = 0;
-        let work = null;
-        while (i < this.works.length && !work) {
-          if (this.works[i].id_work === parseInt(id, 10)) {
-            work = this.works[i];
-          }
-          i += 1;
-        }
-        return work;
-      },
+        i += 1;
+      }
+      return work;
     },
-  };
+  },
+};
 </script>
 
 <style scoped>

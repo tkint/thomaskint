@@ -2,7 +2,7 @@ export default class ArticleService {
   axios = null;
 
   constructor(axios) {
-    this.axios = axios;
+    this.folder = axios;
   }
 
   getArticles() {
