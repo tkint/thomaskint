@@ -17,8 +17,7 @@
 </template>
 
 <script>
-import Services from '@/services';
-import SettingNames from '@/services/settings/names';
+import SettingNames from '@/plugins/global/settings-names';
 
 export default {
   name: 'Footer',
@@ -28,13 +27,13 @@ export default {
   },
   computed: {
     emailAdress() {
-      return Services.settings.getSettingValue(SettingNames.EMAIL_ADRESS);
+      return this.$global.getSettingValue(SettingNames.EMAIL_ADRESS);
     },
     gitUrl() {
-      return Services.settings.getSettingValue(SettingNames.GIT_URL);
+      return this.$global.getSettingValue(SettingNames.GIT_URL);
     },
     linkedinUrl() {
-      return Services.settings.getSettingValue(SettingNames.LINKEDIN_URL);
+      return this.$global.getSettingValue(SettingNames.LINKEDIN_URL);
     },
   },
   methods: {},

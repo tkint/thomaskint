@@ -2,7 +2,9 @@
   <v-navigation-drawer
     class="teal"
     width="300"
-    style="margin-top: 50px">
+    style="margin-top: 50px"
+    v-click-outside="onBlur"
+    v-model="show">
     <v-flex xs6 offset-xs3 mt-3>
       <v-card>
         <v-card-media src="/static/img/Avatar%2000.jpg" height="150px">
@@ -19,11 +21,13 @@
 </template>
 
 <script>
+import ClickOutside from 'vue-click-outside';
 import ResumeData from '@/assets/data/resume.json';
 import ResumeDrawerItem from './ResumeDrawerItem';
 
 export default {
   name: 'ResumeDrawer',
+  props: ['show'],
   components: { ResumeDrawerItem },
   data() {
     return {
@@ -42,7 +46,16 @@ export default {
       return resumeData;
     },
   },
-  methods: {},
+  methods: {
+    onBlur() {
+      if (this.show) {
+        this.$emit('close');
+      }
+    },
+  },
+  directives: {
+    ClickOutside,
+  },
 };
 </script>
 

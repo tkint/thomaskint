@@ -44,6 +44,12 @@
         "icon": "fa-car",
         "value": "Permis B"
       }
+    ],
+    [
+      {
+        "icon": "fa-language",
+        "value": "TOEIC - 920"
+      }
     ]
   ],
   "experiences": [
@@ -51,6 +57,9 @@
       "title": "Ingénieur d'Etudes et Développement (alternance)",
       "place": "Capgemini",
       "city": "Pérols",
+      "duration": {
+        "from": "2017"
+      },
       "descriptions": [
         "Développement de tests unitaires (JUnit, Mockito)",
         "Corrections d'anomalies"
@@ -60,6 +69,10 @@
       "title": "Développeur informatique (alternance)",
       "place": "Oceanis Promotion",
       "city": "Montpellier",
+      "duration": {
+        "from": "2014",
+        "to": "2017"
+      },
       "descriptions": [
         "Gestion de projets",
         "Développement de Web Services (REST, C#, MS CRM 2011, SQL)",
@@ -72,19 +85,64 @@
   ],
   "education": [
     {
-      "title": "Master Informatique",
+      "title": "Expert en Informatique et Système d'Information (Niveau 1 RNCP)",
       "place": "EPSI",
-      "city": "Montpellier"
+      "city": "Montpellier",
+      "duration": {
+        "from": "2017",
+        "to": "2019"
+      },
+      "descriptions": [
+        "Parcours socle Expertise Informatique et Système d'Information",
+        "Bloc 1 - Fonction d'Encadrement (Anglais / Analyse Financière / Management)",
+        "Bloc 2 - Méthodes et Projets (Agiles / Mathématiques / Gestion de Projets)",
+        "Bloc 3 - Gestion de Données et Business Intelligence (Modélisation décisionnelle / NoSQL)",
+        "Bloc 4 - Etudes et Développement (Systèmes embarqués / Intelligence artificielle)",
+        "Bloc 5 - Infrastructure Systèmes et Réseaux (Virtualisation / Cloud computing / Sécurité)",
+        "",
+        "Parcours complémentaire",
+        "Business Intelligence, Big Data et Internet des Objets"
+      ]
     },
     {
-      "title": "Bachelor 3ème année",
+      "title": "Concepteur Intégrateur Devops (3e année)",
       "place": "EPSI",
-      "city": "Montpellier"
+      "city": "Montpellier",
+      "duration": {
+        "from": "2016",
+        "to": "2017"
+      },
+      "descriptions": [
+        "Parcours socle DevOps",
+        "Bloc 1 – Développement d’applications informatiques (Java / JEE / Android / Intégration Continue)",
+        "Bloc 2 – Administration Infrastructure système & réseau",
+        "Bloc 3 – Gestion des données (Oracle / SQL / PLSQL)",
+        "Bloc 4 – Méthodes & Projets  (UML / Gestion de projet via ITIL)",
+        "Bloc 5 – Communication",
+        "",
+        "Parcours métier",
+        "Bloc 6 – Conception de solutions applicatives (Web Services)",
+        "",
+        "Parcours complémentaire",
+        "Données et objets connectés (Arduino / C)"
+      ]
     },
     {
-      "title": "BTS SIO - SLAM",
+      "title": "BTS Services Informatiques aux Organisations",
       "place": "ESICAD",
-      "city": "Montpellier"
+      "city": "Montpellier",
+      "duration": {
+        "from": "2014",
+        "to": "2016"
+      },
+      "descriptions": [
+        "Développement d'un site internet vitrine pour un salon de massage fictif",
+        "Développement d'un NetRogue-like en PHP",
+        "",
+        "Projet de fin de BTS :",
+        "* Développement d'un site internet (PHP, HTML, CSS, MySQL)",
+        "* Développement d'une application mobile sous Android (Java + XML + Web Services en REST)"
+      ]
     }
   ]
 }

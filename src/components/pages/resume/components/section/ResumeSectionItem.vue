@@ -9,33 +9,38 @@
     @mouseleave="onMouseLeave()"
     @click="onClick()">
     <v-card
-      :light="over"
+      :light="details || over"
       style="cursor: pointer;">
       <v-card-title class="item">
-        <div>
+        <span>
           <b>{{ item.title }}</b>
           <br/>
-          {{ item.place }}
+          {{ item.place }} - {{ item.city }}
           <br/>
-          {{ item.city }}
-        </div>
+          <duration :duration="item.duration"></duration>
+        </span>
+        <v-spacer></v-spacer>
+        <v-icon :color="details || over ? 'black' : 'white'">
+          {{ details ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+        </v-icon>
       </v-card-title>
       <resume-section-item-details
         :item="item"
         :position="position"
         :class="`text ${details ? 'text-show' : 'text-hide'}`"
-        v-if="item.descriptions">
+        v-show="details && item.descriptions">
       </resume-section-item-details>
     </v-card>
   </v-flex>
 </template>
 
 <script>
+import Duration from './Duration';
 import ResumeSectionItemDetails from './ResumeSectionItemDetails';
 
 export default {
   name: 'SectionItem',
-  components: { ResumeSectionItemDetails },
+  components: { Duration, ResumeSectionItemDetails },
   props: ['item', 'index', 'lockOver'],
   data() {
     return {

@@ -8,26 +8,25 @@
       fixed
       height="50"
     >
-      <toolbar-navigation></toolbar-navigation>
+      <toolbar-navigation style="position: absolute"></toolbar-navigation>
+      <v-spacer></v-spacer>
       <v-toolbar-title>
         <!--<v-toolbar-side-icon @click.stop="switchDrawer"></v-toolbar-side-icon>-->
         <v-btn
           large
           round
           flat
-          @click.stop="$global.openRoute(RouteNames.HOME)">
+          @click="$global.openRoute(RouteNames.HOME)">
           {{ siteTitle }}
         </v-btn>
       </v-toolbar-title>
-      <v-spacer></v-spacer>
       <v-spacer></v-spacer>
     </v-toolbar>
   </div>
 </template>
 
 <script>
-import Services from '@/services';
-import SettingNames from '@/services/settings/names';
+import SettingNames from '@/plugins/global/settings-names';
 
 import RouteNames from '@/router/names';
 
@@ -50,7 +49,7 @@ export default {
       progressBar: state => state.TemplateStore.progressBar,
     }),
     siteTitle() {
-      return Services.settings.getSettingValue(SettingNames.SITE_TITLE);
+      return this.$global.getSettingValue(SettingNames.SITE_TITLE);
     },
   },
   methods: {

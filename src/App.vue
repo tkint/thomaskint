@@ -13,8 +13,7 @@
 </template>
 
 <script>
-import Services from '@/services';
-import SettingNames from '@/services/settings/names';
+import SettingNames from '@/plugins/global/settings-names';
 
 import ComingSoon from '@/components/pages/redirection/ComingSoon';
 import Template from '@/components/template';
@@ -34,7 +33,7 @@ export default {
       if (process.env.NODE_ENV === 'development') {
         return false;
       }
-      return Services.settings.getSettingValue(SettingNames.COMING_SOON);
+      return this.$global.getSettingValue(SettingNames.COMING_SOON);
     },
   },
 };

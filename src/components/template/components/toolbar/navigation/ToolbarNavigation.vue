@@ -1,11 +1,11 @@
 <template>
-  <v-layout>
+  <v-toolbar-items>
     <toolbar-navigation-item
       v-for="(item, index) in items"
       :key="index"
       :item="item">
     </toolbar-navigation-item>
-  </v-layout>
+  </v-toolbar-items>
 </template>
 
 <script>
@@ -18,9 +18,7 @@ export default {
   data() {
     return {
       items: [
-        { icon: this.$global.icons.ABOUT, text: 'About', route: RouteNames.ABOUT },
-        { icon: this.$global.icons.RESUME, text: 'Resume', route: RouteNames.RESUME },
-        { icon: this.$global.icons.BLOG, text: 'Blog', route: RouteNames.BLOG },
+        { icon: this.$global.icons.RESUME, text: 'CV', route: RouteNames.RESUME },
         { icon: this.$global.icons.PORTFOLIO, text: 'Portfolio', route: RouteNames.PORTFOLIO },
         { icon: this.$global.icons.CONTACT, text: 'Contact', route: RouteNames.CONTACT },
       ],

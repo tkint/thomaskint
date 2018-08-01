@@ -1,0 +1,32 @@
+[
+  {
+    "name": "COMING_SOON",
+    "description": "Define if the website is in coming soon status or not",
+    "value": false
+  },
+  {
+    "name": "COMING_SOON_TITLE",
+    "description": "Title of the coming soon page",
+    "value": "Coming Soon !"
+  },
+  {
+    "name": "EMAIL_ADRESS",
+    "description": "Professional email adress",
+    "value": "thomaskint.pro@gmail.com"
+  },
+  {
+    "name": "GIT_URL",
+    "description": "URL of professional github",
+    "value": "https://gitlab.com/tkint"
+  },
+  {
+    "name": "LINKEDIN_URL",
+    "description": "URL of professional linkedin",
+    "value": "https://www.linkedin.com/in/thomas-kint"
+  },
+  {
+    "name": "SITE_TITLE",
+    "description": "Title of the website",
+    "value": "Thomas Kint"
+  }
+]

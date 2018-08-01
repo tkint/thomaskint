@@ -1,8 +1,9 @@
+import SettingsData from '@/assets/data/settings.json';
 import RouteNames from '@/router/names';
 import Icons from './icons';
 
 const globalPlugin = {
-  install(Vue, options) {
+  install: (Vue, options) => {
     // Tools
     /**
      * Retrieve routes list from router instance
@@ -59,8 +60,22 @@ const globalPlugin = {
     };
     /**
      *
+     * @param ms
+     * @returns {Promise<any>}
      */
     global.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+    /**
+     *
+     * @param name
+     * @returns {*|number|T}
+     */
+    global.getSetting = name => SettingsData.find(setting => setting.name === name);
+    /**
+     *
+     * @param name
+     * @returns {*|number|T}
+     */
+    global.getSettingValue = name => global.getSetting(name).value;
     /**
      * Add this plugin to Vue instance
      * @type {{}}

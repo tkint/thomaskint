@@ -1,14 +1,12 @@
 <template>
   <v-btn
-    :icon="!over"
     flat
-    round
     slot="activator"
     @click.stop="$global.openRoute(item.route)"
     @mouseover="onMouseOver()"
     @mouseleave="onMouseLeave()">
     <v-icon>{{ item.icon }}</v-icon>
-    <span v-if="over" class="legend">{{ item.text }}</span>
+    <span v-if="over || currentPage" class="legend">{{ item.text }}</span>
   </v-btn>
 </template>
 
@@ -21,15 +19,20 @@ export default {
       over: false,
     };
   },
+  computed: {
+    currentPage() {
+      return this.$route.name === this.item.route;
+    },
+  },
   methods: {
     onMouseOver() {
-      this.over = true;
+      if (!this.over) {
+        this.over = true;
+      }
     },
     onMouseLeave() {
       if (this.over) {
-        this.$global.sleep(500).then(() => {
-          this.over = false;
-        });
+        this.over = false;
       }
     },
   },

@@ -1,9 +1,16 @@
 <template>
   <v-layout row wrap fill-height>
-    <resume-drawer></resume-drawer>
-    <v-layout style="margin-left: 300px">
+    <resume-drawer
+      :show="drawer || showDrawer"
+      @close="showDrawer = false">
+    </resume-drawer>
+    <v-layout :style="drawer ? 'margin-left: 300px' : ''">
       <v-flex xs12>
-        <resume-title :content="title"></resume-title>
+        <resume-title
+          :content="title"
+          :drawer="drawer"
+          @switchDrawer="switchDrawer">
+        </resume-title>
         <resume-title2 content="Expériences" icon="show_chart"></resume-title2>
         <resume-section
           :items="experiences"
@@ -33,6 +40,7 @@ export default {
   components: { ResumeDrawer, ResumeTitle, ResumeTitle2, ResumeSection },
   data() {
     return {
+      showDrawer: false,
       lockOver: false,
       title: ResumeData.title,
       experiences: ResumeData.experiences,
@@ -41,8 +49,17 @@ export default {
   },
   created() {
   },
-  computed: {},
-  methods: {},
+  computed: {
+    drawer() {
+      return this.$vuetify.breakpoint.name !== 'xs'
+        && this.$vuetify.breakpoint.name !== 'sm';
+    },
+  },
+  methods: {
+    switchDrawer() {
+      this.showDrawer = !this.showDrawer;
+    },
+  },
 };
 </script>
 

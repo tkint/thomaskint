@@ -18,14 +18,9 @@ export default new Router({
       component: Pages.Resume,
     },
     {
-      path: '/blog',
-      name: Names.BLOG,
-      component: Pages.Blog,
-    },
-    {
-      path: '/blog/:id',
-      name: Names.BLOG_ARTICLE,
-      component: Pages.Blog,
+      path: '/contact',
+      name: Names.CONTACT,
+      component: Pages.Contact,
     },
     {
       path: '/portfolio',

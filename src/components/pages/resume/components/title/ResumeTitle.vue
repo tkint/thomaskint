@@ -1,7 +1,13 @@
 <template>
   <v-toolbar class="indigo">
     <v-toolbar-title>
-      <v-icon v-if="icon" class="pl-2">{{ icon }}</v-icon>
+      <v-btn
+        icon
+        v-if="!drawer"
+        @click="$emit('switchDrawer')"
+        style="margin-left: 0">
+        <v-icon>menu</v-icon>
+      </v-btn>
       {{ content }}
     </v-toolbar-title>
   </v-toolbar>
@@ -11,7 +17,7 @@
 export default {
   name: 'ResumeTitle',
   components: {},
-  props: ['content', 'icon'],
+  props: ['content', 'drawer'],
   data() {
     return {};
   },
