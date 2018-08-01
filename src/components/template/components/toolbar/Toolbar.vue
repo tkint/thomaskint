@@ -15,8 +15,7 @@
           large
           round
           flat
-          @click.stop="$global.openRoute(RouteNames.HOME)"
-        >
+          @click.stop="$global.openRoute(RouteNames.HOME)">
           {{ siteTitle }}
         </v-btn>
       </v-toolbar-title>

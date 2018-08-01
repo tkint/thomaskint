@@ -6,9 +6,9 @@
     slot="activator"
     @click.stop="$global.openRoute(item.route)"
     @mouseover="onMouseOver()"
-    @mouseout="onMouseOut()">
+    @mouseleave="onMouseLeave()">
     <v-icon>{{ item.icon }}</v-icon>
-    <span v-if="over">{{ item.text }}</span>
+    <span v-if="over" class="legend">{{ item.text }}</span>
   </v-btn>
 </template>
 
@@ -25,15 +25,19 @@ export default {
     onMouseOver() {
       this.over = true;
     },
-    onMouseOut() {
-      this.$global.sleep(500).then(() => {
-        this.over = false;
-      });
+    onMouseLeave() {
+      if (this.over) {
+        this.$global.sleep(500).then(() => {
+          this.over = false;
+        });
+      }
     },
   },
 };
 </script>
 
 <style scoped>
-
+  .legend {
+    padding-left: 5px;
+  }
 </style>

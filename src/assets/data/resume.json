@@ -1,0 +1,91 @@
+{
+  "title": "Ingénieur d'Etudes et Développement",
+  "coordinates": [
+    [
+      {
+        "icon": "person",
+        "value": "Thomas Kint"
+      },
+      {
+        "icon": "phone",
+        "value": "+33 06 13 43 27 82"
+      },
+      {
+        "icon": "home",
+        "value": "8 Rue Rigaud - Montpellier"
+      }
+    ],
+    [
+      {
+        "icon": "email",
+        "value": "thomaskint.pro@gmail.com"
+      }
+    ],
+    [
+      {
+        "icon": "fa-globe",
+        "value": "http://thomaskint.com"
+      },
+      {
+        "icon": "fa-gitlab",
+        "value": "https://gitlab.com/tkint"
+      },
+      {
+        "icon": "fa-linkedin",
+        "value": "https://www.linkedin.com/in/tkint"
+      }
+    ],
+    [
+      {
+        "icon": "fa-calendar",
+        "value": "20/08/1992"
+      },
+      {
+        "icon": "fa-car",
+        "value": "Permis B"
+      }
+    ]
+  ],
+  "experiences": [
+    {
+      "title": "Ingénieur d'Etudes et Développement (alternance)",
+      "place": "Capgemini",
+      "city": "Pérols",
+      "descriptions": [
+        "Développement de tests unitaires (JUnit, Mockito)",
+        "Corrections d'anomalies"
+      ]
+    },
+    {
+      "title": "Développeur informatique (alternance)",
+      "place": "Oceanis Promotion",
+      "city": "Montpellier",
+      "descriptions": [
+        "Gestion de projets",
+        "Développement de Web Services (REST, C#, MS CRM 2011, SQL)",
+        "Extractions de données SQL (reporting d'activité, tableaux croisés dynamiques, Business Intelligence)",
+        "Gestion et migration de MS CRM 2011 et 2016 (Plugins, Workflows, Javascripts)",
+        "Gestion Sage 1000",
+        "Formation des utilisateurs"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "title": "Master Informatique",
+      "place": "EPSI",
+      "city": "Montpellier"
+    },
+    {
+      "title": "Bachelor 3ème année",
+      "place": "EPSI",
+      "city": "Montpellier"
+    },
+    {
+      "title": "BTS SIO - SLAM",
+      "place": "ESICAD",
+      "city": "Montpellier"
+    }
+  ]
+}
+

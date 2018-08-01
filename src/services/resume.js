@@ -1,4 +1,4 @@
-import data from '../../static/data/resume.json';
+import data from '../assets/data/resume.json';
 
 export default class SettingService {
   constructor() {

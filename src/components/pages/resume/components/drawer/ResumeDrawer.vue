@@ -2,41 +2,46 @@
   <v-navigation-drawer
     class="teal"
     width="300"
-    style="margin-top: 50px"
-  >
-    <v-layout style="padding-top: 10px;" justify-center>
-      <img src="/static/img/Avatar%2000.png"/>
-    </v-layout>
+    style="margin-top: 50px">
+    <v-flex xs6 offset-xs3 mt-3>
+      <v-card>
+        <v-card-media src="/static/img/Avatar%2000.jpg" height="150px">
+        </v-card-media>
+      </v-card>
+    </v-flex>
     <v-list>
-      <v-divider></v-divider>
-      <resume-drawer-item content="Thomas Kint"></resume-drawer-item>
-      <resume-drawer-item content="8 Rue Rigaud"></resume-drawer-item>
-      <resume-drawer-item content="06 13 43 27 82"></resume-drawer-item>
-      <v-divider></v-divider>
-      <resume-drawer-item content="thomaskint.pro@gmail.com"></resume-drawer-item>
-      <resume-drawer-item content="contact@thomaskint.com"></resume-drawer-item>
-      <v-divider></v-divider>
-      <resume-drawer-item content="http://thomaskint.com"></resume-drawer-item>
-      <resume-drawer-item content="http://github.com/tkint"></resume-drawer-item>
-      <v-divider></v-divider>
-      <resume-drawer-item content="25 ans"></resume-drawer-item>
-      <resume-drawer-item content="Permis B"></resume-drawer-item>
+      <template v-for="(item, index) in resumeData" v-if="index > 0">
+        <v-divider v-if="item === divider"></v-divider>
+        <resume-drawer-item :content="item" v-else></resume-drawer-item>
+      </template>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
+import ResumeData from '@/assets/data/resume.json';
 import ResumeDrawerItem from './ResumeDrawerItem';
 
 export default {
   name: 'ResumeDrawer',
   components: { ResumeDrawerItem },
   data() {
-    return {};
+    return {
+      divider: 'divider',
+    };
   },
   created() {
   },
-  computed: {},
+  computed: {
+    resumeData() {
+      const resumeData = [];
+      ResumeData.coordinates.forEach((partData) => {
+        resumeData.push(this.divider);
+        partData.forEach(data => resumeData.push(data));
+      });
+      return resumeData;
+    },
+  },
   methods: {},
 };
 </script>

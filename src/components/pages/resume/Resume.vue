@@ -3,28 +3,41 @@
     <resume-drawer></resume-drawer>
     <v-layout style="margin-left: 300px">
       <v-flex xs12>
-        <resume-title content="Ingénieur Logiciel"></resume-title>
+        <resume-title :content="title"></resume-title>
         <resume-title2 content="Expériences" icon="show_chart"></resume-title2>
-        <resume-experience></resume-experience>
+        <resume-section
+          :items="experiences"
+          :lockOver="lockOver"
+          @lock="param => lockOver = param">
+        </resume-section>
         <resume-title2 content="Education" icon="school"></resume-title2>
-        <resume-education></resume-education>
+        <resume-section
+          :items="education"
+          :lockOver="lockOver"
+          @lock="param => lockOver = param">
+        </resume-section>
       </v-flex>
     </v-layout>
   </v-layout>
 </template>
 
 <script>
+import ResumeData from '@/assets/data/resume.json';
 import ResumeDrawer from './components/drawer/ResumeDrawer';
 import ResumeTitle from './components/title/ResumeTitle';
 import ResumeTitle2 from './components/title/ResumeTitle2';
-import ResumeExperience from './components/experience/ResumeExperience';
-import ResumeEducation from './components/education/ResumeEducation';
+import ResumeSection from './components/section/ResumeSection';
 
 export default {
   name: 'Resume',
-  components: { ResumeDrawer, ResumeTitle, ResumeTitle2, ResumeExperience, ResumeEducation },
+  components: { ResumeDrawer, ResumeTitle, ResumeTitle2, ResumeSection },
   data() {
-    return {};
+    return {
+      lockOver: false,
+      title: ResumeData.title,
+      experiences: ResumeData.experiences,
+      education: ResumeData.education,
+    };
   },
   created() {
   },
