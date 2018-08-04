@@ -3,7 +3,6 @@
 <template>
   <v-flex
     xs12
-    md6
     v-if="item"
     @mouseover="onMouseOver()"
     @mouseleave="onMouseLeave()"

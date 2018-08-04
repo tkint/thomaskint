@@ -1,6 +1,6 @@
 <template>
   <v-container fluid grid-list-md>
-    <v-layout row wrap>
+    <v-layout column wrap>
       <section-item
         v-for="(item, index) in items"
         :index="index"

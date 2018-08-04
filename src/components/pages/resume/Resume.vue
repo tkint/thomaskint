@@ -11,18 +11,22 @@
           :drawer="drawer"
           @switchDrawer="switchDrawer">
         </resume-title>
-        <resume-title2 content="Expériences" icon="show_chart"></resume-title2>
-        <resume-section
-          :items="experiences"
-          :lockOver="lockOver"
-          @lock="param => lockOver = param">
-        </resume-section>
-        <resume-title2 content="Education" icon="school"></resume-title2>
-        <resume-section
-          :items="education"
-          :lockOver="lockOver"
-          @lock="param => lockOver = param">
-        </resume-section>
+        <v-layout row wrap>
+          <v-flex xs12 md6>
+            <resume-title2 content="Expériences" icon="show_chart"></resume-title2>
+            <resume-section
+              :items="experiences"
+              :lockOver="lockOver"
+              @lock="param => lockOver = param">
+            </resume-section>
+            <resume-title2 content="Education" icon="school"></resume-title2>
+            <resume-section
+              :items="education"
+              :lockOver="lockOver"
+              @lock="param => lockOver = param">
+            </resume-section>
+          </v-flex>
+        </v-layout>
       </v-flex>
     </v-layout>
   </v-layout>

@@ -1,5 +1,5 @@
 <template>
-  <v-flex xs12 md6>
+  <v-flex xs12>
     <v-card class="teal">
       <v-card-title>
         <div>
