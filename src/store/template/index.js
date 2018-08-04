@@ -1,14 +1,16 @@
-import Actions from './actions';
-import Mutations from './mutations';
+import actions from './actions';
+import mutations from './mutations';
+import getters from './getters';
 
-const TemplateStore = {
-  state: {
-    drawer: true,
-    progressBar: false,
-    loginDialog: false,
-  },
-  actions: Actions,
-  mutations: Mutations,
+export const keys = {
+  PROGRESS_BAR: 'PROGRESS_BAR',
 };
 
-export default TemplateStore;
+export default {
+  state: {
+    [keys.PROGRESS_BAR]: false,
+  },
+  actions,
+  mutations,
+  getters,
+};

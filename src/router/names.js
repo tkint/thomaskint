@@ -4,7 +4,7 @@ export default {
   RESUME: 'Resume',
   BLOG_ARTICLE: 'BlogArticle',
   PORTFOLIO: 'Portfolio',
-  PORTFOLIO_WORK: 'PortfolioWork',
+  PORTFOLIO_PROJECT: 'PortfolioProject',
   CONTACT: 'Contact',
   ERROR_404: '404',
 };

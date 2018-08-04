@@ -1,12 +1,22 @@
-import { actions } from './actions';
-import Mutations from './mutations';
+import actions from './actions';
+import mutations from './mutations';
+import getters from './getters';
 
-const TemplateStore = {
-  state: {
-    user: {},
-  },
-  actions,
-  mutations: Mutations,
+export const keys = {
+  USER: 'USER',
+  PROJECTS: 'PROJECTS',
+  USER_LAST_CALL: 'USER_LAST_CALL',
+  PROJECTS_LAST_CALL: 'PROJECTS_LAST_CALL',
 };
 
-export default TemplateStore;
+export default {
+  state: {
+    [keys.USER]: {},
+    [keys.PROJECTS]: [],
+    [keys.USER_LAST_CALL]: null,
+    [keys.PROJECTS_LAST_CALL]: null,
+  },
+  actions,
+  mutations,
+  getters,
+};

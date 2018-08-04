@@ -29,7 +29,7 @@ export default new Router({
     },
     {
       path: '/portfolio/:id',
-      name: Names.PORTFOLIO_WORK,
+      name: Names.PORTFOLIO_PROJECT,
       component: Pages.Portfolio,
     },
     {

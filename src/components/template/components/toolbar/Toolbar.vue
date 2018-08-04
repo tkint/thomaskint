@@ -16,7 +16,7 @@
           large
           round
           flat
-          @click="$global.openRoute(RouteNames.HOME)">
+          @click="$global.openRouteByName({ name: RouteNames.HOME })">
           {{ siteTitle }}
         </v-btn>
       </v-toolbar-title>
@@ -31,7 +31,8 @@ import SettingNames from '@/plugins/global/settings-names';
 import RouteNames from '@/router/names';
 
 import { mapState, mapActions } from 'vuex';
-import ActionTypes from '@/store/template/actions/types';
+import { keys as TStoreKeys } from '@/store/template';
+import { types as ActionTypes } from '@/store/template/actions';
 
 import ProgressBar from './ProgressBar';
 import ToolbarNavigation from './navigation/ToolbarNavigation';
@@ -46,7 +47,7 @@ export default {
   },
   computed: {
     ...mapState({
-      progressBar: state => state.TemplateStore.progressBar,
+      progressBar: state => state.TemplateStore[TStoreKeys.PROGRESS_BAR],
     }),
     siteTitle() {
       return this.$global.getSettingValue(SettingNames.SITE_TITLE);

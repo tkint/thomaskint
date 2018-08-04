@@ -16,30 +16,36 @@ const globalPlugin = {
       return null;
     };
     /**
-     * Verify if route name exists in the current router instance
+     *
      * @param routeName
-     * @returns {boolean}
+     * @returns {*}
      */
-    const routeExists = (routeName) => {
-      let exists = false;
+    const getRouteByName = (routeName) => {
+      let route = null;
       const routes = getRoutes();
       if (routes) {
         let i = 0;
-        while (i < routes.length && !exists) {
+        while (i < routes.length && !route) {
           if (routes[i].name === routeName) {
-            exists = true;
+            route = routes[i];
           }
           i += 1;
         }
       }
-      return exists;
+      return route;
     };
+    /**
+     * Verify if route name exists in the current router instance
+     * @param routeName
+     * @returns {boolean}
+     */
+    const routeExists = routeName => getRouteByName(routeName) !== null;
     /**
      * global object
      * Contains global and fields used in the page editor and page display
      * @type {{}}
      */
-    const global = { icons: null, openRoute: null };
+    const global = { icons: null };
     global.icons = {};
     /**
      * Adding icons
@@ -49,21 +55,36 @@ const globalPlugin = {
     });
     /**
      * Open a route with the given name
-     * @param route
+     * @param routeName
+     * @param params
      */
-    global.openRoute = (routeName) => {
-      if (routeExists(routeName)) {
-        options.router.push({ name: routeName });
+    global.openRouteByName = ({ name, params }) => {
+      if (routeExists(name)) {
+        options.router.push({ name, params });
         return;
       }
       options.router.push({ name: RouteNames.ERROR_404 });
     };
+    /**
+     * Open a route
+     * @param routeName
+     * @param params
+     */
+    global.openRoute = ({ route, params }) => {
+      global.openRouteByName({ name: route.name, params });
+    };
+    global.getRouteByName = getRouteByName;
     /**
      *
      * @param ms
      * @returns {Promise<any>}
      */
     global.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+    global.formatDate = (dateToFormat) => {
+      const date = new Date(dateToFormat);
+      return date.toLocaleDateString();
+    };
     /**
      *
      * @param name

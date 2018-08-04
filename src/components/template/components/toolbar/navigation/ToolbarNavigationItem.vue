@@ -2,7 +2,7 @@
   <v-btn
     flat
     slot="activator"
-    @click.stop="$global.openRoute(item.route)"
+    @click.stop="$global.openRoute({route: item.route})"
     @mouseover="onMouseOver()"
     @mouseleave="onMouseLeave()">
     <v-icon>{{ item.icon }}</v-icon>
@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     currentPage() {
-      return this.$route.name === this.item.route;
+      return this.$route.path.includes(this.item.route.path);
     },
   },
   methods: {

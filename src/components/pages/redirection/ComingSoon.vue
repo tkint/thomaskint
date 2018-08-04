@@ -18,7 +18,7 @@
       </v-flex>
       <v-flex xs12>
         <v-layout justify-center>
-          <img src="/static/img/Avatar%2000.png"/>
+          <img src="/static/img/Avatar%2000.jpg" height="200"/>
         </v-layout>
       </v-flex>
       <v-flex xs12>

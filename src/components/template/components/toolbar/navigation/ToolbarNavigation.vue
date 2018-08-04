@@ -18,9 +18,21 @@ export default {
   data() {
     return {
       items: [
-        { icon: this.$global.icons.RESUME, text: 'CV', route: RouteNames.RESUME },
-        { icon: this.$global.icons.PORTFOLIO, text: 'Portfolio', route: RouteNames.PORTFOLIO },
-        { icon: this.$global.icons.CONTACT, text: 'Contact', route: RouteNames.CONTACT },
+        {
+          icon: this.$global.icons.RESUME,
+          text: 'CV',
+          route: this.$global.getRouteByName(RouteNames.RESUME),
+        },
+        {
+          icon: this.$global.icons.PORTFOLIO,
+          text: 'Portfolio',
+          route: this.$global.getRouteByName(RouteNames.PORTFOLIO),
+        },
+        {
+          icon: this.$global.icons.CONTACT,
+          text: 'Contact',
+          route: this.$global.getRouteByName(RouteNames.CONTACT),
+        },
       ],
     };
   },

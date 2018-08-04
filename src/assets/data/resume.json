@@ -23,23 +23,15 @@
     ],
     [
       {
-        "icon": "fa-globe",
-        "value": "http://thomaskint.com"
+        "icon": "fa-linkedin",
+        "value": "https://www.linkedin.com/in/tkint"
       },
       {
         "icon": "fa-gitlab",
         "value": "https://gitlab.com/tkint"
-      },
-      {
-        "icon": "fa-linkedin",
-        "value": "https://www.linkedin.com/in/tkint"
       }
     ],
     [
-      {
-        "icon": "fa-calendar",
-        "value": "20/08/1992"
-      },
       {
         "icon": "fa-car",
         "value": "Permis B"
@@ -48,7 +40,7 @@
     [
       {
         "icon": "fa-language",
-        "value": "TOEIC - 920"
+        "value": "Anglais (TOEIC - 920)"
       }
     ]
   ],

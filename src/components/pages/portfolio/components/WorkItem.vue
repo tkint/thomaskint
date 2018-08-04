@@ -1,35 +1,58 @@
 <template>
   <v-card
-    class="work-item"
-    @click.native="$parent.openWork(work)"
-    hover
-    ripple
-  >
-    <v-card-media
-      src="/static/img/material2.jpg"
-      height="200px"
-    >
-    </v-card-media>
+    class="project-item"
+    @click.native="openProject()"
+    hover>
     <v-card-title>
-      <div>
-        <h3 class="headline mb-0">{{ work.title }}</h3>
-      </div>
+      <h3 class="mb-0" style="width: 100%">{{ project.name }}</h3>
+      Dernière activité:
+      {{ $global.formatDate(project.updated) }}
     </v-card-title>
+    <v-card-text>
+      <span v-if="project.description">
+      {{ project.description }}
+      </span>
+      <span v-else>
+        [Pas de description]
+      </span>
+      <br/>
+      <!--{{ project }}-->
+    </v-card-text>
+    <v-card-actions>
+      <v-btn
+        :href="project.url"
+        target="_blank"
+        block
+        color="teal"
+        @click.stop="">
+        GITLAB
+      </v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
 <script>
+import RouteNames from '@/router/names';
+
 export default {
-  name: 'WorkItem',
-  props: ['work'],
+  name: 'ProjectItem',
+  props: ['project'],
   data() {
     return {};
+  },
+  methods: {
+    openProject() {
+      this.$global.openRouteByName({
+        name: RouteNames.PORTFOLIO_PROJECT,
+        params: { id: this.project.system_name },
+      });
+    },
   },
 };
 </script>
 
 <style scoped>
-  .work-item {
+  .project-item {
     cursor: pointer;
   }
 </style>
