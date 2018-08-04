@@ -1,11 +1,11 @@
-import Actions from './actions';
+import { actions } from './actions';
 import Mutations from './mutations';
 
 const TemplateStore = {
   state: {
     user: {},
   },
-  actions: Actions,
+  actions,
   mutations: Mutations,
 };
 

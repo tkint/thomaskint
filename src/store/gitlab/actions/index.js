@@ -1,10 +1,13 @@
-import Types from './types';
 import MutationTypes from '../mutations/types';
-
 import GitlabService from '../../../services/gitlabService';
 
-export default {
-  [Types.RETRIEVE_USER]({ commit }) {
+export const types = {
+  RETRIEVE_USER: 'RETRIEVE_USER',
+};
+
+export const actions = {
+  [types.RETRIEVE_USER]({ commit }) {
     commit(MutationTypes.SET_USER, GitlabService.getUser());
   },
 };
+

@@ -13,30 +13,41 @@
 </template>
 
 <script>
-import SettingNames from '@/plugins/global/settings-names';
+  import SettingNames from '@/plugins/global/settings-names';
 
-import ComingSoon from '@/components/pages/redirection/ComingSoon';
-import Template from '@/components/template';
+  import ComingSoon from '@/components/pages/redirection/ComingSoon';
+  import Template from '@/components/template';
 
-export default {
-  components: {
-    TemplateToolbar: Template.Toolbar,
-    TemplateNavigation: Template.Navigation,
-    TemplateFooter: Template.Footer,
-    ComingSoon,
-  },
-  data() {
-    return {};
-  },
-  computed: {
-    isComingSoon() {
-      if (process.env.NODE_ENV === 'development') {
-        return false;
-      }
-      return this.$global.getSettingValue(SettingNames.COMING_SOON);
+  import { mapActions } from 'vuex';
+  import { actions, types } from '@/store/gitlab/actions';
+
+  export default {
+    components: {
+      TemplateToolbar: Template.Toolbar,
+      TemplateNavigation: Template.Navigation,
+      TemplateFooter: Template.Footer,
+      ComingSoon,
     },
-  },
-};
+    data() {
+      return {};
+    },
+    computed: {
+      isComingSoon() {
+        if (process.env.NODE_ENV === 'development') {
+          return false;
+        }
+        return this.$global.getSettingValue(SettingNames.COMING_SOON);
+      },
+    },
+    created() {
+      this.retrieveGitlabUser();
+    },
+    methods: {
+      ...mapActions({
+        retrieveGitlabUser: actions[types.RETRIEVE_USER],
+      }),
+    },
+  };
 </script>
 
 <style>

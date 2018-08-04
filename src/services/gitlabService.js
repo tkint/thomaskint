@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 class GitlabService {
   constructor() {
-    this.axios = new Axios();
+    this.axios = Axios;
     this.axios.defaults.url = 'https://gitlab.com/api/v4';
   }
 
