@@ -14,13 +14,7 @@ const PhoneNumber = require('google-libphonenumber').PhoneNumberUtil.getInstance
 
 export default {
   name: 'ResumeDrawer',
-  components: {},
   props: ['content'],
-  data() {
-    return {};
-  },
-  created() {
-  },
   computed: {
     href() {
       if (this.isMail()) {

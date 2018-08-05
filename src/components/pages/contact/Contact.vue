@@ -7,13 +7,6 @@
 <script>
 export default {
   name: 'Contact',
-  data() {
-    return {};
-  },
-  created() {
-  },
-  computed: {},
-  methods: {},
 };
 </script>
 

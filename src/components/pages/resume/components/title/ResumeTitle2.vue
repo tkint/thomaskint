@@ -15,15 +15,7 @@
 
 export default {
   name: 'ResumeTitle2',
-  components: {},
   props: ['content', 'icon'],
-  data() {
-    return {};
-  },
-  created() {
-  },
-  computed: {},
-  methods: {},
 };
 </script>
 

@@ -136,6 +136,16 @@
         "* Développement d'une application mobile sous Android (Java + XML + Web Services en REST)"
       ]
     }
+  ],
+  "skills": [
+    {
+      "name": "HTML",
+      "icon": "fab fa-html5"
+    },
+    {
+      "name": "CSS",
+      "icon": "fab fa-css3-alt"
+    }
   ]
 }
 

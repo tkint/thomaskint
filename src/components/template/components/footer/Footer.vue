@@ -1,5 +1,5 @@
 <template>
-  <v-footer fixed app>
+  <v-footer fixed app style="z-index: 999;">
     <v-spacer></v-spacer>
     <a :href="`mailto:${emailAdress}`">
       <v-icon>mail</v-icon>
@@ -21,10 +21,6 @@ import SettingNames from '@/plugins/global/settings-names';
 
 export default {
   name: 'Footer',
-  components: {},
-  data() {
-    return {};
-  },
   computed: {
     emailAdress() {
       return this.$global.getSettingValue(SettingNames.EMAIL_ADRESS);
@@ -36,7 +32,6 @@ export default {
       return this.$global.getSettingValue(SettingNames.LINKEDIN_URL);
     },
   },
-  methods: {},
 };
 </script>
 

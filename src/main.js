@@ -4,6 +4,7 @@ import Vue from 'vue';
 
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 import VueCookie from 'vue-cookie';
 import VueScrollTo from 'vue-scrollto';
@@ -14,7 +15,9 @@ import GlobalPlugin from './plugins/global';
 import App from './App';
 import router from './router';
 
-Vue.use(Vuetify);
+Vue.use(Vuetify, {
+  iconfont: 'fa',
+});
 Vue.use(VueCookie);
 Vue.use(VueScrollTo);
 Vue.use(GlobalPlugin, { router });

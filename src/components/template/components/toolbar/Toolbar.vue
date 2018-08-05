@@ -1,13 +1,12 @@
 <template>
   <div>
-    <progress-bar v-if="progressBar"></progress-bar>
+    <progress-bar v-if="progressBar" style="z-index: 999;"></progress-bar>
     <v-toolbar
       dark
       app
       clipped-left
       fixed
-      height="50"
-    >
+      height="50" style="z-index: 998;">
       <toolbar-navigation style="position: absolute"></toolbar-navigation>
       <v-spacer></v-spacer>
       <v-toolbar-title>

@@ -2,7 +2,7 @@
   <v-navigation-drawer
     class="teal"
     width="300"
-    style="margin-top: 50px"
+    style="margin-top: 50px; z-index: 999"
     v-click-outside="onBlur"
     v-model="show">
     <v-flex xs6 offset-xs3 mt-3>
@@ -22,6 +22,7 @@
 
 <script>
 import ClickOutside from 'vue-click-outside';
+
 import ResumeData from '@/assets/data/resume.json';
 import ResumeDrawerItem from './ResumeDrawerItem';
 
@@ -33,8 +34,6 @@ export default {
     return {
       divider: 'divider',
     };
-  },
-  created() {
   },
   computed: {
     resumeData() {

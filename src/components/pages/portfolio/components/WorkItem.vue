@@ -37,9 +37,6 @@ import RouteNames from '@/router/names';
 export default {
   name: 'ProjectItem',
   props: ['project'],
-  data() {
-    return {};
-  },
   methods: {
     openProject() {
       this.$global.openRouteByName({

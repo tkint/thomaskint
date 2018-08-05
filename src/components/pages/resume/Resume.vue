@@ -13,18 +13,31 @@
         </resume-title>
         <v-layout row wrap>
           <v-flex xs12 md6>
-            <resume-title2 content="Expériences" icon="show_chart"></resume-title2>
+            <resume-title2
+              content="Expériences"
+              icon="show_chart">
+            </resume-title2>
             <resume-section
               :items="experiences"
               :lockOver="lockOver"
-              @lock="param => lockOver = param">
+              :index="0"
+              @lock="setLock">
             </resume-section>
-            <resume-title2 content="Education" icon="school"></resume-title2>
+            <resume-title2
+              content="Education"
+              icon="school">
+            </resume-title2>
             <resume-section
               :items="education"
               :lockOver="lockOver"
-              @lock="param => lockOver = param">
+              :index="1"
+              @lock="setLock">
             </resume-section>
+          </v-flex>
+          <v-flex xs12 md6>
+            <resume-skills
+              :skills="skills">
+            </resume-skills>
           </v-flex>
         </v-layout>
       </v-flex>
@@ -38,10 +51,11 @@ import ResumeDrawer from './components/drawer/ResumeDrawer';
 import ResumeTitle from './components/title/ResumeTitle';
 import ResumeTitle2 from './components/title/ResumeTitle2';
 import ResumeSection from './components/section/ResumeSection';
+import ResumeSkills from './components/skills/Skills';
 
 export default {
   name: 'Resume',
-  components: { ResumeDrawer, ResumeTitle, ResumeTitle2, ResumeSection },
+  components: { ResumeDrawer, ResumeTitle, ResumeTitle2, ResumeSection, ResumeSkills },
   data() {
     return {
       showDrawer: false,
@@ -49,9 +63,8 @@ export default {
       title: ResumeData.title,
       experiences: ResumeData.experiences,
       education: ResumeData.education,
+      skills: ResumeData.skills,
     };
-  },
-  created() {
   },
   computed: {
     drawer() {
@@ -62,6 +75,10 @@ export default {
   methods: {
     switchDrawer() {
       this.showDrawer = !this.showDrawer;
+    },
+    setLock(value) {
+      this.lockOver = value;
+      this.showDrawer = false;
     },
   },
 };

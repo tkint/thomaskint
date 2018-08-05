@@ -3,13 +3,14 @@
 <template>
   <v-flex
     xs12
-    v-if="item"
-    @mouseover="onMouseOver()"
-    @mouseleave="onMouseLeave()"
-    @click="onClick()">
+    v-if="item">
     <v-card
       :light="details || over"
-      style="cursor: pointer;">
+      style="cursor: pointer;"
+      @click.native.stop="onClick()"
+      @mouseover="onMouseOver()"
+      @mouseleave="onMouseLeave()"
+      v-click-outside="onBlur">
       <v-card-title class="item">
         <span>
           <b>{{ item.title }}</b>
@@ -25,22 +26,28 @@
       </v-card-title>
       <resume-section-item-details
         :item="item"
+        :index="index"
         :position="position"
+        :show="details && item.descriptions"
+        v-show="details && item.descriptions"
         :class="`text ${details ? 'text-show' : 'text-hide'}`"
-        v-show="details && item.descriptions">
+        :isBottomOut="isBottomOut(index)"
+        :ref="`details${index}`">
       </resume-section-item-details>
     </v-card>
   </v-flex>
 </template>
 
 <script>
+import ClickOutside from 'vue-click-outside';
+
 import Duration from './Duration';
 import ResumeSectionItemDetails from './ResumeSectionItemDetails';
 
 export default {
   name: 'SectionItem',
-  components: { Duration, ResumeSectionItemDetails },
   props: ['item', 'index', 'lockOver'],
+  components: { Duration, ResumeSectionItemDetails },
   data() {
     return {
       over: false,
@@ -53,6 +60,14 @@ export default {
         return 'right';
       }
       return 'left';
+    },
+  },
+  watch: {
+    lockOver(newValue) {
+      if (!newValue) {
+        this.over = false;
+        this.details = false;
+      }
     },
   },
   methods: {
@@ -71,21 +86,31 @@ export default {
       this.over = !this.lockOver;
       this.details = !this.lockOver;
     },
-  },
-  watch: {
-    lockOver(newValue) {
-      if (!newValue) {
+    onBlur() {
+      if (this.details) {
+        this.$emit('lock', false);
         this.over = false;
         this.details = false;
       }
     },
+    isBottomOut(index) {
+      if (this.$refs[`details${index}`]) {
+        const details = this.$refs[`details${index}`].$el;
+        const rect = details.getBoundingClientRect();
+        return rect.bottom > window.innerHeight;
+      }
+      return false;
+    },
+  },
+  directives: {
+    ClickOutside,
   },
 };
 </script>
 
 <style scoped>
   .text {
-    z-index: 999;
+    z-index: 900;
     position: absolute;
     margin-top: -1px;
   }

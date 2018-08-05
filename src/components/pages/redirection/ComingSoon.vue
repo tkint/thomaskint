@@ -66,7 +66,6 @@ export default {
       return this.$global.getSettingValue(SettingNames.LINKEDIN_URL);
     },
   },
-  methods: {},
 };
 </script>
 

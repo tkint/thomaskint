@@ -19,14 +19,12 @@ import ComingSoon from '@/components/pages/redirection/ComingSoon';
 import Template from '@/components/template';
 
 export default {
+  name: 'App',
   components: {
     TemplateToolbar: Template.Toolbar,
     TemplateNavigation: Template.Navigation,
     TemplateFooter: Template.Footer,
     ComingSoon,
-  },
-  data() {
-    return {};
   },
   computed: {
     isComingSoon() {

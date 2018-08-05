@@ -81,9 +81,6 @@ export default {
       this.showProject = !!newValue;
     },
   },
-  created() {
-    this.loadData();
-  },
   methods: {
     ...mapActions({
       setProgressBar: TStoreActions.SET_PROGRESSBAR,
@@ -98,6 +95,9 @@ export default {
       this.$global.openRouteByName({ name: RouteNames.PORTFOLIO });
       this.showProject = false;
     },
+  },
+  created() {
+    this.loadData();
   },
 };
 </script>

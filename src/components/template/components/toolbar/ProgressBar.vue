@@ -4,7 +4,7 @@
     indeterminate
     color="success"
     background-color="secondary"
-    height="2"
+    height="5"
   ></v-progress-linear>
 </template>
 
