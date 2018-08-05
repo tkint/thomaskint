@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar class="indigo" @click="$emit('switchDrawer')">
+  <v-toolbar class="red lighten-1" @click="$emit('switchDrawer')">
     <v-toolbar-title>
       <v-btn
         icon

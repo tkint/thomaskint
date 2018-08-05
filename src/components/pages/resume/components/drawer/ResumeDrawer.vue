@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer
-    class="teal"
+    class="teal  darken-1"
     width="300"
     style="margin-top: 50px; z-index: 999"
     v-click-outside="onBlur"
