@@ -37,7 +37,8 @@
           <v-flex xs12 md6>
             <v-layout row wrap>
               <v-flex xs12>
-                <resume-presentation></resume-presentation>
+                <resume-presentation :presentation="presentation">
+                </resume-presentation>
               </v-flex>
               <v-flex xs12>
                 <resume-skills
@@ -78,6 +79,7 @@ export default {
       title: ResumeData.title,
       experiences: ResumeData.experiences,
       education: ResumeData.education,
+      presentation: ResumeData.presentation,
       skills: ResumeData.skills,
     };
   },

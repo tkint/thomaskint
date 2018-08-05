@@ -4,7 +4,8 @@
       <skill-item
         v-for="(item, index) in skills"
         :key="index"
-        :skill="item">
+        :skill="item"
+        v-if="!item.hidden">
       </skill-item>
     </v-layout>
   </v-container>
@@ -15,13 +16,8 @@ import SkillItem from './SkillItem';
 
 export default {
   name: 'Skills',
-  props: {
-    skills: Array,
-  },
+  props: ['skills'],
   components: { SkillItem },
-  data() {
-    return {};
-  },
 };
 </script>
 

@@ -1,12 +1,13 @@
 <template>
   <v-container fluid grid-list-md>
-    <v-layout column wrap>
+    <v-layout row wrap>
       <section-item
         v-for="(item, subIndex) in items"
         :index="`${index}-${subIndex}`"
         :key="`${index}-${subIndex}`"
-        :item="item"
         :lockOver="lockOver"
+        :item="item"
+        :showAll="false"
         @lock="param => $emit('lock', param)"
       ></section-item>
     </v-layout>
@@ -18,7 +19,7 @@ import SectionItem from './ResumeSectionItem';
 
 export default {
   name: 'ResumeExperience',
-  props: ['items', 'lockOver', 'index'],
+  props: ['items', 'lockOver', 'index', 'showAll'],
   components: { SectionItem },
 };
 </script>

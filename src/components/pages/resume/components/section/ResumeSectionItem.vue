@@ -5,8 +5,9 @@
     xs12
     v-if="item">
     <v-card
-      :light="details || over"
-      style="cursor: pointer;"
+      :color="overed ? 'blue-grey' : ''"
+      :class="faded ? 'grey--text faded elevation-0' : ''"
+      style="cursor: pointer"
       @click.native.stop="onClick()"
       @mouseover="onMouseOver()"
       @mouseleave="onMouseLeave()"
@@ -22,18 +23,17 @@
         <v-spacer></v-spacer>
         <icon
           :value="details ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-          :color="details || over ? 'black' : 'white'">
+          :class="faded ? 'grey--text' : ''">
         </icon>
       </v-card-title>
       <resume-section-item-details
         :item="item"
         :index="index"
         :position="position"
-        :show="details && item.descriptions"
-        v-show="details && item.descriptions"
-        :class="`text ${details ? 'text-show' : 'text-hide'}`"
-        :isBottomOut="isBottomOut(index)"
-        :ref="`details${index}`">
+        :show="showDetails"
+        :ref="`details${index}`"
+        :class="computedClass"
+        v-show="showDetails">
       </resume-section-item-details>
     </v-card>
   </v-flex>
@@ -47,7 +47,7 @@ import ResumeSectionItemDetails from './ResumeSectionItemDetails';
 
 export default {
   name: 'SectionItem',
-  props: ['item', 'index', 'lockOver'],
+  props: ['item', 'index', 'lockOver', 'showAll'],
   components: { Duration, ResumeSectionItemDetails },
   data() {
     return {
@@ -61,6 +61,21 @@ export default {
         return 'right';
       }
       return 'left';
+    },
+    showDetails() {
+      return (this.showAll || this.details) && this.item.descriptions;
+    },
+    overed() {
+      return this.showAll || this.details || this.over;
+    },
+    computedClass() {
+      let c = 'text ';
+      c += (this.showDetails ? 'text-show blue-grey ' : 'text-hide ');
+      c += (this.showAll ? 'relative ' : '');
+      return c;
+    },
+    faded() {
+      return this.lockOver && !this.overed;
     },
   },
   watch: {
@@ -94,14 +109,6 @@ export default {
         this.details = false;
       }
     },
-    isBottomOut(index) {
-      if (this.$refs[`details${index}`]) {
-        const details = this.$refs[`details${index}`].$el;
-        const rect = details.getBoundingClientRect();
-        return rect.bottom > window.innerHeight;
-      }
-      return false;
-    },
   },
   directives: {
     ClickOutside,
@@ -113,16 +120,22 @@ export default {
   .text {
     z-index: 900;
     position: absolute;
-    margin-top: -1px;
+    margin-top: -2px;
   }
 
   .text-show {
     display: block;
-    background: white;
-
   }
 
   .text-hide {
     visibility: hidden;
+  }
+
+  .relative {
+    position: relative;
+  }
+
+  .faded {
+    text-shadow: none;
   }
 </style>

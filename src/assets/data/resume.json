@@ -1,5 +1,14 @@
 {
   "title": "Ingénieur d'Etudes et Développement",
+  "presentation": [
+    "Curieux, discret et dynamique, ",
+    "j'apprécie le travail bien fait ",
+    "et la minutie que demande le développement d'applications.",
+    "<br/><br/>",
+    "Je souhaite apprendre et aiguiser ",
+    "mes compétences en informatique ",
+    "afin d'être performant dans ce que je fais."
+  ],
   "coordinates": [
     [
       {
@@ -140,27 +149,67 @@
   "skills": [
     {
       "name": "Java",
-      "icon": "fab fa-java"
+      "icon": "fab fa-java",
+      "color": "light-blue--text",
+      "legendColor": "red--text"
+    },
+    {
+      "name": "Python",
+      "icon": "fab fa-python",
+      "color": "blue--text text--darken-1",
+      "legendColor": "yellow--text"
     },
     {
       "name": "Javascript",
-      "icon": "fab fa-js"
+      "icon": "fab fa-js",
+      "color": "yellow--text text--accent-3",
+      "legendColor": "grey--text text--lighten-2"
+    },
+    {
+      "name": "PHP",
+      "icon": "fab fa-php",
+      "color": "indigo--text text--lighten-2",
+      "legendColor": "grey--text text--darken-2"
     },
     {
       "name": "HTML",
-      "icon": "fab fa-html5"
+      "icon": "fab fa-html5",
+      "color": "red--text text--darken-2",
+      "legendColor": "grey--text text--lighten-2"
     },
     {
       "name": "CSS",
-      "icon": "fab fa-css3-alt"
+      "icon": "fab fa-css3-alt",
+      "color": "blue--text",
+      "legendColor": "grey--text text--lighten-2"
+    },
+    {
+      "name": "NodeJS",
+      "icon": "fab fa-node",
+      "color": "light-green--text",
+      "legendColor": "grey--text text--darken-2"
     },
     {
       "name": "VueJS",
-      "icon": "fab fa-vuejs"
+      "icon": "fab fa-vuejs",
+      "color": "teal--text"
     },
     {
       "name": "Agile",
-      "icon": "fas fa-object-group"
+      "icon": "fas fa-object-group",
+      "color": "green--text"
+    },
+    {
+      "name": "Git",
+      "icon": "fab fa-git",
+      "color": "orange--text text--darken-4",
+      "legendColor": "grey--text text--darken-2"
+    },
+    {
+      "name": "Docker",
+      "icon": "fab fa-docker",
+      "color": "light-blue--text text--accent-4",
+      "hidden": true
     }
   ]
 }
