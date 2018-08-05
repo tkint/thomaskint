@@ -1,7 +1,7 @@
 <template>
   <v-list-tile :href="href" :target="isUrl() ? '_blank' : ''">
     <v-list-tile-action>
-      <v-icon>{{ content.icon }}</v-icon>
+      <icon :value="content.icon"></icon>
     </v-list-tile-action>
     <v-list-tile-title>
       {{ content.value }}

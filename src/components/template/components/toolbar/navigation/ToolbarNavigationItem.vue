@@ -5,7 +5,7 @@
     @click.stop="$global.openRoute({route: item.route})"
     @mouseover="onMouseOver()"
     @mouseleave="onMouseLeave()">
-    <v-icon>{{ item.icon }}</v-icon>
+    <icon :value="item.icon"></icon>
     <span v-if="over || currentPage" class="legend">{{ item.text }}</span>
   </v-btn>
 </template>

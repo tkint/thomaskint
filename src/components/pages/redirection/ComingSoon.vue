@@ -24,13 +24,13 @@
       <v-flex xs12>
         <v-layout justify-center>
           <a :href="`mailto:${emailAdress}`">
-            <v-icon large class="social-icon">mail</v-icon>
+            <icon large class="social-icon" value="mail"></icon>
           </a>
           <a :href="gitUrl">
-            <v-icon large class="social-icon">fa-github</v-icon>
+            <icon large class="social-icon" value="fab fa-gitlab"></icon>
           </a>
           <a :href="linkedinUrl">
-            <v-icon large class="social-icon">fa-linkedin-square</v-icon>
+            <icon large class="social-icon" value="fab fa-linkedin"></icon>
           </a>
         </v-layout>
       </v-flex>

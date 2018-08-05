@@ -2,15 +2,15 @@
   <v-footer fixed app style="z-index: 999;">
     <v-spacer></v-spacer>
     <a :href="`mailto:${emailAdress}`">
-      <v-icon>mail</v-icon>
+      <icon value="mail"></icon>
     </a>
     <v-spacer></v-spacer>
     <a :href="gitUrl" target="_blank">
-      <v-icon>fa-gitlab</v-icon>
+      <icon value="fab fa-gitlab"></icon>
     </a>
     <v-spacer></v-spacer>
     <a :href="linkedinUrl" target="_blank">
-      <v-icon>fa-linkedin-square</v-icon>
+      <icon value="fab fa-linkedin"></icon>
     </a>
     <v-spacer></v-spacer>
   </v-footer>

@@ -23,23 +23,23 @@
     ],
     [
       {
-        "icon": "fa-linkedin",
+        "icon": "fab fa-linkedin",
         "value": "https://www.linkedin.com/in/tkint"
       },
       {
-        "icon": "fa-gitlab",
+        "icon": "fab fa-gitlab",
         "value": "https://gitlab.com/tkint"
       }
     ],
     [
       {
-        "icon": "fa-car",
+        "icon": "fas fa-car",
         "value": "Permis B"
       }
     ],
     [
       {
-        "icon": "fa-language",
+        "icon": "fas fa-language",
         "value": "Anglais (TOEIC - 920)"
       }
     ]
@@ -139,12 +139,28 @@
   ],
   "skills": [
     {
+      "name": "Java",
+      "icon": "fab fa-java"
+    },
+    {
+      "name": "Javascript",
+      "icon": "fab fa-js"
+    },
+    {
       "name": "HTML",
       "icon": "fab fa-html5"
     },
     {
       "name": "CSS",
       "icon": "fab fa-css3-alt"
+    },
+    {
+      "name": "VueJS",
+      "icon": "fab fa-vuejs"
+    },
+    {
+      "name": "Agile",
+      "icon": "fas fa-object-group"
     }
   ]
 }

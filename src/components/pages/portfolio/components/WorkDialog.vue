@@ -15,7 +15,7 @@
               dark
               small
               color="primary">
-              <v-icon>{{ $global.icons.SHARE }}</v-icon>
+              <icon :value="$global.icons.SHARE"></icon>
             </v-btn>
             <v-spacer></v-spacer>
             <h3>{{ project.name }}</h3>
@@ -26,7 +26,7 @@
               small
               color="red"
               @click.stop="showProject = false">
-              <v-icon>{{ $global.icons.CLOSE }}</v-icon>
+              <icon :value="$global.icons.CLOSE"></icon>
             </v-btn>
           </v-layout>
         </v-container>

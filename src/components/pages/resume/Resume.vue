@@ -35,9 +35,16 @@
             </resume-section>
           </v-flex>
           <v-flex xs12 md6>
-            <resume-skills
-              :skills="skills">
-            </resume-skills>
+            <v-layout row wrap>
+              <v-flex xs12>
+                <resume-presentation></resume-presentation>
+              </v-flex>
+              <v-flex xs12>
+                <resume-skills
+                  :skills="skills">
+                </resume-skills>
+              </v-flex>
+            </v-layout>
           </v-flex>
         </v-layout>
       </v-flex>
@@ -51,11 +58,19 @@ import ResumeDrawer from './components/drawer/ResumeDrawer';
 import ResumeTitle from './components/title/ResumeTitle';
 import ResumeTitle2 from './components/title/ResumeTitle2';
 import ResumeSection from './components/section/ResumeSection';
+import ResumePresentation from './components/presentation/Presentation';
 import ResumeSkills from './components/skills/Skills';
 
 export default {
   name: 'Resume',
-  components: { ResumeDrawer, ResumeTitle, ResumeTitle2, ResumeSection, ResumeSkills },
+  components: {
+    ResumeDrawer,
+    ResumeTitle,
+    ResumeTitle2,
+    ResumeSection,
+    ResumePresentation,
+    ResumeSkills,
+  },
   data() {
     return {
       showDrawer: false,

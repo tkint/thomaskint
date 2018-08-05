@@ -13,9 +13,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",
     "axios": "^0.17.0",
-    "fs": "0.0.1-security",
     "google-libphonenumber": "^3.1.11",
-    "jsonfile": "^4.0.0",
     "vue": "^2.5.17",
     "vue-axios": "^2.0.2",
     "vue-click-outside": "^1.0.7",

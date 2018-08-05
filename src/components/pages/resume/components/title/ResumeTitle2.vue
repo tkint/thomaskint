@@ -3,7 +3,7 @@
     <v-card class="teal">
       <v-card-title>
         <div>
-          <v-icon v-if="icon">{{ icon }}</v-icon>
+          <icon v-if="icon" :value="icon"></icon>
           {{ content }}
         </div>
       </v-card-title>

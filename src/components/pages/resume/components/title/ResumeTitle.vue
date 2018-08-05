@@ -5,7 +5,7 @@
         icon
         v-if="!drawer"
         style="margin-left: 0">
-        <v-icon>menu</v-icon>
+        <icon value="menu"></icon>
       </v-btn>
       {{ content }}
     </v-toolbar-title>

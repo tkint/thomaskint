@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 
+import Icon from '@/components/common/Icon';
+
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
@@ -21,6 +23,8 @@ Vue.use(Vuetify, {
 Vue.use(VueCookie);
 Vue.use(VueScrollTo);
 Vue.use(GlobalPlugin, { router });
+
+Vue.component('icon', Icon);
 
 Vue.config.productionTip = false;
 

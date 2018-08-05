@@ -20,9 +20,10 @@
           <duration :duration="item.duration"></duration>
         </span>
         <v-spacer></v-spacer>
-        <v-icon :color="details || over ? 'black' : 'white'">
-          {{ details ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
-        </v-icon>
+        <icon
+          :value="details ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+          :color="details || over ? 'black' : 'white'">
+        </icon>
       </v-card-title>
       <resume-section-item-details
         :item="item"
