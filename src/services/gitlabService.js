@@ -2,10 +2,11 @@ import axios from 'axios';
 
 const tkintId = '1729469';
 const tkintPath = `/users/${tkintId}`;
+
 // const tkintProjectsPath = `${tkintPath}/projects`;
 
-const tkintName = 'tkint';
-const tkintNamespace = `${tkintName}`;
+const tkintNamespace = 'tkint';
+const lemilliardNamespace = 'lemilliard';
 const projectsPath = '/projects';
 const projectsSeparator = '%2F';
 
@@ -13,16 +14,19 @@ const projectsSeparator = '%2F';
 // const perPage = `perPage=${pageSize}`;
 
 export const projectsName = [
-  'thomaskint',
-  'pdfedit',
-  'minidao',
-  'pipeline',
-  'wumpus',
+  `${tkintNamespace}${projectsSeparator}thomaskint`,
+  `${tkintNamespace}${projectsSeparator}pdfedit`,
+  `${tkintNamespace}${projectsSeparator}minidao`,
+  `${tkintNamespace}${projectsSeparator}pipeline`,
+  `${tkintNamespace}${projectsSeparator}wumpus`,
+  `${tkintNamespace}${projectsSeparator}easysoundlab`,
+  `${lemilliardNamespace}${projectsSeparator}kibodb`,
+  `${lemilliardNamespace}${projectsSeparator}kibadmin`,
+  `${lemilliardNamespace}${projectsSeparator}decisiontree`,
+  `${lemilliardNamespace}${projectsSeparator}mapper`,
 ];
-
 class GitlabService {
-  constructor(state) {
-    this.state = state;
+  constructor() {
     this.axios = axios;
     this.axios.defaults.baseURL = 'https://gitlab.com/api/v4';
   }
@@ -40,16 +44,34 @@ class GitlabService {
     return projects;
   }
 
+  getFullProjectsPromise() {
+    const requests = [];
+    projectsName.forEach((projectName) => {
+      requests.push(this.axios.all([
+        this.axios.get(GitlabService.getBaseProjectUrl(projectName)),
+        this.axios.get(GitlabService.getCommitsUrl(projectName)),
+      ]));
+    });
+    return this.axios.all(requests);
+  }
+
   async getProject(projectName) {
-    const baseUrl = `${projectsPath}/${tkintNamespace}${projectsSeparator}${projectName}`;
+    let project = null;
+    await this.axios.all([
+      this.axios.get(GitlabService.getBaseProjectUrl(projectName)),
+      this.axios.get(GitlabService.getCommitsUrl(projectName)),
+    ]).then((responses) => {
+      project = GitlabService.buildProject(
+        projectName,
+        responses[0].data,
+        responses[1].headers['x-total'],
+      );
+    });
 
-    const projectBase = await this.axios.get(baseUrl)
-      .then(response => response.data);
+    return project;
+  }
 
-    const commitsUrl = `${baseUrl}/repository/commits?per_page=1`;
-    const projectCommitsCount = await this.axios.get(commitsUrl)
-      .then(response => response.headers['x-total']);
-
+  static buildProject(projectName, projectBase, commitsCount) {
     return {
       id: projectBase.id,
       name: projectBase.name,
@@ -59,8 +81,16 @@ class GitlabService {
       url: projectBase.web_url,
       created: projectBase.created_at,
       updated: projectBase.last_activity_at,
-      commits: projectCommitsCount,
+      commits: commitsCount,
     };
+  }
+
+  static getBaseProjectUrl(projectName) {
+    return `${projectsPath}/${projectName}`;
+  }
+
+  static getCommitsUrl(projectName) {
+    return `${this.getBaseProjectUrl(projectName)}/repository/commits?per_page=1`;
   }
 }
 

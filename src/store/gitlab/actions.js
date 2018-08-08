@@ -4,7 +4,7 @@ import { types as MutationsTypes } from './mutations';
 import GitlabService from '../../services/gitlabService';
 
 const isValidRecall = (state, key) => {
-  if (state[key] && (Date.now() < state[key])) {
+  if (state[key] && (Date.now() < state[key] + 60000)) {
     return false;
   }
   return true;
@@ -23,14 +23,19 @@ export const types = {
 export default {
   [types.RETRIEVE_USER]({ commit, state }) {
     if (isValidRecall(state, keys.USER_LAST_CALL)) {
-      const user = new GitlabService(state).getUser();
+      const user = new GitlabService().getUser();
       updateValue(commit, keys.USER, user, keys.USER_LAST_CALL);
     }
   },
-  async [types.RETRIEVE_PROJECTS]({ commit, state }) {
+  [types.RETRIEVE_PROJECTS]({ commit, state }) {
     if (isValidRecall(state, keys.PROJECTS_LAST_CALL)) {
-      const projects = new GitlabService(state).getProjects();
-      updateValue(commit, keys.PROJECTS, projects, keys.PROJECTS_LAST_CALL);
+      if (state[keys.PROJECTS] && state[keys.PROJECTS].length > 0) {
+        const projectsPromise = new GitlabService().getFullProjectsPromise();
+        commit(MutationsTypes.LOAD_PROJECTS, projectsPromise);
+      } else {
+        const projects = new GitlabService().getProjects();
+        updateValue(commit, keys.PROJECTS, projects, keys.PROJECTS_LAST_CALL);
+      }
     }
   },
 };
