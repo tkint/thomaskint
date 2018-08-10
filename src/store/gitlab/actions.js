@@ -3,12 +3,7 @@ import { keys } from './';
 import { types as MutationsTypes } from './mutations';
 import GitlabService from '../../services/gitlabService';
 
-const isValidRecall = (state, key) => {
-  if (state[key] && (Date.now() < state[key] + 60000)) {
-    return false;
-  }
-  return true;
-};
+const isValidRecall = (state, key) => !(state[key] && (Date.now() < state[key] + 60000));
 
 const updateValue = (commit, key, value, timerKey) => {
   commit(MutationsTypes.ADD_VALUE, { key, value });

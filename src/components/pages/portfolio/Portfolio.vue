@@ -72,7 +72,7 @@ export default {
     projects(newValue) {
       if (newValue.length < GitlabService.getInstance().projectsName.length) {
         this.setProgressBar(true);
-        this.$global.sleep(10000).then(() => this.setProgressBar(false));
+        this.$global.sleep(60000).then(() => this.setProgressBar(false));
       } else {
         this.setProgressBar(false);
       }

@@ -29,7 +29,12 @@
       </v-data-table>
     </v-flex>
     <v-flex xs12 md6>
-      <doughnut-chart :chartData="chartData" :options="options" ref="chart"></doughnut-chart>
+      <doughnut-chart
+        :chartData="chartData"
+        :options="options"
+        :height="300"
+        ref="chart">
+      </doughnut-chart>
     </v-flex>
   </v-layout>
 </template>

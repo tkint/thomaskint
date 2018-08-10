@@ -120,7 +120,7 @@ export default {
   .text {
     z-index: 900;
     position: absolute;
-    margin-top: -2px;
+    margin-top: -1px;
   }
 
   .text-show {
