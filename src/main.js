@@ -17,9 +17,7 @@ import GlobalPlugin from './plugins/global';
 import App from './App';
 import router from './router';
 
-Vue.use(Vuetify, {
-  iconfont: 'fa',
-});
+Vue.use(Vuetify);
 Vue.use(VueCookie);
 Vue.use(VueScrollTo);
 Vue.use(GlobalPlugin, { router });

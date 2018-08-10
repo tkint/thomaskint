@@ -1,6 +1,11 @@
 import SettingsData from '@/assets/data/settings.json';
 import RouteNames from '@/router/names';
 import Icons from './icons';
+import SettingsNames from './settings-names';
+
+export const getSetting = name => SettingsData.find(setting => setting.name === name);
+
+export const getSettingValue = name => getSetting(name).value;
 
 const globalPlugin = {
   install: (Vue, options) => {
@@ -45,7 +50,7 @@ const globalPlugin = {
      * Contains global and fields used in the page editor and page display
      * @type {{}}
      */
-    const global = { icons: null };
+    const global = { icons: null, getSetting, getSettingValue };
     global.icons = {};
     /**
      * Adding icons
@@ -85,18 +90,21 @@ const globalPlugin = {
       const date = new Date(dateToFormat);
       return date.toLocaleDateString();
     };
-    /**
-     *
-     * @param name
-     * @returns {*|number|T}
-     */
-    global.getSetting = name => SettingsData.find(setting => setting.name === name);
-    /**
-     *
-     * @param name
-     * @returns {*|number|T}
-     */
-    global.getSettingValue = name => global.getSetting(name).value;
+
+    global.getLanguageColor = (language) => {
+      const languageColors = getSettingValue(SettingsNames.LANGUAGES_COLOR);
+      let languageColor = null;
+      if (languageColors) {
+        let i = 0;
+        while (i < languageColors.length && !languageColor) {
+          if (languageColors[i].name.toLowerCase() === language.toLowerCase()) {
+            languageColor = languageColors[i].color;
+          }
+          i += 1;
+        }
+      }
+      return languageColor;
+    };
     /**
      * Add this plugin to Vue instance
      * @type {{}}

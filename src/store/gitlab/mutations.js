@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import Vue from 'vue';
 import { keys } from './';
-import GitlabService, { projectsName } from '../../services/gitlabService';
+import GitlabService from '../../services/gitlabService';
 
 const updateProject = (state, project) => {
   const projects = state[keys.PROJECTS];
@@ -35,9 +35,10 @@ export default {
       projectsPromise.then((responses) => {
         for (let i = 0; i < responses.length; i += 1) {
           const project = GitlabService.buildProject(
-            projectsName[i],
+            GitlabService.getInstance().projectsName[i],
             responses[i][0].data,
             responses[i][1].headers['x-total'],
+            responses[i][2].data,
           );
           updateProject(state, project);
         }

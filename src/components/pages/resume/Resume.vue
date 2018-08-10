@@ -14,6 +14,7 @@
         <v-layout row wrap>
           <v-flex xs12 md6>
             <resume-title2
+              :lockOver="lockOver"
               content="Expériences"
               icon="show_chart">
             </resume-title2>
@@ -24,6 +25,7 @@
               @lock="setLock">
             </resume-section>
             <resume-title2
+              :lockOver="lockOver"
               content="Education"
               icon="school">
             </resume-title2>

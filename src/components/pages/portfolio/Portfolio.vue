@@ -29,7 +29,7 @@ import { types as TStoreActions } from '@/store/template/actions';
 
 import RouteNames from '@/router/names';
 
-import { projectsName } from '@/services/gitlabService';
+import GitlabService from '@/services/gitlabService';
 
 import WorkItem from './components/WorkItem';
 import WorkDialog from './components/WorkDialog';
@@ -70,7 +70,7 @@ export default {
   },
   watch: {
     projects(newValue) {
-      if (newValue.length < projectsName.length) {
+      if (newValue.length < GitlabService.getInstance().projectsName.length) {
         this.setProgressBar(true);
         this.$global.sleep(10000).then(() => this.setProgressBar(false));
       } else {

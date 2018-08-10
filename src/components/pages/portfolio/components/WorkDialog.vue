@@ -31,17 +31,27 @@
           </v-layout>
         </v-container>
       </v-card-media>
-      <v-card-text>{{ project }}</v-card-text>
+      <v-card-text>
+        <statistics :project="project"></statistics>
+      </v-card-text>
     </v-card>
   </v-dialog>
 </template>
 
 <script>
+import Statistics from './Statistics';
+
 export default {
   name: 'WorkDialog',
+  components: { Statistics },
   props: ['project', 'show'],
   data() {
-    return {};
+    return {
+      options: {
+        responsive: false,
+        maintainAspectRatio: false,
+      },
+    };
   },
   computed: {
     showProject: {
