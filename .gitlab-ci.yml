@@ -12,6 +12,8 @@ build:
 
 deploy:
   stage: deploy
+  only:
+    - master
   script:
     - apk add --no-cache lftp
     - lftp -e "mirror -R dist $FTP_DIR" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_URL
