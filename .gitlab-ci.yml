@@ -1,14 +1,13 @@
 image: node:8.0.0-alpine
 
-cache:
-  paths:
-    - node_modules
-
 build:
   stage: build
   artifacts:
     paths:
       - dist
+  cache:
+    paths:
+      - node_modules
   script:
     - npm install
     - npm run build
