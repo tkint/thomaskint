@@ -3,30 +3,34 @@
     <v-layout row wrap>
       <v-flex xs12>
         <v-layout justify-center align-center>
-          <h2 class="text-xs-center coming-soon"><span class="coming-soon-title" v-for="(letter, index) in textArray"
-                                                       :key="index">{{ letter }}</span></h2>
+          <h2 class="text-xs-center coming-soon">
+            <span
+              class="coming-soon-title"
+              v-for="(letter, index) in textArray"
+              :key="index">{{ letter }}</span>
+          </h2>
         </v-layout>
       </v-flex>
       <v-flex xs12>
         <v-layout justify-center>
-          <h2 class="text-xs-center thomas-kint">{{ getSiteTitle() }}</h2>
+          <h2 class="text-xs-center thomas-kint">{{ siteTitle }}</h2>
         </v-layout>
       </v-flex>
       <v-flex xs12>
         <v-layout justify-center>
-          <img src="/static/img/Avatar%2000.png"/>
+          <img src="/static/img/Avatar%2000.jpg" height="200"/>
         </v-layout>
       </v-flex>
       <v-flex xs12>
         <v-layout justify-center>
-          <a :href="`mailto:${getEmailAdress()}`">
-            <v-icon large class="social-icon">mail</v-icon>
+          <a :href="`mailto:${emailAdress}`">
+            <icon large class="social-icon" value="mail"></icon>
           </a>
-          <a :href="getGithubUrl()">
-            <v-icon large class="social-icon">fa-github</v-icon>
+          <a :href="gitUrl">
+            <icon large class="social-icon" value="fab fa-gitlab"></icon>
           </a>
-          <a :href="getLinkedinUrl()">
-            <v-icon large class="social-icon">fa-linkedin-square</v-icon>
+          <a :href="linkedinUrl">
+            <icon large class="social-icon" value="fab fa-linkedin"></icon>
           </a>
         </v-layout>
       </v-flex>
@@ -35,29 +39,34 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import SettingGetterTypes from '@/store/setting/getters/types';
+import SettingNames from '@/plugins/global/settings-names';
 
-  export default {
-    name: 'ComingSoon',
-    computed: {
-      textArray() {
-        if (this.getComingSoonTitle()) {
-          return this.getComingSoonTitle().split('');
-        }
-        return [];
-      },
+export default {
+  name: 'ComingSoon',
+  computed: {
+    textArray() {
+      if (this.comingSoonTitle) {
+        return this.comingSoonTitle.split('');
+      }
+      return [];
     },
-    methods: {
-      ...mapGetters({
-        getComingSoonTitle: SettingGetterTypes.GET_COMING_SOON_TITLE,
-        getSiteTitle: SettingGetterTypes.GET_SITE_TITLE,
-        getEmailAdress: SettingGetterTypes.GET_EMAIL_ADRESS,
-        getGithubUrl: SettingGetterTypes.GET_GITHUB_URL,
-        getLinkedinUrl: SettingGetterTypes.GET_LINKEDIN_URL,
-      }),
+    comingSoonTitle() {
+      return this.$global.getSettingValue(SettingNames.COMING_SOON_TITLE);
     },
-  };
+    siteTitle() {
+      return this.$global.getSettingValue(SettingNames.SITE_TITLE);
+    },
+    emailAdress() {
+      return this.$global.getSettingValue(SettingNames.EMAIL_ADRESS);
+    },
+    gitUrl() {
+      return this.$global.getSettingValue(SettingNames.GIT_URL);
+    },
+    linkedinUrl() {
+      return this.$global.getSettingValue(SettingNames.LINKEDIN_URL);
+    },
+  },
+};
 </script>
 
 <style scoped>

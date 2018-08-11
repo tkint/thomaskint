@@ -18,14 +18,9 @@ export default new Router({
       component: Pages.Resume,
     },
     {
-      path: '/blog',
-      name: Names.BLOG,
-      component: Pages.Blog,
-    },
-    {
-      path: '/blog/:id',
-      name: Names.BLOG_ARTICLE,
-      component: Pages.Blog,
+      path: '/contact',
+      name: Names.CONTACT,
+      component: Pages.Contact,
     },
     {
       path: '/portfolio',
@@ -34,7 +29,7 @@ export default new Router({
     },
     {
       path: '/portfolio/:id',
-      name: Names.PORTFOLIO_WORK,
+      name: Names.PORTFOLIO_PROJECT,
       component: Pages.Portfolio,
     },
     {

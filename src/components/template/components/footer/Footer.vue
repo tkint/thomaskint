@@ -1,42 +1,38 @@
 <template>
-    <v-footer fixed app>
-      <v-spacer></v-spacer>
-      <a :href="`mailto:${getEmailAdress()}`">
-        <v-icon>mail</v-icon>
-      </a>
-      <v-spacer></v-spacer>
-      <a :href="getGithubUrl()">
-        <v-icon>fa-github</v-icon>
-      </a>
-      <v-spacer></v-spacer>
-      <a :href="getLinkedinUrl()">
-        <v-icon>fa-linkedin-square</v-icon>
-      </a>
-      <v-spacer></v-spacer>
-    </v-footer>
+  <v-footer fixed app style="z-index: 999;">
+    <v-spacer></v-spacer>
+    <a :href="`mailto:${emailAdress}`">
+      <icon value="mail"></icon>
+    </a>
+    <v-spacer></v-spacer>
+    <a :href="gitUrl" target="_blank">
+      <icon value="fab fa-gitlab"></icon>
+    </a>
+    <v-spacer></v-spacer>
+    <a :href="linkedinUrl" target="_blank">
+      <icon value="fab fa-linkedin"></icon>
+    </a>
+    <v-spacer></v-spacer>
+  </v-footer>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import SettingGetterTypes from '@/store/setting/getters/types';
+import SettingNames from '@/plugins/global/settings-names';
 
-  export default {
-    name: 'Footer',
-    components: { },
-    data() {
-      return {
-      };
+export default {
+  name: 'Footer',
+  computed: {
+    emailAdress() {
+      return this.$global.getSettingValue(SettingNames.EMAIL_ADRESS);
     },
-    computed: {
+    gitUrl() {
+      return this.$global.getSettingValue(SettingNames.GIT_URL);
     },
-    methods: {
-      ...mapGetters({
-        getEmailAdress: SettingGetterTypes.GET_EMAIL_ADRESS,
-        getGithubUrl: SettingGetterTypes.GET_GITHUB_URL,
-        getLinkedinUrl: SettingGetterTypes.GET_LINKEDIN_URL,
-      }),
+    linkedinUrl() {
+      return this.$global.getSettingValue(SettingNames.LINKEDIN_URL);
     },
-  };
+  },
+};
 </script>
 
 <style scoped>

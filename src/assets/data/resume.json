@@ -1,0 +1,216 @@
+{
+  "title": "Ingénieur d'Etudes et Développement",
+  "presentation": [
+    "Curieux, discret et dynamique, ",
+    "j'apprécie le travail bien fait ",
+    "et la minutie que demande le développement d'applications.",
+    "<br/><br/>",
+    "Je souhaite apprendre et aiguiser ",
+    "mes compétences en informatique ",
+    "afin d'être performant dans ce que je fais."
+  ],
+  "coordinates": [
+    [
+      {
+        "icon": "person",
+        "value": "Thomas Kint"
+      },
+      {
+        "icon": "phone",
+        "value": "+33 06 13 43 27 82"
+      },
+      {
+        "icon": "home",
+        "value": "8 Rue Rigaud - Montpellier"
+      }
+    ],
+    [
+      {
+        "icon": "email",
+        "value": "thomaskint.pro@gmail.com"
+      }
+    ],
+    [
+      {
+        "icon": "fab fa-linkedin",
+        "value": "https://www.linkedin.com/in/tkint"
+      },
+      {
+        "icon": "fab fa-gitlab",
+        "value": "https://gitlab.com/tkint"
+      }
+    ],
+    [
+      {
+        "icon": "fas fa-car",
+        "value": "Permis B"
+      }
+    ],
+    [
+      {
+        "icon": "fas fa-language",
+        "value": "Anglais (TOEIC - 920)"
+      }
+    ]
+  ],
+  "experiences": [
+    {
+      "title": "Ingénieur d'Etudes et Développement (alternance)",
+      "place": "Capgemini",
+      "city": "Pérols",
+      "duration": {
+        "from": "2017"
+      },
+      "descriptions": [
+        "Développement de tests unitaires (JUnit, Mockito)",
+        "Corrections d'anomalies"
+      ]
+    },
+    {
+      "title": "Développeur informatique (alternance)",
+      "place": "Oceanis Promotion",
+      "city": "Montpellier",
+      "duration": {
+        "from": "2014",
+        "to": "2017"
+      },
+      "descriptions": [
+        "Gestion de projets",
+        "Développement de Web Services (REST, C#, MS CRM 2011, SQL)",
+        "Extractions de données SQL (reporting d'activité, tableaux croisés dynamiques, Business Intelligence)",
+        "Gestion et migration de MS CRM 2011 et 2016 (Plugins, Workflows, Javascripts)",
+        "Gestion Sage 1000",
+        "Formation des utilisateurs"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "title": "Expert en Informatique et Système d'Information (Niveau 1 RNCP)",
+      "place": "EPSI",
+      "city": "Montpellier",
+      "duration": {
+        "from": "2017",
+        "to": "2019"
+      },
+      "descriptions": [
+        "Parcours socle Expertise Informatique et Système d'Information",
+        "Bloc 1 - Fonction d'Encadrement (Anglais / Analyse Financière / Management)",
+        "Bloc 2 - Méthodes et Projets (Agiles / Mathématiques / Gestion de Projets)",
+        "Bloc 3 - Gestion de Données et Business Intelligence (Modélisation décisionnelle / NoSQL)",
+        "Bloc 4 - Etudes et Développement (Systèmes embarqués / Intelligence artificielle)",
+        "Bloc 5 - Infrastructure Systèmes et Réseaux (Virtualisation / Cloud computing / Sécurité)",
+        "",
+        "Parcours complémentaire",
+        "Business Intelligence, Big Data et Internet des Objets"
+      ]
+    },
+    {
+      "title": "Concepteur Intégrateur Devops (3e année)",
+      "place": "EPSI",
+      "city": "Montpellier",
+      "duration": {
+        "from": "2016",
+        "to": "2017"
+      },
+      "descriptions": [
+        "Parcours socle DevOps",
+        "Bloc 1 – Développement d’applications informatiques (Java / JEE / Android / Intégration Continue)",
+        "Bloc 2 – Administration Infrastructure système & réseau",
+        "Bloc 3 – Gestion des données (Oracle / SQL / PLSQL)",
+        "Bloc 4 – Méthodes & Projets  (UML / Gestion de projet via ITIL)",
+        "Bloc 5 – Communication",
+        "",
+        "Parcours métier",
+        "Bloc 6 – Conception de solutions applicatives (Web Services)",
+        "",
+        "Parcours complémentaire",
+        "Données et objets connectés (Arduino / C)"
+      ]
+    },
+    {
+      "title": "BTS Services Informatiques aux Organisations",
+      "place": "ESICAD",
+      "city": "Montpellier",
+      "duration": {
+        "from": "2014",
+        "to": "2016"
+      },
+      "descriptions": [
+        "Développement d'un site internet vitrine pour un salon de massage fictif",
+        "Développement d'un NetRogue-like en PHP",
+        "",
+        "Projet de fin de BTS :",
+        "* Développement d'un site internet (PHP, HTML, CSS, MySQL)",
+        "* Développement d'une application mobile sous Android (Java + XML + Web Services en REST)"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Java",
+      "icon": "fab fa-java",
+      "color": "light-blue--text",
+      "legendColor": "red--text"
+    },
+    {
+      "name": "Python",
+      "icon": "fab fa-python",
+      "color": "blue--text text--darken-1",
+      "legendColor": "yellow--text"
+    },
+    {
+      "name": "Javascript",
+      "icon": "fab fa-js",
+      "color": "yellow--text text--accent-3",
+      "legendColor": "grey--text text--lighten-2"
+    },
+    {
+      "name": "PHP",
+      "icon": "fab fa-php",
+      "color": "indigo--text text--lighten-2",
+      "legendColor": "grey--text text--darken-2"
+    },
+    {
+      "name": "HTML",
+      "icon": "fab fa-html5",
+      "color": "red--text text--darken-2",
+      "legendColor": "grey--text text--lighten-2"
+    },
+    {
+      "name": "CSS",
+      "icon": "fab fa-css3-alt",
+      "color": "blue--text",
+      "legendColor": "grey--text text--lighten-2"
+    },
+    {
+      "name": "NodeJS",
+      "icon": "fab fa-node",
+      "color": "light-green--text",
+      "legendColor": "grey--text text--darken-2"
+    },
+    {
+      "name": "VueJS",
+      "icon": "fab fa-vuejs",
+      "color": "teal--text"
+    },
+    {
+      "name": "Agile",
+      "icon": "fas fa-object-group",
+      "color": "green--text"
+    },
+    {
+      "name": "Git",
+      "icon": "fab fa-git",
+      "color": "orange--text text--darken-4",
+      "legendColor": "grey--text text--darken-2"
+    },
+    {
+      "name": "Docker",
+      "icon": "fab fa-docker",
+      "color": "light-blue--text text--accent-4",
+      "hidden": true
+    }
+  ]
+}
+

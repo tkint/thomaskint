@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <coming-soon v-if="isComingSoon"></coming-soon>
-    <div v-else-if="getComingSoon() !== null">
+    <div v-else>
       <!--<template-navigation></template-navigation>-->
       <template-toolbar></template-toolbar>
       <v-content>
@@ -13,52 +13,28 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex';
-  import SettingGetterTypes from '@/store/setting/getters/types';
-  import SettingActionTypes from '@/store/setting/actions/types';
-  import UserActionTypes from '@/store/user/actions/types';
-  import ComingSoon from '@/components/pages/redirection/ComingSoon';
-  import Template from '@/components/template';
+import SettingNames from '@/plugins/global/settings-names';
 
-  require('vuetify/dist/vuetify.min.css');
+import ComingSoon from '@/components/pages/redirection/ComingSoon';
+import Template from '@/components/template';
 
-  export default {
-    components: {
-      TemplateToolbar: Template.Toolbar,
-      TemplateNavigation: Template.Navigation,
-      TemplateFooter: Template.Footer,
-      ComingSoon,
+export default {
+  name: 'App',
+  components: {
+    TemplateToolbar: Template.Toolbar,
+    TemplateNavigation: Template.Navigation,
+    TemplateFooter: Template.Footer,
+    ComingSoon,
+  },
+  computed: {
+    isComingSoon() {
+      if (process.env.NODE_ENV === 'development') {
+        return false;
+      }
+      return this.$global.getSettingValue(SettingNames.COMING_SOON);
     },
-    data() {
-      return {};
-    },
-    created() {
-      this.getSettings();
-      this.autoSignin();
-    },
-    computed: {
-      isComingSoon() {
-        if (process.env.NODE_ENV === 'development') {
-          return false;
-        }
-        return this.getComingSoon();
-      },
-    },
-    methods: {
-      autoSignin() {
-        if (this.$cookie.get('id_user')) {
-          this.getUserById(this.$cookie.get('id_user'));
-        }
-      },
-      ...mapGetters({
-        getComingSoon: SettingGetterTypes.GET_COMING_SOON,
-      }),
-      ...mapActions({
-        getSettings: SettingActionTypes.GET_SETTINGS,
-        getUserById: UserActionTypes.GET_USER_BY_ID,
-      }),
-    },
-  };
+  },
+};
 </script>
 
 <style>
@@ -76,5 +52,9 @@
     -webkit-text-fill-color: white !important;
     -webkit-box-shadow: 0 0 0px 1000px #424242 inset;
     transition: background-color 5000s ease-in-out 0s;
+  }
+
+  html {
+    text-shadow: 1px 1px 2px black;
   }
 </style>

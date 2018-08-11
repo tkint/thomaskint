@@ -1,44 +1,62 @@
 <template>
   <v-navigation-drawer
-    class="teal"
-    width="300"
-    style="margin-top: 50px"
-  >
-    <v-layout style="padding-top: 10px;" justify-center>
-      <img src="/static/img/Avatar%2000.png"/>
-    </v-layout>
+    fixed
+    :permanent="show"
+    class="teal  darken-1"
+    style="margin-top: 50px; padding-bottom: 80px; z-index: 950"
+    v-click-outside="onBlur"
+    v-model="show">
+    <v-flex xs6 offset-xs3 mt-3>
+      <v-card>
+        <v-card-media src="/static/img/Avatar%2000.jpg" height="150px">
+        </v-card-media>
+      </v-card>
+    </v-flex>
     <v-list>
-      <v-divider></v-divider>
-      <resume-drawer-item content="Thomas Kint"></resume-drawer-item>
-      <resume-drawer-item content="8 Rue Rigaud"></resume-drawer-item>
-      <resume-drawer-item content="06 13 43 27 82"></resume-drawer-item>
-      <v-divider></v-divider>
-      <resume-drawer-item content="thomaskint.pro@gmail.com"></resume-drawer-item>
-      <resume-drawer-item content="contact@thomaskint.com"></resume-drawer-item>
-      <v-divider></v-divider>
-      <resume-drawer-item content="http://thomaskint.com"></resume-drawer-item>
-      <resume-drawer-item content="http://github.com/tkint"></resume-drawer-item>
-      <v-divider></v-divider>
-      <resume-drawer-item content="25 ans"></resume-drawer-item>
-      <resume-drawer-item content="Permis B"></resume-drawer-item>
+      <template v-for="(item, index) in resumeData" v-if="index > 0">
+        <v-divider v-if="item === divider"></v-divider>
+        <resume-drawer-item :content="item" v-else></resume-drawer-item>
+      </template>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
-  import ResumeDrawerItem from './ResumeDrawerItem';
+import ClickOutside from 'vue-click-outside';
 
-  export default {
-    name: 'ResumeDrawer',
-    components: { ResumeDrawerItem },
-    data() {
-      return {};
+import ResumeData from '@/assets/data/resume.json';
+import ResumeDrawerItem from './ResumeDrawerItem';
+
+export default {
+  name: 'ResumeDrawer',
+  props: ['show'],
+  components: { ResumeDrawerItem },
+  data() {
+    return {
+      divider: 'divider',
+    };
+  },
+  computed: {
+    resumeData() {
+      const resumeData = [];
+      ResumeData.coordinates.forEach((partData) => {
+        resumeData.push(this.divider);
+        partData.forEach(data => resumeData.push(data));
+      });
+      return resumeData;
     },
-    created() {
+  },
+  methods: {
+    onBlur() {
+      if (this.show) {
+        this.$emit('close');
+      }
     },
-    computed: {},
-    methods: {},
-  };
+  },
+  directives: {
+    ClickOutside,
+  },
+};
 </script>
 
 <style scoped>

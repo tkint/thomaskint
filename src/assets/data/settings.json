@@ -1,0 +1,114 @@
+[
+  {
+    "name": "COMING_SOON",
+    "description": "Define if the website is in coming soon status or not",
+    "value": false
+  },
+  {
+    "name": "COMING_SOON_TITLE",
+    "description": "Title of the coming soon page",
+    "value": "Coming Soon !"
+  },
+  {
+    "name": "EMAIL_ADRESS",
+    "description": "Professional email adress",
+    "value": "thomaskint.pro@gmail.com"
+  },
+  {
+    "name": "GIT_URL",
+    "description": "URL of professional github",
+    "value": "https://gitlab.com/tkint"
+  },
+  {
+    "name": "LINKEDIN_URL",
+    "description": "URL of professional linkedin",
+    "value": "https://www.linkedin.com/in/tkint"
+  },
+  {
+    "name": "LINKEDIN_PATH",
+    "description": "Path of professional linkedin",
+    "value": "/tkint"
+  },
+  {
+    "name": "PHONE",
+    "description": "Phone number",
+    "value": "+33 6 13 43 27 82"
+  },
+  {
+    "name": "SITE_TITLE",
+    "description": "Title of the website",
+    "value": "Thomas Kint"
+  },
+  {
+    "name": "REPOSITORIES",
+    "description": "",
+    "value": [
+      {
+        "account": "tkint",
+        "projects": [
+          "thomaskint",
+          "minidao",
+          "wumpus",
+          "pipeline",
+          "pdfedit"
+        ]
+      },
+      {
+        "account": "lemilliard",
+        "projects": [
+          "kibodb",
+          "kibadmin",
+          "decisiontree",
+          "mapper",
+          "mappereditor"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "LANGUAGES_COLOR",
+    "description": "",
+    "value": [
+      {
+        "name": "java",
+        "color": "#B0AA45"
+      },
+      {
+        "name": "vue",
+        "color": "#2C3E50"
+      },
+      {
+        "name": "python",
+        "color": "#3572A5"
+      },
+      {
+        "name": "javascript",
+        "color": "#F1E05A"
+      },
+      {
+        "name": "typescript",
+        "color": "#2B7489"
+      },
+      {
+        "name": "html",
+        "color": "#E34C26"
+      },
+      {
+        "name": "ruby",
+        "color": "#701516"
+      },
+      {
+        "name": "shell",
+        "color": "#89E051"
+      },
+      {
+        "name": "plsql",
+        "color": "#DAD8D8"
+      },
+      {
+        "name": "css",
+        "color": "#563D7C"
+      }
+    ]
+  }
+]

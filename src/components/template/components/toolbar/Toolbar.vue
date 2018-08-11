@@ -1,66 +1,62 @@
 <template>
   <div>
-    <progress-bar v-if="progressBar"></progress-bar>
+    <progress-bar :loading="progressBar" style="z-index: 999;"></progress-bar>
     <v-toolbar
-      dark
       app
-      clipped-left
+      dark
+      flat
       fixed
-      height="50"
-    >
-      <toolbar-navigation></toolbar-navigation>
-      <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
+      height="50" style="z-index: 998;">
+      <toolbar-navigation style="position: absolute"></toolbar-navigation>
+      <v-spacer></v-spacer>
+      <v-toolbar-title>
         <!--<v-toolbar-side-icon @click.stop="switchDrawer"></v-toolbar-side-icon>-->
         <v-btn
           large
           round
           flat
-          @click.stop="$global.openRoute(RouteNames.HOME)"
-        >
-          {{ getSiteTitle() }}
+          @click="$global.openRouteByName({ name: RouteNames.HOME })">
+          {{ siteTitle }}
         </v-btn>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <main-menu v-if="isConnected()"></main-menu>
-      <account-dialog v-else></account-dialog>
     </v-toolbar>
   </div>
 </template>
 
 <script>
-  import { mapState, mapGetters, mapActions } from 'vuex';
-  import RouteNames from '@/router/names';
-  import SettingGetterTypes from '@/store/setting/getters/types';
-  import UserGetterTypes from '@/store/user/getters/types';
-  import ActionTypes from '@/store/template/actions/types';
-  import ProgressBar from './ProgressBar';
-  import MainMenu from './menu/MainMenu';
-  import AccountDialog from './menu/accountdialog/AccountDialog';
-  import ToolbarNavigation from './navigation/ToolbarNavigation';
+import SettingNames from '@/plugins/global/settings-names';
 
-  export default {
-    name: 'Toolbar',
-    components: { MainMenu, AccountDialog, ProgressBar, ToolbarNavigation },
-    data() {
-      return {
-        RouteNames,
-      };
+import RouteNames from '@/router/names';
+
+import { mapState, mapActions } from 'vuex';
+import { keys as TStoreKeys } from '@/store/template';
+import { types as ActionTypes } from '@/store/template/actions';
+
+import ToolbarNavigation from './navigation/ToolbarNavigation';
+
+export default {
+  name: 'Toolbar',
+  components: { ToolbarNavigation },
+  data() {
+    return {
+      RouteNames,
+    };
+  },
+  computed: {
+    ...mapState({
+      progressBar: state => state.TemplateStore[TStoreKeys.PROGRESS_BAR],
+    }),
+    siteTitle() {
+      return this.$global.getSettingValue(SettingNames.SITE_TITLE);
     },
-    computed: {
-      ...mapState({
-        progressBar: state => state.TemplateStore.progressBar,
-      }),
-    },
-    methods: {
-      ...mapGetters({
-        isConnected: UserGetterTypes.IS_CONNECTED,
-        getSiteTitle: SettingGetterTypes.GET_SITE_TITLE,
-      }),
-      ...mapActions({
-        switchDrawer: ActionTypes.SWITCH_DRAWER,
-      }),
-    },
-  };
+  },
+  methods: {
+    ...mapActions({
+      switchDrawer: ActionTypes.SWITCH_DRAWER,
+    }),
+  },
+};
 </script>
 
 <style scoped>

@@ -1,9 +1,12 @@
 <template>
-  <v-flex xs12 md6>
-    <v-card class="teal">
+  <v-flex xs12>
+    <v-card
+      flat
+      :class="lockOver ? 'blue-grey darken-3 faded elevation-0' : 'blue darken-3'"
+      style="margin-left: -5px">
       <v-card-title>
-        <div>
-          <v-icon v-if="icon">{{ icon }}</v-icon>
+        <div :class="lockOver ? 'blue-grey--text text--darken-1' : ''">
+          <icon v-if="icon" :value="icon" :color="lockOver ? 'blue-grey darken-1' : ''"></icon>
           {{ content }}
         </div>
       </v-card-title>
@@ -13,19 +16,14 @@
 
 <script>
 
-  export default {
-    name: 'ResumeTitle2',
-    components: {},
-    props: ['content', 'icon'],
-    data() {
-      return {};
-    },
-    created() {
-    },
-    computed: {},
-    methods: {},
-  };
+export default {
+  name: 'ResumeTitle2',
+  props: ['content', 'icon', 'lockOver'],
+};
 </script>
 
 <style scoped>
+  .faded {
+    text-shadow: none;
+  }
 </style>
