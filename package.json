@@ -1,7 +1,7 @@
 {
-  "name": "thomaskint-v1",
+  "name": "thomaskint",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "Professional website",
   "author": "Thomas Kint <thomaskint.pro@gmail.com>",
   "private": true,
   "scripts": {
