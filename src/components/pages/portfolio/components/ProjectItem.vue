@@ -8,19 +8,25 @@
       :value="project.loadingValue"
       color="teal">
     </progress-bar>
-    <v-card-title>
-      <h3 class="mb-0" style="width: 100%">{{ project.name }}</h3>
+    <v-card-title class="pb-0">
+      <v-layout
+        column
+        align-center
+        class="mb-3 mt-1"
+        v-if="project.avatar !== ''">
+        <img :src="project.avatar" width="150">
+      </v-layout>
+      <h1 class="mb-0" style="width: 100%">{{ project.name }}</h1>
       Dernière activité:
       {{ $global.formatDate(project.updated) }}
     </v-card-title>
     <v-card-text>
-      <span v-if="project.description">
-      {{ project.description }}
+      <span v-if="project.description" style="font-size: 17px">
+        {{ project.description }}
       </span>
       <span v-else>
         [Pas de description]
       </span>
-      <br/>
     </v-card-text>
     <v-card-actions>
       <v-btn
