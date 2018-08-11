@@ -13,5 +13,5 @@ build:
 deploy:
   stage: deploy
   script:
-    - apt-get install lftp
+    - apk add --no-cache lftp
     - lftp -e "mirror -R dist $FTP_DIR" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_URL
