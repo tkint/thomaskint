@@ -12,9 +12,9 @@
       <v-layout
         column
         align-center
-        class="mb-3 mt-1"
-        v-if="project.avatar !== ''">
-        <img :src="project.avatar" width="150">
+        class="mb-0 mt-0"
+        v-if="project.avatar && project.avatar !== ''">
+        <img :src="project.avatar" width="150" class="elevation-5">
       </v-layout>
       <h1 class="mb-0" style="width: 100%">{{ project.name }}</h1>
       Dernière activité:
