@@ -2,11 +2,10 @@
   <v-btn
     flat
     slot="activator"
-    @click.stop="$global.openRoute({route: item.route})"
-    @mouseover="onMouseOver()"
-    @mouseleave="onMouseLeave()">
+    :class="currentPage ? 'teal darken-1' : ''"
+    @click.stop="$global.openRoute({route: item.route})">
     <icon :value="item.icon"></icon>
-    <span v-if="over || currentPage" class="legend">{{ item.text }}</span>
+    <span class="legend">{{ item.text }}</span>
   </v-btn>
 </template>
 
@@ -14,26 +13,9 @@
 export default {
   name: 'ToolbarNavigationItem',
   props: ['item'],
-  data() {
-    return {
-      over: false,
-    };
-  },
   computed: {
     currentPage() {
       return this.$route.path.includes(this.item.route.path);
-    },
-  },
-  methods: {
-    onMouseOver() {
-      if (!this.over) {
-        this.over = true;
-      }
-    },
-    onMouseLeave() {
-      if (this.over) {
-        this.over = false;
-      }
     },
   },
 };
