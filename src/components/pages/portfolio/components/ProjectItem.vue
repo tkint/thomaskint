@@ -3,6 +3,11 @@
     class="project-item"
     @click.native="openProject()"
     hover>
+    <progress-bar
+      :height="2"
+      :value="project.loadingValue"
+      color="teal">
+    </progress-bar>
     <v-card-title>
       <h3 class="mb-0" style="width: 100%">{{ project.name }}</h3>
       Dernière activité:
@@ -16,7 +21,6 @@
         [Pas de description]
       </span>
       <br/>
-      <!--{{ project }}-->
     </v-card-text>
     <v-card-actions>
       <v-btn

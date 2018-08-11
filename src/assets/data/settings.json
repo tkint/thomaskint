@@ -22,7 +22,17 @@
   {
     "name": "LINKEDIN_URL",
     "description": "URL of professional linkedin",
-    "value": "https://www.linkedin.com/in/thomas-kint"
+    "value": "https://www.linkedin.com/in/tkint"
+  },
+  {
+    "name": "LINKEDIN_PATH",
+    "description": "Path of professional linkedin",
+    "value": "/tkint"
+  },
+  {
+    "name": "PHONE",
+    "description": "Phone number",
+    "value": "+33 6 13 43 27 82"
   },
   {
     "name": "SITE_TITLE",

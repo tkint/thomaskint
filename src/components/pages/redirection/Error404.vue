@@ -1,19 +1,15 @@
 <template>
-  <v-container fluid>
-    <v-layout row wrap>
-      <v-flex xs12>
-        <v-layout justify-center align-center>
-          <h2 class="text-xs-center error-404"><span class="error-404-title" v-for="(letter, index) in titleArray"
-                                                     :key="index">{{ letter }}</span></h2>
-        </v-layout>
-      </v-flex>
-      <v-flex xs12>
-        <v-layout justify-center>
-          <h2 class="text-xs-center error-404-text">{{ text }}</h2>
-        </v-layout>
-      </v-flex>
+  <v-app dark>
+    <v-layout justify-center align-center>
+      <h2 class="text-xs-center title">
+        <span
+          class="blink-title"
+          v-for="letter in textArray"
+          v-html="letter">
+        </span>
+      </h2>
     </v-layout>
-  </v-container>
+  </v-app>
 </template>
 
 <script>
@@ -26,7 +22,7 @@ export default {
     };
   },
   computed: {
-    titleArray() {
+    textArray() {
       return this.title.split('');
     },
   },
@@ -34,12 +30,7 @@ export default {
 </script>
 
 <style scoped>
-  h2.error-404-text {
-    font-weight: bold;
-    text-shadow: 0 0 10px #000;
-  }
-
-  h2.error-404 {
+  h2.title {
     margin-bottom: 10%;
     word-spacing: 10px;
   }
@@ -56,41 +47,43 @@ export default {
     backface-visibility: hidden;
   }
 
-  .error-404-title {
+  .blink-title {
+    font-size: 60px;
     font-family: Monoton, cursive;
     text-transform: uppercase;
-    text-shadow: 0 0 10px #ffffff, 0 0 20px #008000, 0 0 6px #0000ff;
-    color: #fff;
+    text-shadow: 0 0 15px #000, 0 0 10px #fff;
+    letter-spacing: 3px;
+    color: #FFFFFF;
   }
 
-  .error-404-title:nth-of-type(1) {
+  .blink-title:nth-of-type(1) {
     animation: light 15s linear infinite;
   }
 
-  .error-404-title:nth-of-type(2) {
+  .blink-title:nth-of-type(2) {
     animation: light 11s linear infinite;
   }
 
-  .error-404-title:nth-of-type(4) {
+  .blink-title:nth-of-type(4) {
     animation: light 20s linear infinite;
   }
 
-  .error-404-title:nth-of-type(5) {
+  .blink-title:nth-of-type(5) {
     animation: light 7s linear infinite;
   }
 
-  .error-404-title:nth-of-type(9) {
+  .blink-title:nth-of-type(9) {
     animation: light 5s linear infinite;
   }
 
-  .error-404-title:nth-of-type(11) {
+  .blink-title:nth-of-type(11) {
     animation: light 9s linear infinite;
   }
 
   @keyframes light {
     0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
       opacity: .99;
-      text-shadow: 0 0 10px #ffffff, 0 0 20px #008000, 0 0 6px #0000ff;
+      text-shadow: 0 0 15px #000, 0 0 10px #fff;
     }
     20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
       opacity: 0.4;
@@ -114,5 +107,14 @@ export default {
     40%, 60% {
       transform: translate3d(4px, 0, 0);
     }
+  }
+
+  a {
+    text-decoration: none;
+    padding: 15px;
+  }
+
+  a:hover {
+    text-shadow: 0 0 10px #fff;
   }
 </style>

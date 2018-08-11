@@ -1,6 +1,6 @@
 <template>
   <div>
-    <progress-bar v-if="progressBar" style="z-index: 999;"></progress-bar>
+    <progress-bar :loading="progressBar" style="z-index: 999;"></progress-bar>
     <v-toolbar
       app
       dark
@@ -33,12 +33,11 @@ import { mapState, mapActions } from 'vuex';
 import { keys as TStoreKeys } from '@/store/template';
 import { types as ActionTypes } from '@/store/template/actions';
 
-import ProgressBar from './ProgressBar';
 import ToolbarNavigation from './navigation/ToolbarNavigation';
 
 export default {
   name: 'Toolbar',
-  components: { ProgressBar, ToolbarNavigation },
+  components: { ToolbarNavigation },
   data() {
     return {
       RouteNames,

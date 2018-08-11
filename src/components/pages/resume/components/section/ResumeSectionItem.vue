@@ -63,7 +63,7 @@ export default {
       return 'left';
     },
     showDetails() {
-      return (this.showAll || this.details) && this.item.descriptions;
+      return this.item.descriptions && (this.showAll || this.details);
     },
     overed() {
       return this.showAll || this.details || this.over;

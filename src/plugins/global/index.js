@@ -3,9 +3,11 @@ import RouteNames from '@/router/names';
 import Icons from './icons';
 import SettingsNames from './settings-names';
 
+export const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 export const getSetting = name => SettingsData.find(setting => setting.name === name);
 
-export const getSettingValue = name => getSetting(name).value;
+export const getSettingValue = name => getSetting(name) && getSetting(name).value;
 
 const globalPlugin = {
   install: (Vue, options) => {
@@ -50,7 +52,7 @@ const globalPlugin = {
      * Contains global and fields used in the page editor and page display
      * @type {{}}
      */
-    const global = { icons: null, getSetting, getSettingValue };
+    const global = { icons: null, sleep, getSetting, getSettingValue };
     global.icons = {};
     /**
      * Adding icons
@@ -79,12 +81,6 @@ const globalPlugin = {
       global.openRouteByName({ name: route.name, params });
     };
     global.getRouteByName = getRouteByName;
-    /**
-     *
-     * @param ms
-     * @returns {Promise<any>}
-     */
-    global.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
     global.formatDate = (dateToFormat) => {
       const date = new Date(dateToFormat);

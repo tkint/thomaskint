@@ -4,7 +4,7 @@ export default {
   RESUME: 'featured_play_list',
   BLOG: 'book',
   PORTFOLIO: 'dashboard',
-  CONTACT: 'phone',
+  CONTACT: 'face',
   PROFILE: 'person',
   LOGIN: 'person_outline',
   SHARE: 'share',
@@ -28,4 +28,7 @@ export default {
   ZOOM_IN: 'fullscreen',
   ZOOM_OUT: 'fullscreen_exit',
   IMPORTANT: 'priority_high',
+  FACEBOOK: 'fab fa-facebook-f',
+  LINKEDIN: 'fab fa-linkedin',
+  PHONE: 'phone',
 };

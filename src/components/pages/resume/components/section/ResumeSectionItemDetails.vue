@@ -10,7 +10,10 @@
 <script>
 export default {
   name: 'ResumeExperienceItemDetails',
-  props: ['item', 'index', 'show'],
+  props: {
+    item: Object,
+    show: Boolean,
+  },
   data() {
     return {
       style: {

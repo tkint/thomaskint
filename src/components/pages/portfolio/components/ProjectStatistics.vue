@@ -1,5 +1,24 @@
 <template>
-  <v-layout row wrap>
+  <v-layout
+    column
+    align-center
+    v-if="project.loadingValue < 100 && !project.reloading">
+    <v-progress-circular
+      :size="100"
+      :width="15"
+      :rotate="-90"
+      :value="project.loadingValue + 10"
+      color="teal">
+      {{project.loadingValue}}%
+    </v-progress-circular>
+    <span class="mt-4">
+      Chargement des données...
+    </span>
+  </v-layout>
+  <v-layout
+    row
+    wrap
+    v-else>
     <v-flex xs12 md6>
       <v-data-table
         v-model="selected"
@@ -7,7 +26,7 @@
         item-key="language"
         hide-actions
         hide-headers>
-        <template slot="items">
+        <template slot="no-data">
           <v-alert :value="true" color="error" icon="warning">
             Un problème est survenu, rechargez la page
           </v-alert>
@@ -16,10 +35,10 @@
           <tr @click="onLegendClick(props)" :active="props.selected" style="cursor: pointer">
             <td>
               <v-badge>
-              <span
-                class="badge badge__badge custom-badge"
-                :style="`background-color: ${props.item.color} !important`">
-              </span>
+                <span
+                  class="v-badge v-badge__badge custom-badge"
+                  :style="`background-color: ${props.item.color} !important`">
+                </span>
               </v-badge>
             </td>
             <td>{{props.item.language}}</td>

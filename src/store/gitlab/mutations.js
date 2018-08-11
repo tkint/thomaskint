@@ -9,6 +9,8 @@ const updateProject = (state, project) => {
   let found = false;
   while (i < projects.length && !found) {
     if (projects[i].id === project.id) {
+      project.loadingValue = 100;
+      project.reloading = false;
       Vue.set(state[keys.PROJECTS], i, project);
       found = true;
     }

@@ -31,8 +31,8 @@ import RouteNames from '@/router/names';
 
 import GitlabService from '@/services/gitlabService';
 
-import WorkItem from './components/WorkItem';
-import WorkDialog from './components/WorkDialog';
+import WorkItem from './components/ProjectItem';
+import WorkDialog from './components/ProjectDialog';
 
 export default {
   name: 'Portfolio',

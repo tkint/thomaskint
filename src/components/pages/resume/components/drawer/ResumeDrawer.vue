@@ -1,8 +1,9 @@
 <template>
   <v-navigation-drawer
+    fixed
+    :permanent="show"
     class="teal  darken-1"
-    width="300"
-    style="margin-top: 50px; z-index: 999"
+    style="margin-top: 50px; padding-bottom: 80px; z-index: 950"
     v-click-outside="onBlur"
     v-model="show">
     <v-flex xs6 offset-xs3 mt-3>

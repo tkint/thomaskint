@@ -25,11 +25,17 @@ export default {
   [types.RETRIEVE_PROJECTS]({ commit, state }) {
     if (isValidRecall(state, keys.PROJECTS_LAST_CALL)) {
       if (state[keys.PROJECTS] && state[keys.PROJECTS].length > 0) {
-        const projectsPromise = GitlabService.getInstance().getFullProjectsPromise();
+        const projectsPromise = GitlabService
+          .getInstance()
+          .getFullProjectsPromise(state[keys.PROJECTS]);
         commit(MutationsTypes.LOAD_PROJECTS, projectsPromise);
+        commit(MutationsTypes.ADD_VALUE, { key: keys.PROJECTS_LAST_CALL, value: Date.now() });
       } else {
-        const projects = GitlabService.getInstance().getProjects();
-        updateValue(commit, keys.PROJECTS, projects, keys.PROJECTS_LAST_CALL);
+        const projects = GitlabService
+          .getInstance()
+          .getProjectsAsync();
+        commit(MutationsTypes.ADD_VALUE, { key: keys.PROJECTS, value: projects });
+        commit(MutationsTypes.ADD_VALUE, { key: keys.PROJECTS_LAST_CALL, value: Date.now() });
       }
     }
   },

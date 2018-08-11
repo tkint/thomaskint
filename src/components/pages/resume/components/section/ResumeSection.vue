@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid grid-list-md>
+  <v-container wrap grid-list-md class="pa-1">
     <v-layout row wrap>
       <section-item
         v-for="(item, subIndex) in items"
