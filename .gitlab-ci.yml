@@ -9,9 +9,6 @@ build:
   script:
     - npm install
     - npm run build
-  artifcats:
-    paths:
-      - dist
 
 deploy:
   stage: deploy
