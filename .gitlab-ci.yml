@@ -1,0 +1,20 @@
+image: node:8
+
+cache:
+  paths:
+    - dist
+
+build:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+  artifcats:
+    paths:
+      - dist
+
+deploy:
+  stage: deploy
+  script:
+    - apt-get install lftp
+    - lftp -e "mirror -R dist $FTP_DIR" -u $FTP_USERNAME,$FTP_PASSWORD $FTP_URL
