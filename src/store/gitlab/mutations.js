@@ -39,8 +39,9 @@ export default {
           const project = GitlabService.buildProject(
             GitlabService.getInstance().projectsName[i],
             responses[i][0].data,
-            responses[i][1].headers['x-total'],
-            responses[i][2].data,
+            responses[i][1].data,
+            responses[i][2].headers['x-total'],
+            responses[i][3].data,
           );
           updateProject(state, project);
         }

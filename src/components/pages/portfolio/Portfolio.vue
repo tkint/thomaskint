@@ -4,13 +4,6 @@
     <work-dialog :project="currentProject" :show="showProject" @close="closeProject()"></work-dialog>
     <v-layout row class="ml-3 mt-3 mb-0">
       <v-flex xs12 sm6 md4>
-        <!--<v-autocomplete-->
-        <!--multiple-->
-        <!--cache-items-->
-        <!--v-model="searchList"-->
-        <!--:search-input.sync="inputSearch"-->
-        <!--:items="filters">-->
-        <!--</v-autocomplete>-->
         <v-text-field
           solo
           clearable
@@ -98,31 +91,6 @@ export default {
               .find(l => l.toLowerCase().includes(this.search.toLowerCase()))
           )
         ));
-    },
-    filteredProjectsByList() {
-      return this.projects.filter(p =>
-        (this.searchList.length === 0
-          || this.searchList.find(s => s.toLowerCase() === p.name))
-        || (p.languages &&
-          this.doesArrayContainsArray(Object.keys(p.languages), this.searchList)
-        ));
-    },
-    filters() {
-      const filters = [];
-      this.projects.forEach((project) => {
-        if (!filters.includes(project.name)) {
-          filters.push(project.name);
-        }
-        if (project.languages) {
-          Object.keys(project.languages)
-            .forEach((language) => {
-              if (!filters.includes(language)) {
-                filters.push(language);
-              }
-            });
-        }
-      });
-      return filters;
     },
     currentProjectId() {
       return this.$route.params.id;

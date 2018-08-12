@@ -7,6 +7,7 @@ const tkintId = '1729469';
 const tkintPath = `/users/${tkintId}`;
 const projectsPath = '/projects';
 const projectsSeparator = '%2F';
+const infosFile = 'INFOS.json';
 
 export const setBuffer = (object, key, bufferSize, step, ms) => {
   const loader = setInterval(() => {
@@ -57,6 +58,7 @@ class GitlabService {
       setBuffer(project, 'loadingValue', 100, 5, 250);
       requests.push(this.axios.all([
         this.axios.get(GitlabService.getBaseProjectUrl(projectName)),
+        this.axios.get(GitlabService.getInfosUrl(projectName)),
         this.axios.get(GitlabService.getCommitsUrl(projectName)),
         this.axios.get(GitlabService.getLanguagesUrl(projectName)),
       ]));
@@ -79,30 +81,41 @@ class GitlabService {
         project.url = data.web_url;
         project.created = data.created_at;
         project.updated = data.last_activity_at;
-        setBuffer(project, 'loadingValue', 50, 5, 250);
+        setBuffer(project, 'loadingValue', 25, 5, 250);
       }
     });
 
-    this.axios.get(GitlabService.getCommitsUrl(projectName)).then((response) => {
-      const data = response.headers['x-total'];
-      if (data) {
-        project.commits = data;
-        setBuffer(project, 'loadingValue', 75, 5, 250);
-      }
-    });
+    this.axios.get(GitlabService.getInfosUrl(projectName))
+      .then((response) => {
+        const data = response.data;
+        if (data) {
+          project.infos = data;
+          setBuffer(project, 'loadingValue', 50, 5, 250);
+        }
+      });
 
-    this.axios.get(GitlabService.getLanguagesUrl(projectName)).then((response) => {
-      const data = response.data;
-      if (data) {
-        project.languages = data;
-        setBuffer(project, 'loadingValue', 100, 5, 250);
-      }
-    });
+    this.axios.get(GitlabService.getCommitsUrl(projectName))
+      .then((response) => {
+        const data = response.headers['x-total'];
+        if (data) {
+          project.commits = data;
+          setBuffer(project, 'loadingValue', 75, 5, 250);
+        }
+      });
+
+    this.axios.get(GitlabService.getLanguagesUrl(projectName))
+      .then((response) => {
+        const data = response.data;
+        if (data) {
+          project.languages = data;
+          setBuffer(project, 'loadingValue', 100, 5, 250);
+        }
+      });
 
     return project;
   }
 
-  static buildProject(fullProjectName, projectBase, commitsCount, languages) {
+  static buildProject(fullProjectName, projectBase, infos, commitsCount, languages) {
     return {
       id: projectBase.id,
       name: projectBase.name,
@@ -118,6 +131,7 @@ class GitlabService {
       languages,
       loadingValue: 0,
       reloading: false,
+      infos,
     };
   }
 
@@ -137,6 +151,7 @@ class GitlabService {
       languages: null,
       loadingValue: 0,
       reloading: false,
+      infos: {},
     };
   }
 
@@ -155,6 +170,10 @@ class GitlabService {
 
   static getLanguagesUrl(projectName) {
     return `${this.getBaseProjectUrl(projectName)}/languages`;
+  }
+
+  static getInfosUrl(projectName) {
+    return `${this.getBaseProjectUrl(projectName)}/repository/files/${infosFile}/raw?ref=master`;
   }
 
   static getProjectsName() {
