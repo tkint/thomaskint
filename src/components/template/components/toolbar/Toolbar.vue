@@ -1,6 +1,6 @@
 <template>
   <div>
-    <progress-bar :loading="progressBar" style="z-index: 999;"></progress-bar>
+    <progress-bar :loading="progressBar" style="z-index: 999;" fixed></progress-bar>
     <v-toolbar
       app
       dark

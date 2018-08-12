@@ -4,6 +4,7 @@
     background-color="secondary"
     v-show="loading"
     v-model="value"
+    :style="fixed ? 'position: fixed' : ''"
     :indeterminate="value === null"
     :color="color"
     :height="height">
@@ -29,6 +30,10 @@ export default {
     value: {
       type: Number,
       default: null,
+    },
+    fixed: {
+      type: Boolean,
+      default: false,
     },
   },
 };

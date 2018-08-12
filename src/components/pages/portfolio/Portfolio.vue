@@ -1,30 +1,48 @@
 <!--TODO: Ajouter une barre de recherche (comme sur BookKeeper)-->
 <template>
-  <v-layout>
-    <v-container fluid grid-list-lg class="pa-3">
-      <v-layout row wrap>
-        <v-flex
-          xs12
-          sm6
-          md4
-          lg3
-          xl2
-          v-for="(gitlabProject, index) in projects"
-          :key="index">
-          <work-item
-            :project="gitlabProject">
-          </work-item>
-        </v-flex>
-      </v-layout>
-    </v-container>
+  <v-layout row wrap>
     <work-dialog :project="currentProject" :show="showProject" @close="closeProject()"></work-dialog>
+    <v-flex xs12 class="ml-3">
+      <v-flex xs12 sm6 md4>
+        <!--<v-autocomplete-->
+        <!--multiple-->
+        <!--cache-items-->
+        <!--v-model="searchList"-->
+        <!--:search-input.sync="inputSearch"-->
+        <!--:items="filters">-->
+        <!--</v-autocomplete>-->
+        <v-text-field
+          v-model="search">
+        </v-text-field>
+      </v-flex>
+    </v-flex>
+    <v-flex xs12>
+      <v-container fluid grid-list-lg class="pa-3">
+        <v-layout row wrap>
+          <v-flex
+            xs12
+            sm6
+            md4
+            lg3
+            xl2
+            v-for="(gitlabProject, index) in filteredProjects"
+            :key="index">
+            <work-item
+              :project="gitlabProject">
+            </work-item>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-flex>
   </v-layout>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex';
 import { keys as GStoreKeys } from '@/store/gitlab';
+import { keys as GlStoreKeys } from '@/store/global';
 import { types as GStoreActions } from '@/store/gitlab/actions';
+import { types as GlStoreActions } from '@/store/global/actions';
 import { types as TStoreActions } from '@/store/template/actions';
 
 import RouteNames from '@/router/names';
@@ -39,15 +57,26 @@ export default {
   components: { WorkDialog, WorkItem },
   data() {
     return {
+      searchList: [],
+      inputSearch: null,
       showProject: false,
       works: [],
     };
   },
   computed: {
     ...mapState({
+      projectSearch: state => state.GlobalStore[GlStoreKeys.PROJECT_SEARCH],
       gitlabUser: state => state.GitlabStore[GStoreKeys.USER],
       gitlabProjects: state => state.GitlabStore[GStoreKeys.PROJECTS],
     }),
+    search: {
+      get() {
+        return this.projectSearch;
+      },
+      set(value) {
+        this.setGlobalValue({ key: GlStoreKeys.PROJECT_SEARCH, value });
+      },
+    },
     projects() {
       if (this.gitlabProjects) {
         return this
@@ -55,6 +84,41 @@ export default {
           .sort((p1, p2) => new Date(p2.updated) - new Date(p1.updated));
       }
       return [];
+    },
+    filteredProjects() {
+      return this.projects.filter(p =>
+        (!this.search
+          || p.system_name.includes(this.search.toLowerCase())
+          || (p.languages
+            && Object.keys(p.languages)
+              .find(l => l.toLowerCase().includes(this.search.toLowerCase()))
+          )
+        ));
+    },
+    filteredProjectsByList() {
+      return this.projects.filter(p =>
+        (this.searchList.length === 0
+          || this.searchList.find(s => s.toLowerCase() === p.system_name))
+        || (p.languages &&
+          this.doesArrayContainsArray(Object.keys(p.languages), this.searchList)
+        ));
+    },
+    filters() {
+      const filters = [];
+      this.projects.forEach((project) => {
+        if (!filters.includes(project.system_name)) {
+          filters.push(project.system_name);
+        }
+        if (project.languages) {
+          Object.keys(project.languages)
+            .forEach((language) => {
+              if (!filters.includes(language)) {
+                filters.push(language);
+              }
+            });
+        }
+      });
+      return filters;
     },
     currentProjectId() {
       return this.$route.params.id;
@@ -83,6 +147,7 @@ export default {
   },
   methods: {
     ...mapActions({
+      setGlobalValue: GlStoreActions.SET_GLOBAL_VALUE,
       setProgressBar: TStoreActions.SET_PROGRESSBAR,
       retrieveGitlabUser: GStoreActions.RETRIEVE_USER,
       retrieveGitlabProjects: GStoreActions.RETRIEVE_PROJECTS,
@@ -94,6 +159,22 @@ export default {
     closeProject() {
       this.$global.openRouteByName({ name: RouteNames.PORTFOLIO });
       this.showProject = false;
+    },
+    doesArrayContainsArray(array1, array2) {
+      let contains = false;
+      let i = 0;
+      let j = 0;
+      while (i < array1.length && !contains) {
+        while (j < array2.length && !contains) {
+          if (array1[i].toLowerCase() === array2[j].toLowerCase()) {
+            contains = true;
+          }
+          j += 1;
+        }
+        i += 1;
+        j = 0;
+      }
+      return contains;
     },
   },
   created() {
