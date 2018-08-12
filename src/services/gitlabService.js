@@ -73,6 +73,7 @@ class GitlabService {
       if (data) {
         project.id = data.id;
         project.name = data.name;
+        project.avatar = data.avatar_url;
         project.description = data.description;
         project.stars = data.star_count;
         project.url = data.web_url;
@@ -105,6 +106,7 @@ class GitlabService {
     return {
       id: projectBase.id,
       name: projectBase.name,
+      avatar: projectBase.avatar_url,
       description: projectBase.description,
       system_name: this.getProjectName(fullProjectName),
       full_project_name: fullProjectName,
@@ -123,6 +125,7 @@ class GitlabService {
     return {
       id: null,
       name: null,
+      avatar: null,
       description: null,
       system_name: null,
       full_project_name: fullProjectName,

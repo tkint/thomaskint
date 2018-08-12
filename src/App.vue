@@ -57,4 +57,8 @@ export default {
   html {
     text-shadow: 1px 1px 2px black;
   }
+
+  .v-chip {
+    color: white !important;
+  }
 </style>

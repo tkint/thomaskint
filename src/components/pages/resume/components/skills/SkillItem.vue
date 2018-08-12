@@ -4,7 +4,8 @@
     mt-4
     class="skill-item"
     @mouseover="onMouseOver"
-    @mouseleave="onMouseLeave">
+    @mouseleave="onMouseLeave"
+    @click="onClick">
     <v-layout justify-center>
       <icon
         :value="skill.icon"
@@ -22,6 +23,12 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import { keys as GlStoreKeys } from '@/store/global';
+import { types as GlStoreActions } from '@/store/global/actions';
+
+import RouteNames from '@/router/names';
+
 export default {
   name: 'SkillItem',
   props: {
@@ -36,6 +43,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions({
+      setGlobalValue: GlStoreActions.SET_GLOBAL_VALUE,
+    }),
     onMouseOver() {
       this.color = this.skill.color;
       this.legendColor = this.skill.legendColor;
@@ -45,6 +55,10 @@ export default {
       this.color = this.defaultColor;
       this.legendColor = this.defaultColor;
       this.legendBold = false;
+    },
+    onClick() {
+      this.setGlobalValue({ key: GlStoreKeys.PROJECT_SEARCH, value: this.skill.name });
+      this.$global.openRouteByName({ name: RouteNames.PORTFOLIO });
     },
   },
 };
