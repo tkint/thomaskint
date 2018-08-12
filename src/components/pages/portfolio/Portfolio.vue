@@ -2,7 +2,7 @@
 <template>
   <v-layout row wrap>
     <work-dialog :project="currentProject" :show="showProject" @close="closeProject()"></work-dialog>
-    <v-flex xs12 class="ml-3">
+    <v-layout row class="ml-3 mt-3 mb-0">
       <v-flex xs12 sm6 md4>
         <!--<v-autocomplete-->
         <!--multiple-->
@@ -12,12 +12,16 @@
         <!--:items="filters">-->
         <!--</v-autocomplete>-->
         <v-text-field
+          solo
+          clearable
+          color="teal"
+          label="Tapez un mot clef"
           v-model="search">
         </v-text-field>
       </v-flex>
-    </v-flex>
+    </v-layout>
     <v-flex xs12>
-      <v-container fluid grid-list-lg class="pa-3">
+      <v-container fluid grid-list-lg class="mt-0 pt-0">
         <v-layout row wrap>
           <v-flex
             xs12
@@ -98,7 +102,7 @@ export default {
     filteredProjectsByList() {
       return this.projects.filter(p =>
         (this.searchList.length === 0
-          || this.searchList.find(s => s.toLowerCase() === p.system_name))
+          || this.searchList.find(s => s.toLowerCase() === p.name))
         || (p.languages &&
           this.doesArrayContainsArray(Object.keys(p.languages), this.searchList)
         ));
@@ -106,8 +110,8 @@ export default {
     filters() {
       const filters = [];
       this.projects.forEach((project) => {
-        if (!filters.includes(project.system_name)) {
-          filters.push(project.system_name);
+        if (!filters.includes(project.name)) {
+          filters.push(project.name);
         }
         if (project.languages) {
           Object.keys(project.languages)

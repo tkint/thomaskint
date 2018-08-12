@@ -1,5 +1,32 @@
 <template>
-  <v-list-tile :href="href" :target="isUrl() ? '_blank' : ''">
+  <v-list-group
+    no-action
+    v-if="isClickable()"
+    :append-icon="null"
+    :prepend-icon="content.icon">
+    <input
+      type="text"
+      ref="clipboard"
+      class="clipboard"
+      :value="content.value"/>
+    <v-list-tile
+      slot="activator"
+      no-action>
+      <v-list-tile-title>
+        <span>{{ content.value }}</span>
+      </v-list-tile-title>
+    </v-list-tile>
+    <v-list-tile @click="copy()">
+      Copier
+    </v-list-tile>
+    <v-list-tile
+      :href="href"
+      :target="isUrl() ? '_blank' : ''">
+      Ouvrir
+    </v-list-tile>
+  </v-list-group>
+  <v-list-tile
+    v-else>
     <v-list-tile-action>
       <icon :value="content.icon"></icon>
     </v-list-tile-action>
@@ -42,9 +69,21 @@ export default {
         return false;
       }
     },
+    isClickable() {
+      return this.isMail() || this.isUrl() || this.isPhone();
+    },
+    copy() {
+      const text = this.$refs.clipboard;
+      text.select();
+      document.execCommand('copy');
+    },
   },
 };
 </script>
 
 <style scoped>
+  .clipboard {
+    position: absolute;
+    height: 0;
+  }
 </style>

@@ -1,10 +1,8 @@
 <template>
   <v-container fluid>
-    <blockquote>
-      <template v-for="line in presentation">
-        <span v-html="line"></span>
-      </template>
-    </blockquote>
+    <template v-for="line in presentation">
+      <span v-html="line"></span>
+    </template>
   </v-container>
 </template>
 
