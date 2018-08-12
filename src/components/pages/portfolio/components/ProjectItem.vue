@@ -12,9 +12,11 @@
       <v-layout
         column
         align-center
-        class="mb-0 mt-0"
-        v-if="project.avatar && project.avatar !== ''">
-        <img :src="project.avatar" width="150" class="elevation-5">
+        class="mb-0 mt-0">
+        <img
+          width="150"
+          :src="projectAvatar"
+          :class="isProjectAvatarValid() ? 'elevation-5' : 'elevation-0'">
       </v-layout>
       <h1 class="mb-0" style="width: 100%">{{ project.name }}</h1>
       Dernière activité:
@@ -47,7 +49,18 @@ import RouteNames from '@/router/names';
 export default {
   name: 'ProjectItem',
   props: ['project'],
+  computed: {
+    projectAvatar() {
+      if (this.isProjectAvatarValid()) {
+        return this.project.avatar;
+      }
+      return '/static/img/no-image.png';
+    },
+  },
   methods: {
+    isProjectAvatarValid() {
+      return this.project && this.project.avatar && this.project.avatar !== '';
+    },
     openProject() {
       this.$global.openRouteByName({
         name: RouteNames.PORTFOLIO_PROJECT,
