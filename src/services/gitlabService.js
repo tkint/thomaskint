@@ -7,7 +7,7 @@ const tkintId = '1729469';
 const tkintPath = `/users/${tkintId}`;
 const projectsPath = '/projects';
 const projectsSeparator = '%2F';
-const infosFile = 'INFOS.json';
+export const infosFile = 'INFOS.json';
 
 export const setBuffer = (object, key, bufferSize, step, ms) => {
   const loader = setInterval(() => {
@@ -27,6 +27,10 @@ class GitlabService {
     this.axios = axios;
     this.axios.defaults.baseURL = 'https://gitlab.com/api/v4';
     this.projectsName = GitlabService.getProjectsName();
+  }
+
+  getAxios() {
+    return this.axios;
   }
 
   static getInstance() {
@@ -58,7 +62,7 @@ class GitlabService {
       setBuffer(project, 'loadingValue', 100, 5, 250);
       requests.push(this.axios.all([
         this.axios.get(GitlabService.getBaseProjectUrl(projectName)),
-        this.axios.get(GitlabService.getInfosUrl(projectName)),
+        this.axios.get(GitlabService.getTreeUrl(projectName)),
         this.axios.get(GitlabService.getCommitsUrl(projectName)),
         this.axios.get(GitlabService.getLanguagesUrl(projectName)),
       ]));
@@ -70,45 +74,54 @@ class GitlabService {
     const project = GitlabService.buildEmptyProject(projectName);
     project.system_name = GitlabService.getProjectName(projectName);
 
-    await this.axios.get(GitlabService.getBaseProjectUrl(projectName)).then((response) => {
-      const data = response.data;
-      if (data) {
-        project.id = data.id;
-        project.name = data.name;
-        project.avatar = data.avatar_url;
-        project.description = data.description;
-        project.stars = data.star_count;
-        project.url = data.web_url;
-        project.created = data.created_at;
-        project.updated = data.last_activity_at;
-        setBuffer(project, 'loadingValue', 25, 5, 250);
-      }
-    });
-
-    this.axios.get(GitlabService.getInfosUrl(projectName))
+    await this.axios.get(GitlabService.getBaseProjectUrl(projectName))
       .then((response) => {
+        setBuffer(project, 'loadingValue', 25, 5, 250);
         const data = response.data;
         if (data) {
-          project.infos = data;
-          setBuffer(project, 'loadingValue', 50, 5, 250);
+          project.id = data.id;
+          project.name = data.name;
+          project.avatar = data.avatar_url;
+          project.description = data.description;
+          project.stars = data.star_count;
+          project.url = data.web_url;
+          project.created = data.created_at;
+          project.updated = data.last_activity_at;
+        }
+      });
+
+    this.axios.get(GitlabService.getTreeUrl(projectName))
+      .then((response) => {
+        setBuffer(project, 'loadingValue', 50, 5, 250);
+        let data = response.data;
+        if (data && data.find(item => item.name === infosFile)) {
+          this.axios.get(GitlabService.getInfosUrl(projectName))
+            .then((subResponse) => {
+              data = subResponse.data;
+              if (data) {
+                project.infos = data;
+              }
+            });
+        } else {
+          project.infos = {};
         }
       });
 
     this.axios.get(GitlabService.getCommitsUrl(projectName))
       .then((response) => {
+        setBuffer(project, 'loadingValue', 75, 5, 250);
         const data = response.headers['x-total'];
         if (data) {
           project.commits = data;
-          setBuffer(project, 'loadingValue', 75, 5, 250);
         }
       });
 
     this.axios.get(GitlabService.getLanguagesUrl(projectName))
       .then((response) => {
+        setBuffer(project, 'loadingValue', 100, 5, 250);
         const data = response.data;
         if (data) {
           project.languages = data;
-          setBuffer(project, 'loadingValue', 100, 5, 250);
         }
       });
 
@@ -170,6 +183,10 @@ class GitlabService {
 
   static getLanguagesUrl(projectName) {
     return `${this.getBaseProjectUrl(projectName)}/languages`;
+  }
+
+  static getTreeUrl(projectName) {
+    return `${this.getBaseProjectUrl(projectName)}/repository/tree?ref=master`;
   }
 
   static getInfosUrl(projectName) {

@@ -8,8 +8,8 @@
       fixed
       height="50" style="z-index: 998;">
       <toolbar-navigation style="position: absolute"></toolbar-navigation>
-      <v-spacer></v-spacer>
-      <v-toolbar-title>
+      <v-spacer class="hidden-xs-only"></v-spacer>
+      <v-toolbar-title class="hidden-xs-only">
         <!--<v-toolbar-side-icon @click.stop="switchDrawer"></v-toolbar-side-icon>-->
         <v-btn
           large
@@ -19,7 +19,7 @@
           {{ siteTitle }}
         </v-btn>
       </v-toolbar-title>
-      <v-spacer></v-spacer>
+      <v-spacer class="hidden-md-and-down"></v-spacer>
     </v-toolbar>
   </div>
 </template>

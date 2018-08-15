@@ -108,6 +108,10 @@
       {
         "name": "css",
         "color": "#563D7C"
+      },
+      {
+        "name": "batchfile",
+        "color": "grey"
       }
     ]
   }

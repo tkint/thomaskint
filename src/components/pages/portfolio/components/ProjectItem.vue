@@ -8,8 +8,8 @@
       color="teal"
       v-if="foundWord">
       <span
-        v-for="(part, index) in foundWordParts"
-        :class="part.isSearch ? 'teal darken-2' : ''">
+        v-for="part in foundWordParts"
+        :class="part.isSearch ? 'blue darken-2 elevation-1 found-part' : ''">
         {{part.text}}
       </span>
     </v-chip>
@@ -152,5 +152,10 @@ export default {
     position: absolute;
     margin-top: -15px;
     z-index: 100;
+  }
+
+  .found-part {
+    border: 1px solid;
+    border-radius: 5px;
   }
 </style>

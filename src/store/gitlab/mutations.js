@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
 import Vue from 'vue';
 import { keys } from './';
-import GitlabService from '../../services/gitlabService';
+import GitlabService, { infosFile } from '../../services/gitlabService';
 
 const updateProject = (state, project) => {
   const projects = state[keys.PROJECTS];
@@ -34,17 +33,30 @@ export default {
   },
   [types.LOAD_PROJECTS](state, projectsPromise) {
     if (state[keys.PROJECTS] !== undefined) {
-      projectsPromise.then((responses) => {
-        for (let i = 0; i < responses.length; i += 1) {
+      projectsPromise.then(async (responses) => {
+        responses.forEach(async (response, i) => {
+          const projectName = GitlabService.getInstance().projectsName[i];
+          let infos = {};
+          let data = response[1].data;
+          if (data && data.find(item => item.name === infosFile)) {
+            await GitlabService.getInstance().getAxios()
+              .get(GitlabService.getInfosUrl(projectName))
+              .then((subResponse) => {
+                data = subResponse.data;
+                if (data) {
+                  infos = data;
+                }
+              });
+          }
           const project = GitlabService.buildProject(
-            GitlabService.getInstance().projectsName[i],
-            responses[i][0].data,
-            responses[i][1].data,
-            responses[i][2].headers['x-total'],
-            responses[i][3].data,
+            projectName,
+            response[0].data,
+            infos,
+            response[2].headers['x-total'],
+            response[3].data,
           );
           updateProject(state, project);
-        }
+        });
       });
     }
   },
