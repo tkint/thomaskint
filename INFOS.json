@@ -3,5 +3,13 @@
     "Website pro",
     "Développé pour démontrer et exercé mes capacités de développement"
   ],
-  "type": "website"
+  "tags": [
+    "Vuejs",
+    "Vuex",
+    "Vuetify",
+    "Axios",
+    "Gitlab API",
+    "Portfolio",
+    "Website"
+  ]
 }
