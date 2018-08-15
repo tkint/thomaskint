@@ -85,10 +85,15 @@ export default {
     filteredProjects() {
       return this.projects.filter(p =>
         (!this.search
+          || p.name.includes(this.search.toLowerCase())
           || p.system_name.includes(this.search.toLowerCase())
           || (p.languages
             && Object.keys(p.languages)
               .find(l => l.toLowerCase().includes(this.search.toLowerCase()))
+          )
+          || (p.infos && p.infos.tags
+            && p.infos.tags
+              .find(t => t.toLowerCase().includes(this.search.toLowerCase()))
           )
         ));
     },

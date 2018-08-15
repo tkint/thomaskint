@@ -9,7 +9,7 @@
       v-if="foundWord">
       <span
         v-for="(part, index) in foundWordParts"
-        :class="part.isSearch ? 'grey elevation-5' : ''">
+        :class="part.isSearch ? 'teal darken-2' : ''">
         {{part.text}}
       </span>
     </v-chip>
@@ -109,12 +109,20 @@ export default {
       return parts;
     },
     filters() {
-      const filters = [this.project.name];
+      const filters = [this.project.name, this.project.system_name];
       if (this.project.languages) {
         Object.keys(this.project.languages)
           .forEach((language) => {
             if (!filters.includes(language)) {
               filters.push(language);
+            }
+          });
+      }
+      if (this.project.infos && this.project.infos.tags) {
+        this.project.infos.tags
+          .forEach((tag) => {
+            if (!filters.includes(tag)) {
+              filters.push(tag);
             }
           });
       }
@@ -143,6 +151,6 @@ export default {
   .chip {
     position: absolute;
     margin-top: -15px;
-    z-index: 950;
+    z-index: 100;
   }
 </style>
