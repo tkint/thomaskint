@@ -20,13 +20,16 @@
       <v-flex xs12>
         <v-layout justify-center>
           <a :href="`mailto:${emailAdress}`">
-            <icon large class="social-icon" value="mail"></icon>
+            <icon large class="social-icon" :value="$global.icons.MAIL"></icon>
           </a>
           <a :href="gitUrl">
-            <icon large class="social-icon" value="fab fa-gitlab"></icon>
+            <icon large class="social-icon" :value="$global.icons.GIT"></icon>
+          </a>
+          <a :href="stackoverflowUrl" target="_blank">
+            <icon large class="social-icon" :value="$global.icons.STACKOVERFLOW"></icon>
           </a>
           <a :href="linkedinUrl">
-            <icon large class="social-icon" value="fab fa-linkedin"></icon>
+            <icon large class="social-icon" :value="$global.icons.LINKEDIN"></icon>
           </a>
         </v-layout>
       </v-flex>
@@ -57,6 +60,9 @@ export default {
     },
     linkedinUrl() {
       return this.$global.getSettingValue(SettingNames.LINKEDIN_URL);
+    },
+    stackoverflowUrl() {
+      return this.$global.getSettingValue(SettingNames.STACKOVERFLOW_URL);
     },
   },
 };

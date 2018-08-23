@@ -12,8 +12,8 @@
     <v-list-tile
       slot="activator"
       no-action>
-      <v-list-tile-title>
-        <span>{{ content.value }}</span>
+      <v-list-tile-title style="text-overflow: ellipsis; max-width: 220px">
+        {{ content.value }}
       </v-list-tile-title>
     </v-list-tile>
     <v-list-tile @click="copy()">

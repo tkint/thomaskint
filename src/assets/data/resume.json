@@ -32,12 +32,16 @@
     ],
     [
       {
-        "icon": "fab fa-linkedin",
-        "value": "https://www.linkedin.com/in/tkint"
-      },
-      {
         "icon": "fab fa-gitlab",
         "value": "https://gitlab.com/tkint"
+      },
+      {
+        "icon": "fab fa-stack-overflow",
+        "value": "https://stackoverflow.com/users/9852414/thomas-kint"
+      },
+      {
+        "icon": "fab fa-linkedin",
+        "value": "https://www.linkedin.com/in/tkint"
       }
     ],
     [

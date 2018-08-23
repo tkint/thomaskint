@@ -29,6 +29,8 @@ export default {
   ZOOM_OUT: 'fullscreen_exit',
   IMPORTANT: 'priority_high',
   FACEBOOK: 'fab fa-facebook-f',
+  GIT: 'fab fa-gitlab',
   LINKEDIN: 'fab fa-linkedin',
+  STACKOVERFLOW: 'fab fa-stack-overflow',
   PHONE: 'phone',
 };
