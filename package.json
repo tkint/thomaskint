@@ -4,6 +4,7 @@
   "description": "Professional website",
   "author": "Thomas Kint <thomaskint.pro@gmail.com>",
   "private": true,
+  "main": "src/main.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "npm run dev",
