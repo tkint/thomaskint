@@ -1,13 +1,16 @@
 {
   "title": "Ingénieur d'Etudes et Développement",
   "presentation": [
-    "Curieux, discret et dynamique, ",
-    "j'apprécie le travail bien fait ",
-    "et la minutie que demande le développement d'applications.",
+    "Véritable passionné du développement informatique, ",
+    "je travaille sur des technologies diverses et variées. ",
+    "Mes technologies de prédilection sont le Java/JEE avec Spring, ",
+    "le JavaScript avec NodeJS, VueJS et AngularJS ainsi que le Python. ",
+    "Je travaille également avec Git et Gitlab-CI et intervient ",
+    "régulièrement sur des bases de données Oracle et MariaDB.",
     "<br/><br/>",
-    "Je souhaite apprendre et aiguiser ",
-    "mes compétences en informatique ",
-    "afin d'être performant dans ce que je fais."
+    "J’accorde beaucoup d’importance à la conception, aux tests ",
+    "et à l’entraide et je n’hésite pas à être force de proposition ",
+    "quand c’est nécessaire.",
   ],
   "coordinates": [
     [
@@ -59,14 +62,36 @@
   ],
   "experiences": [
     {
+      "title": "Consultant",
+      "place": "Groupe SII",
+      "city": "Montpellier",
+      "duration": {
+        "from": "Septembre 2019"
+      },
+      "descriptions": [
+      ]
+    },
+    {
+      "title": "Développeur Full-Stack",
+      "place": "Freelance",
+      "city": "Montpellier",
+      "duration": {
+        "from": "Janvier 2019"
+      },
+      "descriptions": [
+      ]
+    },
+    {
       "title": "Ingénieur d'Etudes et Développement (alternance)",
       "place": "Capgemini",
       "city": "Pérols",
       "duration": {
-        "from": "2017"
+        "from": "2017",
+        "to": "2019"
       },
       "descriptions": [
-        "Développement de tests unitaires (JUnit, Mockito)",
+        "Chiffrage, conception, développement, test et livraison de nouvelles fonctionnalités",
+        "Mise en place de tests unitaires",
         "Corrections d'anomalies"
       ]
     },
@@ -80,10 +105,8 @@
       },
       "descriptions": [
         "Gestion de projets",
-        "Développement de Web Services (REST, C#, MS CRM 2011, SQL)",
-        "Extractions de données SQL (reporting d'activité, tableaux croisés dynamiques, Business Intelligence)",
-        "Gestion et migration de MS CRM 2011 et 2016 (Plugins, Workflows, Javascripts)",
-        "Gestion Sage 1000",
+        "Conception et développement de Web Services",
+        "Extractions de données SQL",
         "Formation des utilisateurs"
       ]
     }
