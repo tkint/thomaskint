@@ -1,14 +1,4 @@
----
-home: true
-heroImage: 
-tagline: Professional website
-actionText: Portfolio →
-actionLink: /portfolio/
-features:
-- title: Feature 1 Title
-  details: Feature 1 Description
-- title: Feature 2 Title
-  details: Feature 2 Description
-- title: Feature 3 Title
-  details: Feature 3 Description
----
+<div style="text-align: center">
+    <h1>Thomas Kint</h1>
+    <h1>Full stack engineer</h1>
+</div>

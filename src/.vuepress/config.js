@@ -1,37 +1,16 @@
-const { description } = require('../../package')
+const { description } = require('../../package');
 
 module.exports = {
-  /**
-   * Ref：https://v1.vuepress.vuejs.org/config/#title
-   */
   title: 'Thomas Kint',
-  /**
-   * Ref：https://v1.vuepress.vuejs.org/config/#description
-   */
   description: description,
-
-  /**
-   * Extra tags to be injected to the page HTML `<head>`
-   *
-   * ref：https://v1.vuepress.vuejs.org/config/#head
-   */
   head: [
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
   ],
-
-  /**
-   * Theme configuration, here is the default theme configuration for VuePress.
-   *
-   * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
-   */
+  theme: '@vuepress/theme-blog',
   themeConfig: {
-    repo: '',
-    editLinks: false,
-    docsDir: '',
-    editLinkText: '',
-    lastUpdated: false,
+    dateFormat: 'DD-MM-YYYY',
     nav: [
       {
         text: 'Portfolio',
@@ -39,32 +18,56 @@ module.exports = {
       },
       {
         text: 'Blog',
-        link: '/blog/'
+        link: '/blog/',
+      },
+      {
+        text: 'Présentations',
+        link: '/slides/',
+      },
+      {
+        text: 'Contact',
+        link: '/contact/',
       },
       {
         text: 'Sources',
-        link: 'https://gitlab.com/tkint/thomaskint'
-      }
+        link: 'https://gitlab.com/tkint/thomaskint',
+      },
     ],
-    sidebar: {
-      '/guide/': [
+    footer: {
+      contact: [
         {
-          title: 'Guide',
-          collapsable: false,
-          children: [
-            '',
-            'using-vue',
-          ]
-        }
+          type: 'mail',
+          link: 'mailto:thomaskint.pro@gmail.com',
+        },
+        {
+          type: 'linkedin',
+          link: 'https://linkedin.com/in/tkint',
+        },
+        {
+          type: 'gitlab',
+          link: 'https://gitlab.com/tkint',
+        },
       ],
-    }
+    },
+    directories: [
+      {
+        id: 'blog',
+        dirname: '_posts',
+        path: '/blog/',
+        itemPermalink: '/blog/:year/:month/:day/:slug',
+      },
+    ],
+    frontmatters: [
+      {
+        id: 'tag',
+        keys: ['tag', 'tags'],
+        path: '/tag/',
+      },
+    ],
   },
 
-  /**
-   * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
-   */
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
-  ]
-}
+  ],
+};
