@@ -1,4 +1,4 @@
 ---
 layout: SlideLayout
-slide: love.md
+slide: love/love.md
 ---

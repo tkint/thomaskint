@@ -10,7 +10,7 @@
         </section>
       </div>
     </div>
-    <a href="/slides" class="floating-btn">
+    <a href="/presentation" class="floating-btn">
       <i class="fas fa-times icon"></i>
     </a>
   </div>
@@ -27,6 +27,7 @@ import '@fortawesome/fontawesome-free/js/fontawesome.min';
 import Reveal from 'reveal.js';
 import RevealMarkdown from 'reveal.js/plugin/markdown/markdown';
 import RevealHighlight from 'reveal.js/plugin/highlight/highlight';
+import RevealNotes from 'reveal.js/plugin/notes/notes';
 
 export default {
   computed: {
@@ -36,8 +37,12 @@ export default {
   },
   mounted() {
     Reveal.initialize({
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      hash: true,
       transition: 'convex',
-      plugins: [RevealMarkdown, RevealHighlight],
+      markdown: {
+        baseUrl: this.slideUrl,
+      },
     });
   },
 };

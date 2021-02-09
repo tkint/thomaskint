@@ -22,7 +22,7 @@ module.exports = {
       },
       {
         text: 'Présentations',
-        link: '/slides/',
+        link: '/presentation/',
       },
       {
         text: 'Contact',
