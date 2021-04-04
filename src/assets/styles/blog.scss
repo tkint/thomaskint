@@ -1,0 +1,27 @@
+blockquote {
+  margin: 0;
+}
+
+blockquote p {
+  padding: 15px;
+  background: #eee;
+  border-radius: 5px;
+}
+
+blockquote::before {
+  opacity: .8;
+  content: '\f10d';
+  font-family: FontAwesome, serif;
+  display: inline-block;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: normal;
+  padding-left: 8px;
+  padding-right: 8px;
+  float: left;
+  text-decoration: inherit;
+  color: $primary;
+}
+
+blockquote p::after {
+}
