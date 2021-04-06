@@ -45,6 +45,7 @@ export default defineComponent({
       currentRoute: computed(() => route.path),
       routes: [
         { title: 'Blog', path: '/blog' },
+        { title: 'Slides', path: '/slides' },
         { title: 'Portfolio', path: '/portfolio' },
         { title: 'Contact', path: '/contact' },
       ],

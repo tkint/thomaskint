@@ -2,7 +2,6 @@ import { Article } from '../models/article';
 
 const articles = [] as Article[];
 const files = import.meta.globEager('./*.md');
-console.log(files);
 
 Object.keys(files).forEach((file) => {
     if (files.hasOwnProperty(file)) {

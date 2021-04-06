@@ -1,17 +1,26 @@
 <template>
-  <app-navbar></app-navbar>
-  <router-view></router-view>
+  <app-navbar v-if="showNavbar"></app-navbar>
+  <div :style="showNavbar ? 'margin-top: 60px' : ''">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 import AppNavbar from './components/layout/AppNavbar.vue';
+import { useRoute } from 'vue-router';
 
 export default defineComponent({
   name: 'App',
   components: { AppNavbar },
   setup() {
-    return {};
+    const route = useRoute();
+
+    const showNavbar = computed(() => {
+      return !route.meta.hideNavbar;
+    });
+
+    return { showNavbar };
   },
 });
 </script>
@@ -19,9 +28,5 @@ export default defineComponent({
 <style>
 html, body, #app {
   height: 100%;
-}
-
-body {
-  padding-top: 60px;
 }
 </style>
