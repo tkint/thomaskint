@@ -34,9 +34,9 @@ export const articles = _articles;
 
 export const slides = [
     {
-        title: 'Love of My Life',
-        subtitle: 'Diapo sur l\'amour de ma vie',
-        directory: 'love',
+        title: 'VueJS',
+        subtitle: 'Présentation sur VueJS',
+        directory: 'vue',
     },
 ];
 
