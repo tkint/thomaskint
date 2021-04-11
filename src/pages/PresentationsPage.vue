@@ -7,10 +7,10 @@
           class="col mb-2"
           v-for="(slide, index) in slides"
           :key="`slide-${index}`">
-        <div class="card">
+        <div class="card item-card">
           <div class="card-body">
             <div class="card-title">
-              <router-link :to="`/slides/${slide.directory}`">
+              <router-link :to="`/presentation/${slide.directory}`">
                 <h3>{{ slide.title }}</h3>
               </router-link>
             </div>
@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import slides from '../slides';
+import { slides } from '../data';
 
 export default defineComponent({
   setup() {
@@ -33,5 +33,5 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
 </style>

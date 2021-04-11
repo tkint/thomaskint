@@ -1,6 +1,6 @@
 <template>
   <app-navbar v-if="showNavbar"></app-navbar>
-  <div :style="showNavbar ? 'margin-top: 60px' : ''">
+  <div class="h-100" :style="showNavbar ? 'padding-top: 60px' : ''">
     <router-view></router-view>
   </div>
 </template>
@@ -28,5 +28,9 @@ export default defineComponent({
 <style>
 html, body, #app {
   height: 100%;
+}
+
+.text-underline {
+  text-decoration: underline !important;
 }
 </style>

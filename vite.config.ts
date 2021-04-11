@@ -1,15 +1,12 @@
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
-import Markdown from 'vite-plugin-md';
+import Markdown, { Mode } from 'vite-plugin-markdown';
 
 export default defineConfig({
     plugins: [
-        Vue({
-            include: [/\.vue$/, /\.md$/], // <--
-        }),
+        Vue({}),
         Markdown({
-            wrapperClasses: 'blog',
-            wrapperComponent: 'BlogWrapper',
+            mode: [Mode.VUE, Mode.HTML, Mode.TOC],
         }),
     ],
 });

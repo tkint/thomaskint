@@ -10,7 +10,7 @@
         </section>
       </div>
     </div>
-    <a href="/slides" class="floating-btn">
+    <a href="/presentation" class="floating-btn">
       <i class="fas fa-times icon"></i>
     </a>
   </div>
@@ -24,7 +24,7 @@ import 'reveal.js/plugin/highlight/zenburn.css';
 import '@fortawesome/fontawesome-free/js/solid.min';
 import '@fortawesome/fontawesome-free/js/fontawesome.min';
 
-import { computed, defineComponent, onMounted, ref } from 'vue';
+import { computed, defineComponent, onMounted } from 'vue';
 import Reveal from 'reveal.js';
 import RevealMarkdown from 'reveal.js/plugin/markdown/markdown';
 import RevealHighlight from 'reveal.js/plugin/highlight/highlight';

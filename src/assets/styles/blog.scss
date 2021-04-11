@@ -1,10 +1,10 @@
 blockquote {
-  margin: 0;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 blockquote p {
   padding: 15px;
-  background: #eee;
   border-radius: 5px;
 }
 
@@ -17,7 +17,7 @@ blockquote::before {
   font-style: normal;
   font-weight: normal;
   padding-left: 8px;
-  padding-right: 8px;
+  padding-right: 15px;
   float: left;
   text-decoration: inherit;
   color: $primary;

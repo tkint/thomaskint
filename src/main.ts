@@ -7,7 +7,6 @@ import './initFontAwesomeIcon';
 
 import App from './App.vue';
 import router from './router';
-import BlogWrapper from './components/blog/BlogWrapper.vue';
 
 const app = createApp(App);
 
@@ -23,7 +22,6 @@ app.config.globalProperties.$filters = {
     },
 };
 
-app.component('BlogWrapper', BlogWrapper);
 app.component('FontAwesomeIcon', FontAwesomeIcon);
 
 app.mount('#app');

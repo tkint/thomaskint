@@ -1,42 +1,38 @@
 <template>
-  <div class="container" v-if="currentArticle">
-    <component
-        standalone
-        :article-id="currentArticle.id"
-        :is="currentArticle.component">
-    </component>
-  </div>
-  <div class="container" v-else>
+  <div class="container">
     <h1>Blog</h1>
     <h6>Etudes et articles en tout genre (sur l'IT)</h6>
     <div class="row flex-column">
       <div
           class="col mb-2"
-          :key="`article-${index}`"
-          v-for="(article, index) in articles">
-        <component
-            :article-id="article.id"
-            :is="article.component">
-        </component>
+          v-for="(article, index) in articles"
+          :key="`article-${index}`">
+        <div class="card item-card">
+          <div class="card-body">
+            <div class="card-title">
+              <router-link :to="`/blog/${article.filename}`">
+                <h3>{{ article.title }}</h3>
+              </router-link>
+            </div>
+            <div class="text-muted">{{ article.subtitle }}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
-import articles from '../blog';
+import { defineComponent } from 'vue';
+import { articles } from '../data';
 
 export default defineComponent({
   name: 'BlogPage',
-  props: {
-    articleId: String,
-  },
-  setup(props) {
-    return {
-      currentArticle: computed(() => articles.find((article) => article.id === props.articleId)),
-      articles,
-    };
+  setup() {
+    return { articles };
   },
 });
 </script>
+
+<style scoped>
+</style>
