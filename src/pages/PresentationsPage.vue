@@ -10,7 +10,7 @@
         <div class="card item-card">
           <div class="card-body">
             <div class="card-title">
-              <router-link :to="`/presentation/${slide.directory}`">
+              <router-link :to="{ name: slidePage, params: { directory: slide.directory } }">
                 <h3>{{ slide.title }}</h3>
               </router-link>
             </div>
@@ -25,10 +25,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { slides } from '../data';
+import { RouteNames } from '../router';
 
 export default defineComponent({
   setup() {
-    return { slides };
+    return {
+      slides,
+      slidePage: RouteNames.PRESENTATION_SLIDE,
+    };
   },
 });
 </script>

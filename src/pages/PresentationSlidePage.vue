@@ -10,7 +10,7 @@
         </section>
       </div>
     </div>
-    <a href="/presentation" class="floating-btn">
+    <a class="floating-btn cursor-pointer" @click="close">
       <i class="fas fa-times icon"></i>
     </a>
   </div>
@@ -25,31 +25,43 @@ import '@fortawesome/fontawesome-free/js/solid.min';
 import '@fortawesome/fontawesome-free/js/fontawesome.min';
 
 import { computed, defineComponent, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import Reveal from 'reveal.js';
 import RevealMarkdown from 'reveal.js/plugin/markdown/markdown';
 import RevealHighlight from 'reveal.js/plugin/highlight/highlight';
 import RevealNotes from 'reveal.js/plugin/notes/notes';
+import { RouteNames } from '../router';
 
 export default defineComponent({
   props: {
     directory: String,
   },
   setup(props) {
+    const router = useRouter();
+
     const basePath = computed(() => `/assets/slides/${props.directory}/`);
     const filePath = computed(() => `${basePath.value}index.md`);
 
     onMounted(() => {
       Reveal.initialize({
         plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-        hash: true,
         transition: 'convex',
+        embedded: true,
         markdown: {
           baseUrl: basePath.value,
         },
       });
     });
 
-    return { filePath };
+    return {
+      filePath,
+      close: () => {
+        const listPageRoute = router.getRoutes().find(r => r.name === RouteNames.PRESENTATIONS);
+        router.replace(listPageRoute).then(() => {
+          window.location.reload();
+        });
+      },
+    };
   },
 });
 </script>
