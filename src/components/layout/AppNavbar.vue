@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand navbar-dark fixed-top d-inline-block">
+  <nav class="navbar navbar-expand navbar-dark fixed-top d-inline-block bg-secondary">
     <ul class="navbar-nav justify-content-center">
       <li class="nav-item" :key="`route-${index}`" v-for="(route, index) in routes">
         <router-link
