@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
-import AppNavbar from './components/layout/AppNavbar.vue';
 import { useRoute } from 'vue-router';
+import AppNavbar from './components/layout/AppNavbar.vue';
 
 export default defineComponent({
   name: 'App',
