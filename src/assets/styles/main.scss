@@ -17,6 +17,14 @@ $secondary: #232628;
   background: #272929 !important;
 }
 
+.card-title a {
+  text-decoration: none !important;
+}
+
+.card-title a:hover {
+  text-decoration: underline !important;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

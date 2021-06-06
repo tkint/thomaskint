@@ -1,4 +1,7 @@
 <template>
+  {{ showModal }}
+  <confirm-modal v-model="showModal"></confirm-modal>
+
   <div class="container h-100">
     <div class="row h-100 text-center">
       <div class="col my-auto">
@@ -13,7 +16,7 @@
 
         </p>
         <p class="lead">
-          <a class="btn btn-primary btn-lg" href="#" role="button">
+          <a class="btn btn-primary btn-lg" href="#" role="button" @click="showModal = true">
             <font-awesome-icon :icon="['far', 'file-pdf']"></font-awesome-icon>
             Curriculum Vitae
           </a>
@@ -25,11 +28,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import ConfirmModal from '../components/shared/ConfirmModal.vue';
 
 export default defineComponent({
   name: 'HomePage',
+  components: { ConfirmModal },
   setup() {
-    return {};
+    return {
+      showModal: false,
+    };
   },
 });
 </script>
