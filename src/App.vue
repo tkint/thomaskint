@@ -1,5 +1,5 @@
 <template>
-  <app-navbar v-if="showNavbar"></app-navbar>
+  <app-header v-if="showNavbar"></app-header>
   <div class="h-100" :style="showNavbar ? 'padding-top: 60px' : ''">
     <router-view></router-view>
   </div>
@@ -8,11 +8,11 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { useRoute } from 'vue-router';
-import AppNavbar from './components/layout/AppNavbar.vue';
+import AppHeader from '@/components/layout/Header.vue';
 
 export default defineComponent({
   name: 'App',
-  components: { AppNavbar },
+  components: { AppHeader },
   setup() {
     const route = useRoute();
 

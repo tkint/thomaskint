@@ -1,12 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
-import HomePage from './pages/HomePage.vue';
-import BlogPage from './pages/BlogPage.vue';
-import PortfolioPage from './pages/PortfolioPage.vue';
-import PresentationsPage from './pages/PresentationsPage.vue';
-import PresentationSlidePage from './pages/PresentationSlidePage.vue';
-import BlogPostPage from './pages/BlogPostPage.vue';
-
 export const RouteNames = {
   HOME: 'HOME',
   BLOG: 'BLOG',
@@ -17,15 +10,36 @@ export const RouteNames = {
 };
 
 const routes = [
-  { name: RouteNames.HOME, path: '/', component: HomePage },
-  { name: RouteNames.BLOG, path: '/blog', component: BlogPage },
-  { name: RouteNames.BLOG_POST, path: '/blog/:filename', component: BlogPostPage, props: true },
-  { name: RouteNames.PORTFOLIO, path: '/portfolio', component: PortfolioPage },
-  { name: RouteNames.PRESENTATIONS, path: '/presentation', component: PresentationsPage },
+  {
+    name: RouteNames.HOME,
+    path: '/',
+    component: () => import('@/pages/HomePage.vue'),
+  },
+  {
+    name: RouteNames.BLOG,
+    path: '/blog',
+    component: () => import('@/pages/BlogPage.vue'),
+  },
+  {
+    name: RouteNames.BLOG_POST,
+    path: '/blog/:filename',
+    component: () => import('@/pages/BlogPostPage.vue'),
+    props: true,
+  },
+  {
+    name: RouteNames.PORTFOLIO,
+    path: '/portfolio',
+    component: () => import('@/pages/PortfolioPage.vue'),
+  },
+  {
+    name: RouteNames.PRESENTATIONS,
+    path: '/presentation',
+    component: () => import('@/pages/PresentationsPage.vue'),
+  },
   {
     name: RouteNames.PRESENTATION_SLIDE,
     path: '/presentation/:directory',
-    component: PresentationSlidePage,
+    component: () => import('@/pages/PresentationSlidePage.vue'),
     props: true,
     meta: { hideNavbar: true },
   },

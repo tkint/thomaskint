@@ -4,9 +4,9 @@
     <h6>Expériences et projets</h6>
     <div class="row flex-column">
       <div
-          class="col mb-2"
-          v-for="(project, index) in projects"
-          :key="`project-${index}`">
+        v-for="(project, index) in projects"
+        :key="`project-${index}`"
+        class="col mb-2">
         <div class="card item-card">
           <div class="card-body">
             <div class="card-title">
@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { projects } from '../data';
+import { projects } from '@/data';
 
 export default defineComponent({
   name: 'PortfolioPage',

@@ -1,6 +1,5 @@
 <template>
   {{ showModal }}
-  <confirm-modal v-model="showModal"></confirm-modal>
 
   <div class="container h-100">
     <div class="row h-100 text-center">
@@ -28,11 +27,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import ConfirmModal from '../components/shared/ConfirmModal.vue';
 
 export default defineComponent({
   name: 'HomePage',
-  components: { ConfirmModal },
   setup() {
     return {
       showModal: false,

@@ -3,10 +3,10 @@
     <div class="reveal">
       <div class="slides">
         <section
-            :data-markdown="filePath"
-            data-separator="^<!--hslide-->"
-            data-separator-vertical="^<!--vslide-->"
-            data-separator-notes="^Note:">
+          :data-markdown="filePath"
+          data-separator="^<!--hslide-->"
+          data-separator-vertical="^<!--vslide-->"
+          data-separator-notes="^Note:">
         </section>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="article">
+  <div v-if="article" class="container">
     <h1>{{ article.title }}</h1>
     <h6>{{ article.subtitle }}</h6>
 
@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { articles } from '../data';
+import { articles } from '@/data';
 
 export default defineComponent({
   name: 'BlogPostPage',

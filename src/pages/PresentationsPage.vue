@@ -4,9 +4,9 @@
     <h6>Supports de présentation</h6>
     <div class="row flex-column">
       <div
-          class="col mb-2"
-          v-for="(slide, index) in slides"
-          :key="`slide-${index}`">
+        v-for="(slide, index) in slides"
+        :key="`slide-${index}`"
+        class="col mb-2">
         <div class="card item-card">
           <div class="card-body">
             <div class="card-title">
@@ -24,8 +24,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { slides } from '../data';
-import { RouteNames } from '../router';
+import { slides } from '@/data';
+import { RouteNames } from '@/router';
 
 export default defineComponent({
   setup() {

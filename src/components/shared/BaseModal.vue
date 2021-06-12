@@ -11,28 +11,28 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { defineComponent, watch } from 'vue';
+import useModal from '../../composables/useModal';
 
 export default defineComponent({
   name: 'BaseModal',
-  emits: ['update:modelValue'],
   props: {
     modelValue: {
       type: Boolean,
     },
   },
+  emits: ['update:modelValue'],
   setup(props, { emit }) {
-    const modalId = `modal-${(Math.random() * 1000).toFixed(0)}`;
-    console.log(modalId);
+    const { modalId, showModal, hideModal, onHide } = useModal();
 
-    const active = computed({
-      get() {
-        return props.modelValue;
+    onHide(() => emit('update:modelValue', null));
+    watch<Boolean>(
+      () => props.modelValue,
+      (newValue) => {
+        if (newValue) showModal();
+        else hideModal();
       },
-      set(newValue) {
-        emit('update:modelValue', newValue);
-      },
-    });
+    );
 
     return {
       modalId,

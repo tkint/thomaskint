@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "@types/node",
+      "cypress",
+      "mocha",
+      "chai"
+    ]
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "files": [
+    "support/index.d.ts"
+  ]
+}

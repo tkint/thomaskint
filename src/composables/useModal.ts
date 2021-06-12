@@ -1,41 +1,49 @@
-import { onMounted, watch } from 'vue';
 import { Modal } from 'bootstrap';
+import { onMounted, onUnmounted } from 'vue';
 
-export const modalMixin = {
-    emits: ['update:modelValue'],
-    props: {
-        modelValue: {
-            type: Boolean,
-        },
-    },
+export default () => {
+  const modalId = `modal-${(Math.random() * 1000).toFixed(0)}`;
+
+  const getModalDiv = () => document.getElementById(modalId);
+  const getModalInstance = () => {
+    const modalDiv = getModalDiv();
+    if (modalDiv) {
+      let instance = Modal.getInstance(modalDiv);
+      if (!instance) {
+        instance = new Modal(modalDiv);
+      }
+      return instance;
+    }
+    return null;
+  };
+
+  const showModal = () => {
+    getModalInstance()?.show();
+  };
+
+  const hideModal = () => {
+    getModalInstance()?.hide();
+  };
+
+  let hideFn: Function;
+  const onHide = (callback: Function) => {
+    hideFn = callback;
+  };
+
+  const executeHideFn = () => !!hideFn && hideFn();
+  onMounted(() => {
+    getModalDiv()?.addEventListener('hidden.bs.modal', executeHideFn);
+  });
+
+  onUnmounted(() => {
+    getModalDiv()?.removeEventListener('hidden.bs.modal', executeHideFn);
+  });
+
+  return {
+    modalId,
+    getModalDiv,
+    showModal,
+    hideModal,
+    onHide,
+  };
 };
-
-export default (props: typeof modalMixin.props, emit: Function) => {
-    const modalId = `modal-${(Math.random() * 1000).toFixed(0)}`;
-
-    onMounted(() => {
-        const modalDiv = document.getElementById(modalId);
-        if (modalDiv) {
-            modalDiv.addEventListener('hidden.bs.modal', () => {
-                console.log('hidden', emit);
-                emit('update:modelValue', false);
-            });
-        }
-    });
-
-    watch<Boolean>(() => !!props.modelValue, (newValue) => {
-        const modalDiv = document.getElementById(modalId);
-        if (modalDiv) {
-            const modal = new Modal(modalDiv);
-            if (newValue) {
-                modal.show();
-            } else {
-                modal.hide();
-            }
-        }
-    });
-
-    return {
-        modalId,
-    };
-}

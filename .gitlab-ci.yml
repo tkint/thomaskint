@@ -1,25 +1,66 @@
 variables:
   NODE_IMAGE: node:lts-alpine
+  CYPRESS_IMAGE: cypress/base:latest
 
 stages:
   - build
+  - test
   - publish
 
-build:
+.node_base: &node_base
   image: $NODE_IMAGE
-  stage: build
   cache:
     key: npm-cache
     paths:
       - .npm/
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+
+build:
+  <<: *node_base
+  stage: build
   artifacts:
     paths:
       - dist
     expire_in: 3 days
-  before_script:
-    - npm ci --cache .npm --prefer-offline
   script:
     - npm run build
+    - npm run lint
+
+.test-unit:
+  <<: *node_base
+  stage: test
+  artifacts:
+    paths:
+      - tests/unit/report
+    reports:
+      junit: tests/unit/report/unit_test_report.xml
+    expire_in: 3 days
+    when: always
+  coverage: '/^All files\s*\|\s*(\d+(?:\.\d+)?)/'
+  script:
+    - npm run test:unit -- --coverage
+
+test-e2e:
+  <<: *node_base
+  image: $CYPRESS_IMAGE
+  stage: test
+  artifacts:
+    paths:
+      - tests/e2e/report
+    expire_in: 3 days
+    when: always
+  script:
+    - npm run serve:ci &
+    - npm run test:e2e
+  after_script:
+    - npx mochawesome-merge "tests/e2e/report/*.json" > mochawesome.json
+    - npx marge mochawesome.json
+      -f "index.html"
+      -o "tests/e2e/report"
+      -t "thomaskint Frontend E2E Report"
+      -p "thomaskint E2E Report"
+      --charts
 
 pages:
   image: $NODE_IMAGE

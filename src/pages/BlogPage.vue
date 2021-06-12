@@ -4,9 +4,9 @@
     <h6>Etudes et articles en tout genre (sur l'IT)</h6>
     <div class="row flex-column">
       <div
-          class="col mb-2"
-          v-for="(article, index) in articles"
-          :key="`article-${index}`">
+        v-for="(article, index) in articles"
+        :key="`article-${index}`"
+        class="col mb-2">
         <div class="card item-card">
           <div class="card-body">
             <div class="card-title">
@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { articles } from '../data';
+import { articles } from '@/data';
 
 export default defineComponent({
   name: 'BlogPage',
