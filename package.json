@@ -42,7 +42,7 @@
     "mochawesome-merge": "4.2.0",
     "mochawesome-report-generator": "5.2.0",
     "prettier": "2.3.1",
-    "sass": "^1.34.1",
+    "sass": "1.32.13",
     "ts-jest": "27.0.3",
     "typescript": "4.3.2",
     "vite": "2.3.7",
