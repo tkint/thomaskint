@@ -1,14 +1,14 @@
-import { ref, reactive, Ref } from 'vue';
-import Config from './models/config';
+import { reactive } from 'vue';
+import Config from '@/models/config';
 
-interface AppState {
+export interface AppState {
   config: Config
-  loading: Ref<boolean>
+  loading: boolean
 }
 
 const state = reactive<AppState>({
   config: Config.load(),
-  loading: ref(true),
+  loading: true,
 } as AppState);
 
 const methods = {

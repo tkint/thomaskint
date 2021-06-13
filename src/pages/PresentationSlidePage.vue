@@ -26,11 +26,15 @@ import '@fortawesome/fontawesome-free/js/fontawesome.min';
 
 import { computed, defineComponent, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+// @ts-ignore
 import Reveal from 'reveal.js';
+// @ts-ignore
 import RevealMarkdown from 'reveal.js/plugin/markdown/markdown';
+// @ts-ignore
 import RevealHighlight from 'reveal.js/plugin/highlight/highlight';
+// @ts-ignore
 import RevealNotes from 'reveal.js/plugin/notes/notes';
-import { RouteNames } from '../router';
+import { RouteNames } from '@/router';
 
 export default defineComponent({
   props: {
@@ -57,9 +61,11 @@ export default defineComponent({
       filePath,
       close: () => {
         const listPageRoute = router.getRoutes().find(r => r.name === RouteNames.PRESENTATIONS);
-        router.replace(listPageRoute).then(() => {
-          window.location.reload();
-        });
+        if (listPageRoute) {
+          router.replace(listPageRoute).then(() => {
+            window.location.reload();
+          });
+        }
       },
     };
   },

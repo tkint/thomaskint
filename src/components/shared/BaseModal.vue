@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent, watch } from 'vue';
-import useModal from '../../composables/useModal';
+import useModal from '@/composables/useModal';
 
 export default defineComponent({
   name: 'BaseModal',

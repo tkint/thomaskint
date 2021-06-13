@@ -1,9 +1,8 @@
-import moment, { Moment } from 'moment';
 import { Article } from '@/models/article';
 
-const _dateRegex = /\d{4}-\d{2}-\d{2}/;
+// const _dateRegex = /\d{4}-\d{2}-\d{2}/;
 const _articles = [] as Article[];
-const _articleFiles = import.meta.globEager('@/blog/*.md');
+const _articleFiles = import.meta.globEager('./blog/*.md');
 
 Object.keys(_articleFiles).forEach((filepath) => {
   if (_articleFiles.hasOwnProperty(filepath)) {
@@ -14,11 +13,11 @@ Object.keys(_articleFiles).forEach((filepath) => {
       const completePathParts = filepath.split('/');
       let cleanPath = completePathParts[completePathParts.length - 1];
       cleanPath = cleanPath.replace(/\.[^/.]+$/, '');
-      let createDate: Moment | null = null;
-      const matches = _dateRegex.exec(cleanPath as string);
-      if (matches) {
-        createDate = moment(matches[matches.index]);
-      }
+      let createDate = undefined;
+      // const matches = _dateRegex.exec(cleanPath as string);
+      // if (matches) {
+      //   createDate = moment(matches[matches.index]);
+      // }
       _articles.push({
         filename: cleanPath,
         title: frontmatter.title,

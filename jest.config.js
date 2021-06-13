@@ -20,7 +20,7 @@ module.exports = {
     '.*\\.(vue)$': 'vue-jest',
   },
   setupFilesAfterEnv: [
-    '<rootDir>/tests/unit/setup.js',
+    '<rootDir>/tests/unit/setup.ts',
   ],
   coverageDirectory: '<rootDir>/tests/unit/report',
   reporters: [

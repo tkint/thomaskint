@@ -4,19 +4,9 @@
     "types": [
       "@types/node",
       "@types/jest"
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "../../src/*"
-      ]
-    }
+    ]
   },
   "include": [
-    "../../src/**/*.ts",
-    "../../src/**/*.d.ts",
-    "../../src/**/*.tsx",
-    "../../src/**/*.vue",
     "**/*.ts"
   ]
 }

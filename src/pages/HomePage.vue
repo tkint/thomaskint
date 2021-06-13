@@ -1,6 +1,4 @@
 <template>
-  {{ showModal }}
-
   <div class="container h-100">
     <div class="row h-100 text-center">
       <div class="col my-auto">
