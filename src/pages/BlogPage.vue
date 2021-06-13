@@ -15,6 +15,7 @@
               </router-link>
             </div>
             <div class="text-muted">{{ article.subtitle }}</div>
+            <div class="small text-muted">Le {{ article.createDate?.format('DD/MM/YYYY') }}</div>
           </div>
         </div>
       </div>
@@ -29,7 +30,9 @@ import { articles } from '@/data';
 export default defineComponent({
   name: 'BlogPage',
   setup() {
-    return { articles };
+    return {
+      articles,
+    };
   },
 });
 </script>

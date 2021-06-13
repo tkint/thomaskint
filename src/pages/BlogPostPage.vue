@@ -7,6 +7,12 @@
 
     <hr class="bg-primary">
 
+    <!--    <div v-for="(item, index) in toc" :key="`toc-item-${index}`" :class="`ps-${item.level}`">-->
+    <!--      {{ item.content }}-->
+    <!--    </div>-->
+
+    <!--    <hr class="bg-primary">-->
+
     <component :is="markdownComponent"></component>
   </div>
 </template>
@@ -23,14 +29,16 @@ export default defineComponent({
   setup(props) {
     const publicationDate = ref('');
     let markdownComponent: any = null;
+    let toc: { level: string, content: string }[] = null;
 
     const article = articles.find(a => a.filename === props.filename);
 
     if (article) {
       markdownComponent = article.component;
+      toc = article.toc;
 
       if (article.createDate) {
-        publicationDate.value = article.createDate.format('DD/MM/yyyy');
+        publicationDate.value = article.createDate.format('DD/MM/YYYY');
       }
     }
 
@@ -38,6 +46,7 @@ export default defineComponent({
       article,
       publicationDate,
       markdownComponent,
+      toc,
     };
   },
 });

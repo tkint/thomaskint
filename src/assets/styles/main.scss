@@ -10,6 +10,7 @@ $body-color: white;
 $secondary: #232628;
 
 @import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/highlight.js/scss/github-dark";
 @import "blog.scss";
 
 .item-card {
@@ -28,3 +29,10 @@ $secondary: #232628;
   cursor: pointer;
 }
 
+.hljs {
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 8px 16px;
+  //max-height: 400px;
+  font-size: 12px;
+}

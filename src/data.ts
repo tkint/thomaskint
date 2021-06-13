@@ -1,28 +1,31 @@
+import dayjs from 'dayjs';
 import { Article } from '@/models/article';
 
-// const _dateRegex = /\d{4}-\d{2}-\d{2}/;
+const _dateRegex = /\d{4}-\d{2}-\d{2}/;
 const _articles = [] as Article[];
 const _articleFiles = import.meta.globEager('./blog/*.md');
 
 Object.keys(_articleFiles).forEach((filepath) => {
   if (_articleFiles.hasOwnProperty(filepath)) {
     const module = _articleFiles[filepath];
-    const frontmatter = module.attributes;
+    const { attributes, VueComponent, toc } = module;
+    console.log(module);
 
-    if (frontmatter && frontmatter.title) {
+    if (attributes && attributes.title) {
       const completePathParts = filepath.split('/');
       let cleanPath = completePathParts[completePathParts.length - 1];
       cleanPath = cleanPath.replace(/\.[^/.]+$/, '');
       let createDate = undefined;
-      // const matches = _dateRegex.exec(cleanPath as string);
-      // if (matches) {
-      //   createDate = moment(matches[matches.index]);
-      // }
+      const matches = _dateRegex.exec(cleanPath as string);
+      if (matches) {
+        createDate = dayjs(matches[matches.index]);
+      }
       _articles.push({
         filename: cleanPath,
-        title: frontmatter.title,
-        subtitle: frontmatter.subtitle,
-        component: module.VueComponent,
+        title: attributes.title,
+        subtitle: attributes.subtitle,
+        toc: toc,
+        component: VueComponent,
         createDate,
       });
     }
