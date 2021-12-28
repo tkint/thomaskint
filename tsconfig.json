@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "useDefineForClassFields": true,
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
+    "esModuleInterop": true,    
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
@@ -20,14 +21,13 @@
       "dom"
     ],
     "types": [
-      "vite/client",
-      "@types/node",
-      "@types/markdown-it"
+      "@types/bootstrap"
     ]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
+    "src/**/*.tsx",
     "src/**/*.vue"
   ]
 }

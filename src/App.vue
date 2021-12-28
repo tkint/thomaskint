@@ -1,36 +1,79 @@
-<template>
-  <app-header v-if="showNavbar"></app-header>
-  <div class="h-100" :style="showNavbar ? 'padding-top: 60px' : ''">
-    <router-view></router-view>
-  </div>
-</template>
+<script setup lang="ts">
+import { onMounted } from "vue";
+import { ScrollSpy } from "bootstrap";
+import Landing from "./components/Landing.vue";
+import Portfolio from "./components/Portfolio.vue";
+import Contact from "./components/Contact.vue";
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue';
-import { useRoute } from 'vue-router';
-import AppHeader from '@/components/layout/Header.vue';
+const panels = [
+  { title: "Home", identifier: "home", component: Landing },
+  { title: "Portfolio", identifier: "portfolio", component: Portfolio },
+  { title: "Contact", identifier: "contact", component: Contact },
+];
 
-export default defineComponent({
-  name: 'App',
-  components: { AppHeader },
-  setup() {
-    const route = useRoute();
-
-    const showNavbar = computed(() => {
-      return !route.meta.hideNavbar;
-    });
-
-    return { showNavbar };
-  },
+onMounted(() => {
+  new ScrollSpy(document.body, {
+    target: "#app-navbar",
+  });
 });
 </script>
 
+<template>
+  <nav id="app-navbar" class="navbar fixed-top">
+    <a class="navbar-brand" href="#"></a>
+
+    <ul class="nav me-2" role="tablist">
+      <li
+        class="nav-item"
+        v-for="(panel, index) in panels"
+        :key="`nav-${index}`"
+      >
+        <a class="nav-link" :href="`#${panel.identifier}`">{{ panel.title }}</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div
+    data-bs-spy="scroll"
+    data-bs-target="#app-navbar"
+    data-bs-offset="0"
+    tabindex="0"
+    class="h-100"
+  >
+    <component
+      :id="panel.identifier"
+      v-for="(panel, index) in panels"
+      :key="`panel-${index}`"
+      :is="panel.component"
+    ></component>
+  </div>
+</template>
+
 <style>
-html, body, #app {
+html,
+body {
   height: 100%;
+  font-family: "Roboto", sans-serif;
 }
 
-.text-underline {
-  text-decoration: underline !important;
+#app {
+  height: 100%;
+  width: 100%;
+}
+</style>
+
+<style scoped>
+#app-navbar {
+  color: var(--bs-gray-400);
+  /* mix-blend-mode: exclusion; */
+}
+
+.nav-link {
+  /* color: unset; */
+  font-style: italic;
+}
+.nav-link.active {
+  font-weight: bold;
+  font-style: unset;
 }
 </style>
