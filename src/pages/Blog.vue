@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 const panels = [
-  { title: "Home", identifier: "home" },
-  { title: "Portfolio", identifier: "portfolio" },
-  { title: "Contact", identifier: "contact" },
+  { title: "#", path: "/" },
+  { title: "Portfolio", path: "/#portfolio" },
+  { title: "Contact", path: "/#contact" },
 ];
 </script>
 
@@ -10,13 +10,13 @@ const panels = [
   <nav id="app-navbar" class="navbar fixed-top">
     <a class="navbar-brand" href="#"></a>
 
-    <ul class="nav me-2" role="tablist">
+    <ul class="nav pe-2 shadow-sm" role="tablist">
       <li
         class="nav-item"
         v-for="(panel, index) in panels"
         :key="`nav-${index}`"
       >
-        <router-link :to="`/#${panel.identifier}`" class="nav-link">
+        <router-link :to="panel.path" class="nav-link">
           {{ panel.title }}
         </router-link>
       </li>
@@ -36,9 +36,17 @@ const panels = [
 </template>
 
 <style scoped>
+html {
+  scroll-behavior: auto;
+}
+
 #app-navbar {
   color: var(--bs-gray-400);
-  /* mix-blend-mode: exclusion; */
+  padding: 0;
+}
+
+#app-navbar .nav {
+  border-bottom-left-radius: 15px;
 }
 .nav-link {
   /* color: unset; */

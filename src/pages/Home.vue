@@ -1,24 +1,41 @@
 <script lang="ts" setup>
 import { ScrollSpy } from "bootstrap";
-import { onMounted, onUnmounted, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref, watch } from "vue";
 import Contact from "@/components/home/contact/Contact.vue";
 import Landing from "@/components/home/landing/Landing.vue";
 import Portfolio from "@/components/home/portfolio/Portfolio.vue";
 import { useRoute } from "vue-router";
 
 const panels = [
-  { title: "Home", identifier: "home", component: Landing },
+  { title: "#", identifier: "home", component: Landing },
   { title: "Portfolio", identifier: "portfolio", component: Portfolio },
   { title: "Contact", identifier: "contact", component: Contact },
 ];
 
+const scrollSpyOffset = 10;
+
+const activePanelIndex = ref(0);
+watch(activePanelIndex, (newIndex) => {
+  const anchor =
+    activePanelIndex.value === 0 ? " " : `#${panels[newIndex].identifier}`;
+  window.history.replaceState(window.history.state, "", anchor);
+});
+
 onMounted(() => {
-  const scrollSpy = new ScrollSpy(document.body, {
-    target: "#app-navbar",
+  const panelPositions = panels.map((panel) => {
+    const panelDiv = document.getElementById(panel.identifier);
+    if (panelDiv) return panelDiv.offsetTop;
+    throw Error(`Panel ${panel.identifier} not found`);
   });
 
-  onUnmounted(() => {
-    scrollSpy.dispose();
+  window.addEventListener("scroll", () => {
+    const scrollPos =
+      document.documentElement.scrollTop || document.body.scrollTop;
+
+    const activeIndex = panelPositions.findIndex(
+      (position) => position + window.innerHeight >= scrollPos + scrollSpyOffset
+    );
+    activePanelIndex.value = activeIndex > 0 ? activeIndex : 0;
   });
 
   const route = useRoute();
@@ -26,25 +43,32 @@ onMounted(() => {
     const panelDiv = document.querySelector(route.hash);
     panelDiv?.scrollIntoView(true);
   }
-
-  window.addEventListener("activate.bs.scrollspy", (event) => {
-    // @ts-ignore
-    window.history.replaceState(window.history.state, "", event.relatedTarget);
-  });
 });
+
+const goToPanel = (panelIdentifier: string) => {
+  document
+    .getElementById(panelIdentifier)
+    ?.scrollIntoView({ behavior: "smooth" });
+};
 </script>
 
 <template>
   <nav id="app-navbar" class="navbar fixed-top">
     <a class="navbar-brand" href="#"></a>
 
-    <ul class="nav me-2" role="tablist">
+    <ul class="nav pe-2 bg-white shadow-sm" role="tablist">
       <li
         class="nav-item"
+        :data-panel-id="panel.identifier"
         v-for="(panel, index) in panels"
         :key="`nav-${index}`"
       >
-        <a class="nav-link" :href="`#${panel.identifier}`">{{ panel.title }}</a>
+        <span
+          :class="['nav-link', { active: index === activePanelIndex }]"
+          @click="goToPanel(panel.identifier)"
+        >
+          {{ panel.title }}
+        </span>
       </li>
       <!-- <li class="nav-item">
         <router-link class="nav-link" :to="{ name: 'BLOG' }">Blog</router-link>
@@ -52,13 +76,7 @@ onMounted(() => {
     </ul>
   </nav>
 
-  <div
-    data-bs-spy="scroll"
-    data-bs-target="#app-navbar"
-    data-bs-offset="0"
-    tabindex="0"
-    class="h-100"
-  >
+  <div class="h-100">
     <component
       :id="panel.identifier"
       v-for="(panel, index) in panels"
@@ -71,11 +89,16 @@ onMounted(() => {
 <style scoped>
 #app-navbar {
   color: var(--bs-gray-400);
-  /* mix-blend-mode: exclusion; */
+  padding: 0;
 }
+
+#app-navbar .nav {
+  border-bottom-left-radius: 15px;
+}
+
 .nav-link {
-  /* color: unset; */
   font-style: italic;
+  cursor: pointer !important;
 }
 .nav-link.active {
   font-weight: bold;
