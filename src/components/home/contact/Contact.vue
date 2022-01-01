@@ -18,7 +18,7 @@ const submit = async () => {
   if (form.email && form.message) {
     state.value = State.LOADING;
     const formData = new FormData();
-    formData.append("_replyto", form.email);
+    formData.append("email", form.email);
     formData.append("message", form.message);
 
     try {
@@ -39,8 +39,9 @@ const submit = async () => {
       if (state.value === State.OK) {
         form.email = undefined;
         form.message = undefined;
+      } else {
+        state.value = State.INITIAL;
       }
-      state.value = State.INITIAL;
     }, 1000);
   }
 };
@@ -62,7 +63,23 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
 
     <div class="row justify-content-center">
       <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 col-xl-3">
-        <form @submit.prevent id="contact-form">
+        <div
+          class="alert alert-success alert-dismissible"
+          v-if="state === State.OK"
+        >
+          <h4 class="alert-heading fw-bold">
+            <AppIcon icon="valid"></AppIcon>
+            Message envoyé !
+            <button
+              type="button"
+              class="btn-sm btn-close"
+              @click="state = State.INITIAL"
+            ></button>
+          </h4>
+          <p>Votre message a bien été envoyé</p>
+        </div>
+
+        <form @submit.prevent id="contact-form" v-else>
           <div class="row flex-column gy-4">
             <div class="col">
               <div class="form-group">
@@ -103,10 +120,6 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
                 <template v-else-if="state === State.LOADING">
                   <div class="spinner-border spinner-border-sm"></div>
                   Envoi en cours
-                </template>
-                <template v-else-if="state === State.OK">
-                  <AppIcon icon="valid"></AppIcon>
-                  Envoyé
                 </template>
                 <template v-else="state === State.KO">
                   <AppIcon icon="invalid"></AppIcon>
