@@ -1,5 +1,10 @@
 import { faBoxArchive } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faNpm } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  faNpm,
+  faStackOverflow,
+} from "@fortawesome/free-brands-svg-icons";
 import {
   faCircleCheck,
   faCircleXmark,
@@ -7,6 +12,8 @@ import {
 
 export const Icons = {
   github: faGithub,
+  linkedIn: faLinkedin,
+  stackOverflow: faStackOverflow,
   npm: faNpm,
   mvn: faBoxArchive,
   valid: faCircleCheck,

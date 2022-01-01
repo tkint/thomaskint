@@ -5,6 +5,7 @@ import Contact from "@/components/home/contact/Contact.vue";
 import Landing from "@/components/home/landing/Landing.vue";
 import Portfolio from "@/components/home/portfolio/Portfolio.vue";
 import Resume from "@/components/home/resume/Resume.vue";
+import Social from "@/components/home/Social.vue";
 import { findLastIndex } from "@/utils";
 
 const panels = [
@@ -55,6 +56,8 @@ const goToPanel = (panelIdentifier: string) => {
 </script>
 
 <template>
+  <Social></Social>
+
   <nav id="app-navbar" class="navbar fixed-top">
     <a class="navbar-brand" href="#"></a>
 
