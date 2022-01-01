@@ -1,19 +1,4 @@
-import { faBoxArchive } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faNpm } from "@fortawesome/free-brands-svg-icons";
-import {
-  faCircleCheck,
-  faCircleXmark,
-} from "@fortawesome/free-regular-svg-icons";
-
-export const Icons = {
-  github: faGithub,
-  npm: faNpm,
-  mvn: faBoxArchive,
-  valid: faCircleCheck,
-  invalid: faCircleXmark,
-};
-
-export type IconKey = keyof typeof Icons;
+import { IconKey } from "./icons";
 
 export interface Project {
   name: string;
@@ -27,7 +12,7 @@ export interface Link {
   url: string;
 }
 
-interface Contributor {
+export interface Contributor {
   firstname: string;
   lastname: string;
 }

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, reactive, ref } from "vue";
-import Panel from "@/components/common/Panel.vue";
-import AppIcon from "../../common/AppIcon.vue";
+import Panel from "@/components/home/Panel.vue";
+import AppIcon from "@/components/common/AppIcon.vue";
 
 const form = reactive<{ email?: string; message?: string }>({});
 
@@ -56,12 +56,12 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
 
 <template>
   <Panel vertical-align="middle">
-    <div class="row mb-4">
-      <h1 class="col text-uppercase text-center">Me contacter</h1>
-    </div>
+    <template #title>
+      <div class="text-uppercase">Me contacter</div>
+    </template>
 
     <div class="row justify-content-center">
-      <div class="col-xs-12 col-md-3">
+      <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 col-xl-3">
         <form @submit.prevent id="contact-form">
           <div class="row flex-column gy-4">
             <div class="col">

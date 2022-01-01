@@ -1,11 +1,15 @@
 <script lang="ts" setup>
-import Panel from "@/components/common/Panel.vue";
-import { projects } from "@/data";
-import ProjectCard from "./ProjectCard.vue";
+import { projects } from "@/data/portfolio";
+import Panel from "@/components/home/Panel.vue";
+import ProjectCard from "@/components/home/portfolio/ProjectCard.vue";
 </script>
 
 <template>
   <Panel vertical-align="middle" class="bg-dark">
+    <template #title>
+      <div class="text-uppercase text-white">Portfolio</div>
+    </template>
+
     <div class="container">
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         <div

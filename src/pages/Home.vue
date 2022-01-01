@@ -1,13 +1,14 @@
 <script lang="ts" setup>
-import { ScrollSpy } from "bootstrap";
-import { computed, onMounted, onUnmounted, ref, watch } from "vue";
+import { useRoute } from "vue-router";
+import { onMounted, ref, watch } from "vue";
 import Contact from "@/components/home/contact/Contact.vue";
 import Landing from "@/components/home/landing/Landing.vue";
 import Portfolio from "@/components/home/portfolio/Portfolio.vue";
-import { useRoute } from "vue-router";
+import Resume from "@/components/home/resume/Resume.vue";
 
 const panels = [
   { title: "#", identifier: "home", component: Landing },
+  { title: "Expériences", identifier: "resume", component: Resume },
   { title: "Portfolio", identifier: "portfolio", component: Portfolio },
   { title: "Contact", identifier: "contact", component: Contact },
 ];
@@ -29,8 +30,7 @@ onMounted(() => {
   });
 
   window.addEventListener("scroll", () => {
-    const scrollPos =
-      document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollPos = document.documentElement.scrollTop;
 
     const activeIndex = panelPositions.findIndex(
       (position) => position + window.innerHeight >= scrollPos + scrollSpyOffset

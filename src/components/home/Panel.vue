@@ -24,7 +24,12 @@ withDefaults(
     style="min-height: 100%"
   >
     <div class="row w-100" style="min-height: 100%">
-      <div class="col my-2">
+      <div class="col py-5">
+        <div class="row mb-4">
+          <h1 class="col text-center">
+            <slot name="title"></slot>
+          </h1>
+        </div>
         <slot></slot>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Icons, IconKey } from "@/data";
+import { Icons, IconKey } from "@/data/icons";
 
 withDefaults(
   defineProps<{

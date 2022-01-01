@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 const panels = [
   { title: "#", path: "/" },
+  { title: "Expériences", path: "/#resume" },
   { title: "Portfolio", path: "/#portfolio" },
   { title: "Contact", path: "/#contact" },
 ];

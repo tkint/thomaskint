@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Project } from "@/data";
+import { Project } from "@/data/portfolio";
 import AppIcon from "@/components/common/AppIcon.vue";
 
 const props = defineProps<{ project: Project }>();
