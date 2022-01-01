@@ -7,9 +7,9 @@ import dayjs from "dayjs";
 import fr from "dayjs/locale/fr";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-import App from "./App.vue";
-import router from "./router";
-import { Icons } from "./data/icons";
+import App from "@/App.vue";
+import router from "@/router";
+import { Icons } from "@/data/icons";
 
 Object.values(Icons).forEach((icon) => {
   library.add(icon);

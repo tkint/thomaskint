@@ -1,4 +1,4 @@
-import { IconKey } from "./icons";
+import { IconKey } from "@/data/icons";
 
 export interface Project {
   name: string;

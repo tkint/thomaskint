@@ -5,6 +5,7 @@ import Contact from "@/components/home/contact/Contact.vue";
 import Landing from "@/components/home/landing/Landing.vue";
 import Portfolio from "@/components/home/portfolio/Portfolio.vue";
 import Resume from "@/components/home/resume/Resume.vue";
+import { findLastIndex } from "@/utils";
 
 const panels = [
   { title: "#", identifier: "home", component: Landing },
@@ -23,7 +24,7 @@ watch(activePanelIndex, (newIndex) => {
 });
 
 onMounted(() => {
-  const panelPositions = panels.map((panel) => {
+  const panelOffsets = panels.map((panel) => {
     const panelDiv = document.getElementById(panel.identifier);
     if (panelDiv) return panelDiv.offsetTop;
     throw Error(`Panel ${panel.identifier} not found`);
@@ -32,8 +33,9 @@ onMounted(() => {
   window.addEventListener("scroll", () => {
     const scrollPos = document.documentElement.scrollTop;
 
-    const activeIndex = panelPositions.findIndex(
-      (position) => position + window.innerHeight >= scrollPos + scrollSpyOffset
+    const activeIndex = findLastIndex(
+      panelOffsets,
+      (panelOffset) => scrollPos + scrollSpyOffset >= panelOffset
     );
     activePanelIndex.value = activeIndex > 0 ? activeIndex : 0;
   });
