@@ -9,6 +9,7 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 
 import App from "@/App.vue";
 import router from "@/router";
+import i18n from "@/i18n";
 import { Icons } from "@/data/icons";
 
 Object.values(Icons).forEach((icon) => {
@@ -20,5 +21,6 @@ dayjs.extend(customParseFormat);
 
 createApp(App)
   .use(router)
+  .use(i18n)
   .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");

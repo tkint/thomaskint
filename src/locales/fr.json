@@ -1,0 +1,14 @@
+{
+  "navbar": {
+    "resume": "Expériences",
+    "contact": "Contact",
+    "portfolio": "Portfolio"
+  },
+  "home": {
+    "contact": {
+      "title": "Me contacter",
+      "sent": "Message envoyé !",
+      "send": "Envoyer"
+    }
+  }
+}

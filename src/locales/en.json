@@ -1,0 +1,13 @@
+{
+  "navbar": {
+    "resume": "Resume",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "home": {
+    "contact": {
+      "title": "Contact me",
+      "sent": "Message sent !"
+    }
+  }
+}

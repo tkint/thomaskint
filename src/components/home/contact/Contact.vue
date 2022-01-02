@@ -2,6 +2,9 @@
 import { computed, reactive, ref } from "vue";
 import Panel from "@/components/home/Panel.vue";
 import AppIcon from "@/components/common/AppIcon.vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const form = reactive<{ email?: string; message?: string }>({});
 
@@ -58,7 +61,7 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
 <template>
   <Panel vertical-align="middle">
     <template #title>
-      <div class="text-uppercase">Me contacter</div>
+      <div class="text-uppercase">{{ t("home.contact.title") }}</div>
     </template>
 
     <div class="row justify-content-center">
@@ -69,7 +72,7 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
         >
           <h4 class="alert-heading fw-bold">
             <AppIcon icon="valid"></AppIcon>
-            Message envoyé !
+            {{ t('home.contact.sent') }}
             <button
               type="button"
               class="btn-sm btn-close"
@@ -116,7 +119,7 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
                 @click="submit"
                 :disabled="isDisabled"
               >
-                <template v-if="state === State.INITIAL">Envoyer</template>
+                <template v-if="state === State.INITIAL">{{ t('home.contact.send') }}</template>
                 <template v-else-if="state === State.LOADING">
                   <div class="spinner-border spinner-border-sm"></div>
                   Envoi en cours

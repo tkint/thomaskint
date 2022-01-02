@@ -1,31 +1,40 @@
 <script lang="ts" setup>
 import { useRoute } from "vue-router";
-import { onMounted, ref, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import Contact from "@/components/home/contact/Contact.vue";
 import Landing from "@/components/home/landing/Landing.vue";
 import Portfolio from "@/components/home/portfolio/Portfolio.vue";
 import Resume from "@/components/home/resume/Resume.vue";
 import Social from "@/components/home/Social.vue";
 import { findLastIndex } from "@/utils";
+import { useI18n } from "vue-i18n";
 
-const panels = [
+const { t, locale: currentLocale, availableLocales } = useI18n();
+
+const panels = computed(() => [
   { title: "#", identifier: "home", component: Landing },
-  { title: "Expériences", identifier: "resume", component: Resume },
-  { title: "Portfolio", identifier: "portfolio", component: Portfolio },
-  { title: "Contact", identifier: "contact", component: Contact },
-];
+  { title: t("navbar.resume"), identifier: "resume", component: Resume },
+  {
+    title: t("navbar.portfolio"),
+    identifier: "portfolio",
+    component: Portfolio,
+  },
+  { title: t("navbar.contact"), identifier: "contact", component: Contact },
+]);
 
 const scrollSpyOffset = 10;
 
 const activePanelIndex = ref(0);
 watch(activePanelIndex, (newIndex) => {
   const anchor =
-    activePanelIndex.value === 0 ? " " : `#${panels[newIndex].identifier}`;
+    activePanelIndex.value === 0
+      ? " "
+      : `#${panels.value[newIndex].identifier}`;
   window.history.replaceState(window.history.state, "", anchor);
 });
 
 onMounted(() => {
-  const panelOffsets = panels.map((panel) => {
+  const panelOffsets = panels.value.map((panel) => {
     const panelDiv = document.getElementById(panel.identifier);
     if (panelDiv) return panelDiv.offsetTop;
     throw Error(`Panel ${panel.identifier} not found`);
@@ -78,6 +87,23 @@ const goToPanel = (panelIdentifier: string) => {
       <!-- <li class="nav-item">
         <router-link class="nav-link" :to="{ name: 'BLOG' }">Blog</router-link>
       </li> -->
+      <li class="nav-item">
+        <div class="btn-group btn-group-sm mt-1" role="group">
+          <template v-for="(locale, index) in availableLocales">
+            <input
+              type="radio"
+              class="btn-check"
+              :id="`locale-${index}`"
+              autocomplete="off"
+              :checked="locale === currentLocale"
+              @click="currentLocale = locale"
+            />
+            <label class="btn btn-outline-primary" :for="`locale-${index}`">
+              {{ locale }}
+            </label>
+          </template>
+        </div>
+      </li>
     </ul>
   </nav>
 
