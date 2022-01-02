@@ -1,15 +1,16 @@
 <script lang="ts" setup>
+import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
 import { computed, onMounted, ref, watch } from "vue";
+import { findLastIndex } from "@/utils";
 import Contact from "@/components/home/contact/Contact.vue";
 import Landing from "@/components/home/landing/Landing.vue";
 import Portfolio from "@/components/home/portfolio/Portfolio.vue";
-import Resume from "@/components/home/resume/Resume.vue";
 import Social from "@/components/home/Social.vue";
-import { findLastIndex } from "@/utils";
-import { useI18n } from "vue-i18n";
+import LocaleSelect from "@/components/LocaleSelect.vue";
+import Resume from "@/components/home/resume/Resume.vue";
 
-const { t, locale: currentLocale, availableLocales } = useI18n();
+const { t } = useI18n();
 
 const panels = computed(() => [
   { title: "#", identifier: "home", component: Landing },
@@ -87,22 +88,14 @@ const goToPanel = (panelIdentifier: string) => {
       <!-- <li class="nav-item">
         <router-link class="nav-link" :to="{ name: 'BLOG' }">Blog</router-link>
       </li> -->
+      <li class="nav-item d-none d-sm-block">
+        <LocaleSelect class="mt-1"></LocaleSelect>
+      </li>
+    </ul>
+
+    <ul class="nav px-1 pt-0 pb-1 shadow-sm d-sm-none bg-white ms-auto">
       <li class="nav-item">
-        <div class="btn-group btn-group-sm mt-1" role="group">
-          <template v-for="(locale, index) in availableLocales">
-            <input
-              type="radio"
-              class="btn-check"
-              :id="`locale-${index}`"
-              autocomplete="off"
-              :checked="locale === currentLocale"
-              @click="currentLocale = locale"
-            />
-            <label class="btn btn-outline-primary" :for="`locale-${index}`">
-              {{ locale }}
-            </label>
-          </template>
-        </div>
+        <LocaleSelect class="mt-1"></LocaleSelect>
       </li>
     </ul>
   </nav>
