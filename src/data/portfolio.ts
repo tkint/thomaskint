@@ -1,4 +1,6 @@
 import { IconKey } from "@/data/icons";
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 
 export interface Project {
   name: string;
@@ -23,50 +25,59 @@ const contributors = {
   bdomange: { firstname: "Baptiste", lastname: "Domange" },
 } as Record<string, Contributor>;
 
-export const projects = [
-  {
-    name: "hocon-parser",
-    description: `Librairie Javascript qui permet de parser une configuration HOCON`,
-    contributors: [contributors.tkint],
-    links: [
-      { icon: "github", url: "https://github.com/tkint/hocon-parser" },
-      { icon: "npm", url: "https://www.npmjs.com/package/@tkint/hocon-parser" },
-    ],
-  },
-  {
-    name: "kalidate",
-    description: `Librairie Kotlin qui permet de vérifier la validité des données d'un objet`,
-    contributors: [contributors.tkint],
-    links: [{ icon: "github", url: "https://github.com/tkint/kalidate" }],
-  },
-  {
-    name: "MiniDAO",
-    description: `Librairie Java qui permet d'établir une connexion simple entre un modèle et une base de données MySQL`,
-    contributors: [contributors.tkint],
-    links: [
-      { icon: "github", url: "https://github.com/tkint/mini-dao" },
-      {
-        icon: "mvn",
-        url: "https://mvnrepository.com/artifact/com.thomaskint/minidao",
-      },
-    ],
-  },
-  {
-    name: "KiboDB",
-    description: `Système de base de données interrogeable en HTTP`,
-    contributors: [
-      contributors.tkint,
-      contributors.kbouzan,
-      contributors.bdomange,
-    ],
-    links: [{ icon: "github", url: "https://github.com/lemilliard/kibo-db" }],
-  },
-  {
-    name: "DecisionTree",
-    description: `Librairie Java qui permet de générer et utiliser un arbre de décision, basé sur l'algorithme ID3.`,
-    contributors: [contributors.tkint, contributors.kbouzan],
-    links: [
-      { icon: "github", url: "https://github.com/lemilliard/decision-tree" },
-    ],
-  },
-] as Project[];
+export const projects = computed(() => {
+  const { t } = useI18n();
+  return [
+    {
+      name: "hocon-parser",
+      description: t("home.portfolio.project.hocon-parser.description"),
+      contributors: [contributors.tkint],
+      links: [
+        { icon: "github", url: "https://github.com/tkint/hocon-parser" },
+        {
+          icon: "npm",
+          url: "https://www.npmjs.com/package/@tkint/hocon-parser",
+        },
+      ],
+    },
+    {
+      name: "kalidate",
+      description: t('home.portfolio.project.kalidate.description'),
+      contributors: [contributors.tkint],
+      links: [{ icon: "github", url: "https://github.com/tkint/kalidate" }],
+    },
+    {
+      name: "MiniDAO",
+      description: t('home.portfolio.project.minidao.description'),
+      contributors: [contributors.tkint],
+      links: [
+        { icon: "github", url: "https://github.com/tkint/mini-dao" },
+        {
+          icon: "mvn",
+          url: "https://mvnrepository.com/artifact/com.thomaskint/minidao",
+        },
+      ],
+    },
+    {
+      name: "KiboDB",
+      description: t('home.portfolio.project.kibo-db.description'),
+      contributors: [
+        contributors.tkint,
+        contributors.kbouzan,
+        contributors.bdomange,
+      ],
+      links: [{ icon: "github", url: "https://github.com/lemilliard/kibo-db" }],
+    },
+    {
+      name: "DecisionTree",
+      description: t('home.portfolio.project.decision-tree.description'),
+      contributors: [contributors.tkint, contributors.kbouzan],
+      links: [
+        {
+          icon: "github",
+          url: "https://github.com/lemilliard/decision-tree",
+        },
+      ],
+    },
+  ] as Project[];
+});

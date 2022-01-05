@@ -72,21 +72,21 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
         >
           <h4 class="alert-heading fw-bold">
             <AppIcon icon="valid"></AppIcon>
-            {{ t('home.contact.sent') }}
+            {{ t("home.contact.success.title") }}
             <button
               type="button"
               class="btn-sm btn-close"
               @click="state = State.INITIAL"
             ></button>
           </h4>
-          <p>Votre message a bien été envoyé</p>
+          <p>{{ t("home.contact.success.message") }}</p>
         </div>
 
         <form @submit.prevent id="contact-form" v-else>
           <div class="row flex-column gy-4">
             <div class="col">
               <div class="form-group">
-                <label for="email">Adresse email</label>
+                <label for="email">{{ t('home.contact.form.email') }}</label>
                 <input
                   id="email"
                   class="form-control mt-1"
@@ -100,7 +100,7 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
 
             <div class="col">
               <div class="form-group">
-                <label for="message">Message</label>
+                <label for="message">{{ t('home.contact.form.message') }}</label>
                 <textarea
                   class="form-control mt-1"
                   id="message"
@@ -119,14 +119,16 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
                 @click="submit"
                 :disabled="isDisabled"
               >
-                <template v-if="state === State.INITIAL">{{ t('home.contact.send') }}</template>
+                <template v-if="state === State.INITIAL">{{
+                  t("home.contact.send")
+                }}</template>
                 <template v-else-if="state === State.LOADING">
                   <div class="spinner-border spinner-border-sm"></div>
-                  Envoi en cours
+                  {{ t('home.contact.sending') }}
                 </template>
                 <template v-else="state === State.KO">
                   <AppIcon icon="invalid"></AppIcon>
-                  Erreur
+                  {{ t('home.contact.error') }}
                 </template>
               </button>
             </div>

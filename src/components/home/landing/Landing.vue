@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import { useI18n } from "vue-i18n";
 import Panel from "@/components/home/Panel.vue";
+
+const { t } = useI18n();
 </script>
 
 <template>
@@ -15,7 +18,7 @@ import Panel from "@/components/home/Panel.vue";
     </div>
 
     <div class="row">
-      <div class="col h4">Développeur</div>
+      <div class="col h4">{{ t("home.landing.role") }}</div>
     </div>
   </Panel>
 </template>

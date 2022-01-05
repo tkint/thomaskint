@@ -1,13 +1,17 @@
 <script lang="ts" setup>
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 import dayjs, { ConfigType } from "dayjs";
 import { experiences } from "@/data/resume";
 import Panel from "@/components/home/Panel.vue";
 
+const { t } = useI18n();
+
 const reverse = true;
 
-const sortedExperiences = reverse
-  ? Array.from(experiences).reverse()
-  : experiences;
+const sortedExperiences = computed(() =>
+  reverse ? Array.from(experiences.value).reverse() : experiences.value
+);
 
 const formatDate = (date?: ConfigType) => {
   return date && dayjs(date, "DD/MM/YYYY").format("MMM YYYY");
@@ -17,7 +21,7 @@ const formatDate = (date?: ConfigType) => {
 <template>
   <Panel class="bg-info" vertical-align="middle">
     <template #title>
-      <div class="text-uppercase">Expériences</div>
+      <div class="text-uppercase">{{ t("home.resume.title") }}</div>
     </template>
 
     <div class="container py-4">

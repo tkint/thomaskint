@@ -9,7 +9,7 @@ export const localeCookieKey = "locale";
 export default createI18n({
   legacy: false,
   locale: cookies.get(localeCookieKey) || "fr",
-  fallbackLocale: "en",
+  fallbackLocale: "fr",
   messages: {
     fr: frMessages,
     en: enMessages,

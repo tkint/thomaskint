@@ -1,13 +1,18 @@
 <script lang="ts" setup>
+import { useI18n } from "vue-i18n";
 import { projects } from "@/data/portfolio";
 import Panel from "@/components/home/Panel.vue";
 import ProjectCard from "@/components/home/portfolio/ProjectCard.vue";
+
+const { t } = useI18n();
 </script>
 
 <template>
   <Panel vertical-align="middle" class="bg-dark">
     <template #title>
-      <div class="text-uppercase text-white">Portfolio</div>
+      <div class="text-uppercase text-white">
+        {{ t("home.portfolio.title") }}
+      </div>
     </template>
 
     <div class="container">

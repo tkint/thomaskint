@@ -7,7 +7,9 @@
   "home": {
     "contact": {
       "title": "Contact me",
-      "sent": "Message sent !"
+      "success": {
+        "title": "Message sent !"
+      }
     }
   }
 }
