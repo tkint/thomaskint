@@ -9,7 +9,11 @@
       "title": "Contact me",
       "success": {
         "title": "Message sent !"
-      }
+      },
+      "form": {
+        "email": "E-mail adress"
+      },
+      "send": "Send"
     }
   }
 }
