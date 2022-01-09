@@ -1,27 +1,25 @@
 <script lang="ts" setup>
-import { computed } from "vue";
-import { useI18n } from "vue-i18n";
-import dayjs, { ConfigType } from "dayjs";
-import { experiences } from "@/data/resume";
-import Panel from "@/components/home/Panel.vue";
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import dayjs, { ConfigType } from 'dayjs';
+import { experiences } from '@/data/resume';
+import Panel from '@/components/home/Panel.vue';
 
 const { t } = useI18n();
 
 const reverse = true;
 
-const sortedExperiences = computed(() =>
-  reverse ? Array.from(experiences.value).reverse() : experiences.value
-);
+const sortedExperiences = computed(() => (reverse ? Array.from(experiences.value).reverse() : experiences.value));
 
 const formatDate = (date?: ConfigType) => {
-  return date && dayjs(date, "DD/MM/YYYY").format("MMM YYYY");
+  return date && dayjs(date, 'DD/MM/YYYY').format('MMM YYYY');
 };
 </script>
 
 <template>
   <Panel class="bg-info" vertical-align="middle">
     <template #title>
-      <div class="text-uppercase">{{ t("home.resume.title") }}</div>
+      <div class="text-uppercase">{{ t('home.resume.title') }}</div>
     </template>
 
     <div class="container py-4">
@@ -31,14 +29,9 @@ const formatDate = (date?: ConfigType) => {
             <li
               :class="['experience', { current: !experience.endDate, reverse }]"
               v-for="(experience, experienceIndex) in sortedExperiences"
-              :key="`experience-${experienceIndex}`"
-            >
+              :key="`experience-${experienceIndex}`">
               <span class="top-date">
-                {{
-                  reverse
-                    ? formatDate(experience.endDate)
-                    : formatDate(experience.startDate)
-                }}
+                {{ reverse ? formatDate(experience.endDate) : formatDate(experience.startDate) }}
               </span>
 
               <div class="card">
@@ -50,8 +43,7 @@ const formatDate = (date?: ConfigType) => {
                   <div class="card-text small">
                     <div
                       v-for="(description, index) in experience.descriptions"
-                      :key="`description-${experienceIndex}-${index}`"
-                    >
+                      :key="`description-${experienceIndex}-${index}`">
                       {{ description }}
                     </div>
                   </div>
@@ -59,11 +51,7 @@ const formatDate = (date?: ConfigType) => {
               </div>
 
               <span class="bottom-date">
-                {{
-                  reverse
-                    ? formatDate(experience.startDate)
-                    : formatDate(experience.endDate)
-                }}
+                {{ reverse ? formatDate(experience.startDate) : formatDate(experience.endDate) }}
               </span>
             </li>
           </ul>
@@ -99,7 +87,7 @@ ul {
 }
 
 .card:before {
-  content: "";
+  content: '';
   width: 2px;
   background: #fff;
   margin-left: -34px;
@@ -130,7 +118,7 @@ ul {
 .experience:not(.current) .bottom-date:after,
 .experience.current:not(.reverse) .top-date:after,
 .experience.current.reverse .bottom-date:after {
-  content: "";
+  content: '';
   width: 16px;
   height: 16px;
   border-radius: 100%;

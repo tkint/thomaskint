@@ -1,12 +1,10 @@
 <script lang="ts" setup>
-import { Project } from "@/data/portfolio";
-import AppIcon from "@/components/common/AppIcon.vue";
+import { Project } from '@/data/portfolio';
+import AppIcon from '@/components/common/AppIcon.vue';
 
 const props = defineProps<{ project: Project }>();
 
-const contributors = props.project.contributors
-  .map((c) => `${c.firstname} ${c.lastname}`)
-  .join(", ");
+const contributors = props.project.contributors.map((c) => `${c.firstname} ${c.lastname}`).join(', ');
 </script>
 
 <template>
@@ -33,8 +31,7 @@ const contributors = props.project.contributors
         :key="`link-${index}`"
         :href="link.url"
         target="_blank"
-        :title="link.icon"
-      >
+        :title="link.icon">
         <AppIcon :icon="link.icon" size="lg"></AppIcon>
       </a>
     </div>

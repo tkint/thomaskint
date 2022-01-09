@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { computed, reactive, ref } from "vue";
-import Panel from "@/components/home/Panel.vue";
-import AppIcon from "@/components/common/AppIcon.vue";
-import { useI18n } from "vue-i18n";
+import { computed, reactive, ref } from 'vue';
+import Panel from '@/components/home/Panel.vue';
+import AppIcon from '@/components/common/AppIcon.vue';
+import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
@@ -21,15 +21,15 @@ const submit = async () => {
   if (form.email && form.message) {
     state.value = State.LOADING;
     const formData = new FormData();
-    formData.append("email", form.email);
-    formData.append("message", form.message);
+    formData.append('email', form.email);
+    formData.append('message', form.message);
 
     try {
       const result = await fetch(import.meta.env.VITE_APP_CONTACT_URL, {
-        method: "POST",
+        method: 'POST',
         body: formData,
         headers: {
-          Accept: "application/json",
+          Accept: 'application/json',
         },
       });
 
@@ -50,9 +50,9 @@ const submit = async () => {
 };
 
 const submitClass = computed(() => {
-  if (state.value === State.OK) return "btn-success";
-  if (state.value === State.KO) return "btn-danger";
-  return "btn-primary";
+  if (state.value === State.OK) return 'btn-success';
+  if (state.value === State.KO) return 'btn-danger';
+  return 'btn-primary';
 });
 
 const isDisabled = computed(() => state.value !== State.INITIAL);
@@ -61,25 +61,18 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
 <template>
   <Panel vertical-align="middle">
     <template #title>
-      <div class="text-uppercase">{{ t("home.contact.title") }}</div>
+      <div class="text-uppercase">{{ t('home.contact.title') }}</div>
     </template>
 
     <div class="row justify-content-center">
       <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 col-xl-3">
-        <div
-          class="alert alert-success alert-dismissible"
-          v-if="state === State.OK"
-        >
+        <div class="alert alert-success alert-dismissible" v-if="state === State.OK">
           <h4 class="alert-heading fw-bold">
             <AppIcon icon="valid"></AppIcon>
-            {{ t("home.contact.success.title") }}
-            <button
-              type="button"
-              class="btn-sm btn-close"
-              @click="state = State.INITIAL"
-            ></button>
+            {{ t('home.contact.success.title') }}
+            <button type="button" class="btn-sm btn-close" @click="state = State.INITIAL"></button>
           </h4>
-          <p>{{ t("home.contact.success.message") }}</p>
+          <p>{{ t('home.contact.success.message') }}</p>
         </div>
 
         <form @submit.prevent id="contact-form" v-else>
@@ -93,8 +86,7 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
                   type="email"
                   v-model="form.email"
                   :disabled="isDisabled"
-                  required
-                />
+                  required />
               </div>
             </div>
 
@@ -107,8 +99,7 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
                   rows="5"
                   v-model="form.message"
                   :disabled="isDisabled"
-                  required
-                ></textarea>
+                  required></textarea>
               </div>
             </div>
 
@@ -117,11 +108,8 @@ const isDisabled = computed(() => state.value !== State.INITIAL);
                 type="submit"
                 :class="['btn', 'align-self-center', submitClass]"
                 @click="submit"
-                :disabled="isDisabled"
-              >
-                <template v-if="state === State.INITIAL">{{
-                  t("home.contact.send")
-                }}</template>
+                :disabled="isDisabled">
+                <template v-if="state === State.INITIAL">{{ t('home.contact.send') }}</template>
                 <template v-else-if="state === State.LOADING">
                   <div class="spinner-border spinner-border-sm"></div>
                   {{ t('home.contact.sending') }}

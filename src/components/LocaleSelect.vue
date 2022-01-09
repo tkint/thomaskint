@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { watch } from "vue";
-import { useI18n } from "vue-i18n";
-import useCookies from "@/composables/useCookies";
-import i18n, { localeCookieKey } from "@/i18n";
-import frFlag from "@/assets/flags/fr.svg";
-import enFlag from "@/assets/flags/gb.svg";
+import { watch } from 'vue';
+import { useI18n } from 'vue-i18n';
+import useCookies from '@/composables/useCookies';
+import i18n, { localeCookieKey } from '@/i18n';
+import frFlag from '@/assets/flags/fr.svg';
+import enFlag from '@/assets/flags/gb.svg';
 
 const cookies = useCookies();
 
@@ -30,8 +30,7 @@ watch(currentLocale, (newLocale) => {
         :id="`locale-${index}`"
         autocomplete="off"
         v-model="currentLocale"
-        :value="locale"
-      />
+        :value="locale" />
       <label class="btn btn-sm m-0" :for="`locale-${index}`">
         <img :src="flags[locale]" style="width: 20px" />
       </label>

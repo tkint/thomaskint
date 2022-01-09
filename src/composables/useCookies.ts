@@ -1,8 +1,8 @@
 export default () => ({
   get: (key: string) =>
     document.cookie
-      .split(";")
+      .split(';')
       .find((cookie) => cookie.startsWith(`${key}=`))
-      ?.split("=")[1],
+      ?.split('=')[1],
   set: (key: string, value: string) => (document.cookie = `${key}=${value}`),
 });

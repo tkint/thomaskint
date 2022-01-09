@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { IconKey } from "@/data/icons";
-import AppIcon from "@/components/common/AppIcon.vue";
+import { IconKey } from '@/data/icons';
+import AppIcon from '@/components/common/AppIcon.vue';
 
 interface Network {
   name: string;
@@ -11,22 +11,22 @@ interface Network {
 
 const networks = [
   {
-    name: "Github",
-    icon: "github",
-    url: "https://github.com/tkint",
-    css: "text-black",
+    name: 'Github',
+    icon: 'github',
+    url: 'https://github.com/tkint',
+    css: 'text-black',
   },
   {
-    name: "Linkedin",
-    icon: "linkedIn",
-    url: "https://linkedin.com/in/tkint",
-    css: "text-primary",
+    name: 'Linkedin',
+    icon: 'linkedIn',
+    url: 'https://linkedin.com/in/tkint',
+    css: 'text-primary',
   },
   {
-    name: "StackOverflow",
-    icon: "stackOverflow",
-    url: "https://stackoverflow.com/users/9852414/tkint",
-    css: "text-danger",
+    name: 'StackOverflow',
+    icon: 'stackOverflow',
+    url: 'https://stackoverflow.com/users/9852414/tkint',
+    css: 'text-danger',
   },
 ] as Network[];
 </script>
@@ -34,17 +34,8 @@ const networks = [
 <template>
   <div id="social">
     <div class="row">
-      <div
-        class="col"
-        v-for="(network, index) in networks"
-        :key="`network-${index}`"
-      >
-        <a
-          :title="network.name"
-          :href="network.url"
-          target="_blank"
-          :class="network.css ?? 'text-black'"
-        >
+      <div class="col" v-for="(network, index) in networks" :key="`network-${index}`">
+        <a :title="network.name" :href="network.url" target="_blank" :class="network.css ?? 'text-black'">
           <AppIcon :icon="network.icon"></AppIcon>
         </a>
       </div>

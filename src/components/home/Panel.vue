@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 withDefaults(
   defineProps<{
-    verticalAlign?: "top" | "middle" | "bottom";
+    verticalAlign?: 'top' | 'middle' | 'bottom';
   }>(),
   {
-    verticalAlign: "top",
+    verticalAlign: 'top',
   }
 );
 </script>
@@ -21,8 +21,7 @@ withDefaults(
         'align-items-end': verticalAlign === 'bottom',
       },
     ]"
-    style="min-height: 100%"
-  >
+    style="min-height: 100%">
     <div class="row w-100" style="min-height: 100%">
       <div class="col py-5">
         <div class="row mb-4">

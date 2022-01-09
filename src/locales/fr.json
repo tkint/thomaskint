@@ -60,18 +60,12 @@
         "capgemini-orange-bank": {
           "name": "Capgemini - Orange Bank",
           "role": "Ingénieur d'études et développement - alternance",
-          "descriptions": [
-            "Développement de tests unitaires",
-            "Correction d'anomalies"
-          ]
+          "descriptions": ["Développement de tests unitaires", "Correction d'anomalies"]
         },
         "capgemini-internal": {
           "name": "Capgemini - Projet interne",
           "role": "Ingénieur d'études et développement - alternance",
-          "descriptions": [
-            "Conception et développement de fonctionnalités",
-            "Correction d'anomalies"
-          ]
+          "descriptions": ["Conception et développement de fonctionnalités", "Correction d'anomalies"]
         },
         "capgemini-bpi-france": {
           "name": "Capgemini - Bpifrance",
@@ -105,5 +99,28 @@
         }
       }
     }
+  },
+  "workout": {
+    "form": {
+      "title": "Formulaire"
+    },
+    "result": {
+      "title": "Résultat"
+    },
+    "day": "Jour",
+    "weekDay": {
+      "MONDAY": "Lundi",
+      "TUESDAY": "Mardi",
+      "WEDNESDAY": "Mercredi",
+      "THURSDAY": "Jeudi",
+      "FRIDAY": "Vendredi",
+      "SATURDAY": "Samedi",
+      "SUNDAY": "Dimanche"
+    },
+    "exercise": "Exercice",
+    "series": "Séries",
+    "repetitions": "Répétitions",
+    "addExercice": "Ajouter un exercice pour @.lower:{0}",
+    "restingDay": "Repos"
   }
 }

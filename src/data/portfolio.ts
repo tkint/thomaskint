@@ -1,6 +1,6 @@
-import { IconKey } from "@/data/icons";
-import { computed } from "vue";
-import { useI18n } from "vue-i18n";
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { IconKey } from '@/data/icons';
 
 export interface Project {
   name: string;
@@ -20,62 +20,58 @@ export interface Contributor {
 }
 
 const contributors = {
-  tkint: { firstname: "Thomas", lastname: "Kint" },
-  kbouzan: { firstname: "Kevin", lastname: "Bouzan" },
-  bdomange: { firstname: "Baptiste", lastname: "Domange" },
+  tkint: { firstname: 'Thomas', lastname: 'Kint' },
+  kbouzan: { firstname: 'Kevin', lastname: 'Bouzan' },
+  bdomange: { firstname: 'Baptiste', lastname: 'Domange' },
 } as Record<string, Contributor>;
 
 export const projects = computed(() => {
   const { t } = useI18n();
   return [
     {
-      name: "hocon-parser",
-      description: t("home.portfolio.project.hocon-parser.description"),
+      name: 'hocon-parser',
+      description: t('home.portfolio.project.hocon-parser.description'),
       contributors: [contributors.tkint],
       links: [
-        { icon: "github", url: "https://github.com/tkint/hocon-parser" },
+        { icon: 'github', url: 'https://github.com/tkint/hocon-parser' },
         {
-          icon: "npm",
-          url: "https://www.npmjs.com/package/@tkint/hocon-parser",
+          icon: 'npm',
+          url: 'https://www.npmjs.com/package/@tkint/hocon-parser',
         },
       ],
     },
     {
-      name: "kalidate",
+      name: 'kalidate',
       description: t('home.portfolio.project.kalidate.description'),
       contributors: [contributors.tkint],
-      links: [{ icon: "github", url: "https://github.com/tkint/kalidate" }],
+      links: [{ icon: 'github', url: 'https://github.com/tkint/kalidate' }],
     },
     {
-      name: "MiniDAO",
+      name: 'MiniDAO',
       description: t('home.portfolio.project.minidao.description'),
       contributors: [contributors.tkint],
       links: [
-        { icon: "github", url: "https://github.com/tkint/mini-dao" },
+        { icon: 'github', url: 'https://github.com/tkint/mini-dao' },
         {
-          icon: "mvn",
-          url: "https://mvnrepository.com/artifact/com.thomaskint/minidao",
+          icon: 'mvn',
+          url: 'https://mvnrepository.com/artifact/com.thomaskint/minidao',
         },
       ],
     },
     {
-      name: "KiboDB",
+      name: 'KiboDB',
       description: t('home.portfolio.project.kibo-db.description'),
-      contributors: [
-        contributors.tkint,
-        contributors.kbouzan,
-        contributors.bdomange,
-      ],
-      links: [{ icon: "github", url: "https://github.com/lemilliard/kibo-db" }],
+      contributors: [contributors.tkint, contributors.kbouzan, contributors.bdomange],
+      links: [{ icon: 'github', url: 'https://github.com/lemilliard/kibo-db' }],
     },
     {
-      name: "DecisionTree",
+      name: 'DecisionTree',
       description: t('home.portfolio.project.decision-tree.description'),
       contributors: [contributors.tkint, contributors.kbouzan],
       links: [
         {
-          icon: "github",
-          url: "https://github.com/lemilliard/decision-tree",
+          icon: 'github',
+          url: 'https://github.com/lemilliard/decision-tree',
         },
       ],
     },

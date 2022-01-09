@@ -6,13 +6,10 @@
  * order, until it finds one where predicate returns true. If such an element is found,
  * findLastIndex immediately returns that element index. Otherwise, findLastIndex returns -1.
  */
-export function findLastIndex<T>(
-  array: Array<T>,
-  predicate: (value: T, index: number, obj: T[]) => boolean
-): number {
-  let l = array.length;
-  while (l--) {
-    if (predicate(array[l], l, array)) return l;
+export function findLastIndex<T>(array: Array<T>, predicate: (value: T, index: number, obj: T[]) => boolean): number {
+  let index = array.length;
+  while (index--) {
+    if (predicate(array[index], index, array)) return index;
   }
   return -1;
 }
