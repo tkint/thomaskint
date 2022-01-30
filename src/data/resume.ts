@@ -22,7 +22,7 @@ export const experiences = computed(() => {
     },
     {
       name: t('home.resume.experiences.capgemini-orange-bank.name'),
-      role: t('home.resume.experiences.capgemini-orange-bank.role-bank.role'),
+      role: t('home.resume.experiences.capgemini-orange-bank.role'),
       descriptions: tm('home.resume.experiences.capgemini-orange-bank.descriptions'),
       startDate: '01/09/2017',
       endDate: '01/03/2018',
@@ -36,7 +36,7 @@ export const experiences = computed(() => {
     },
     {
       name: t('home.resume.experiences.capgemini-bpi-france.name'),
-      role: t('home.resume.experiences.capgemini-bpi-france.rolerance.role'),
+      role: t('home.resume.experiences.capgemini-bpi-france.role'),
       descriptions: tm('home.resume.experiences.capgemini-bpi-france.descriptions'),
       startDate: '01/06/2018',
       endDate: '01/08/2019',

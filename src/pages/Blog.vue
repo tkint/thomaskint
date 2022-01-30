@@ -1,15 +1,18 @@
 <script lang="ts" setup>
-import LocaleSelect from '@/components/LocaleSelect.vue';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { RouteNames } from '@/router';
+import LocaleSelect from '@/components/LocaleSelect.vue';
 
 const { t } = useI18n();
 
-const panels = computed(() => [
-  { title: '#', path: '/' },
-  { title: t('navbar.resume'), path: '/#resume' },
-  { title: t('navbar.portfolio'), path: '/#portfolio' },
-  { title: t('navbar.contact'), path: '/#contact' },
+const links = computed(() => [
+  { title: '#', route: { name: RouteNames.HOME } },
+  { title: t('navbar.resume'), route: { name: RouteNames.HOME, hash: '#resume' } },
+  { title: t('navbar.portfolio'), route: { name: RouteNames.HOME, hash: '#portfolio' } },
+  { title: t('navbar.contact'), route: { name: RouteNames.HOME, hash: '#contact' } },
+  { title: t('navbar.blog'), route: { name: RouteNames.BLOG } },
+  { title: t('navbar.workout'), route: { name: RouteNames.WORKOUT } },
 ]);
 </script>
 
@@ -18,13 +21,10 @@ const panels = computed(() => [
     <a class="navbar-brand" href="#"></a>
 
     <ul class="nav pe-2 bg-white shadow-sm" role="tablist">
-      <li class="nav-item" v-for="(panel, index) in panels" :key="`nav-${index}`">
-        <router-link :to="panel.path" class="nav-link">
+      <li class="nav-item" v-for="(panel, index) in links" :key="`nav-${index}`">
+        <router-link :to="panel.route" class="nav-link" active-class="active">
           {{ panel.title }}
         </router-link>
-      </li>
-      <li class="nav-item">
-        <router-link class="nav-link" :to="{ name: 'BLOG' }" active-class="active"> Blog </router-link>
       </li>
       <li class="nav-item d-none d-sm-block">
         <LocaleSelect class="mt-1"></LocaleSelect>

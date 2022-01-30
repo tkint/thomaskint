@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 import { computed, onMounted, ref, watch } from 'vue';
+import { RouteNames } from '@/router';
 import { findLastIndex } from '@/utils';
 import Contact from '@/components/home/contact/Contact.vue';
 import Landing from '@/components/home/landing/Landing.vue';
@@ -11,6 +12,7 @@ import LocaleSelect from '@/components/LocaleSelect.vue';
 import Resume from '@/components/home/resume/Resume.vue';
 
 const { t } = useI18n();
+const withAllRoutes = import.meta.env.DEV;
 
 const panels = computed(() => [
   { title: '#', identifier: 'home', component: Landing },
@@ -69,9 +71,14 @@ const goToPanel = (panelIdentifier: string) => {
           {{ panel.title }}
         </span>
       </li>
-      <!-- <li class="nav-item">
-        <router-link class="nav-link" :to="{ name: 'BLOG' }">Blog</router-link>
-      </li> -->
+      <template v-if="withAllRoutes">
+        <li class="nav-item">
+          <router-link class="nav-link" :to="{ name: RouteNames.BLOG }">{{ t('blog.title') }}</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" :to="{ name: RouteNames.WORKOUT }">{{ t('workout.title') }}</router-link>
+        </li>
+      </template>
       <li class="nav-item d-none d-sm-block">
         <LocaleSelect class="mt-1"></LocaleSelect>
       </li>
@@ -85,11 +92,8 @@ const goToPanel = (panelIdentifier: string) => {
   </nav>
 
   <div class="h-100">
-    <component
-      :id="panel.identifier"
-      v-for="(panel, index) in panels"
-      :key="`panel-${index}`"
-      :is="panel.component"></component>
+    <component :id="panel.identifier" v-for="(panel, index) in panels" :key="`panel-${index}`" :is="panel.component">
+    </component>
   </div>
 </template>
 
