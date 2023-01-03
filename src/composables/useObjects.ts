@@ -1,3 +1,3 @@
 export default () => ({
-  keys: <T>(object: T): (keyof T)[] => Object.keys(object) as (keyof T)[],
+  keys: <T extends object>(obj: T): (keyof T)[] => Object.keys(obj) as (keyof T)[],
 });

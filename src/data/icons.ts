@@ -12,6 +12,6 @@ export const Icons = {
   invalid: faCircleXmark,
   add: faPlus,
   delete: faTrashCan,
-};
+} as const;
 
 export type IconKey = keyof typeof Icons;

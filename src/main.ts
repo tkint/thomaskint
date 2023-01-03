@@ -12,9 +12,7 @@ import router from '@/router';
 import i18n from '@/i18n';
 import { Icons } from '@/data/icons';
 
-Object.values(Icons).forEach((icon) => {
-  library.add(icon);
-});
+library.add(...Object.values(Icons));
 
 dayjs.locale(fr);
 dayjs.extend(customParseFormat);
