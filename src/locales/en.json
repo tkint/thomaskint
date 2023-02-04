@@ -29,12 +29,12 @@
       "experiences": {
         "oceanis": {
           "name": "Océanis Promotion",
-          "role": "Développeur informatique",
+          "role": "Developer",
           "descriptions": ["Designed and developed APIs", "Built data reports"]
         },
         "capgemini": {
           "name": "Capgemini",
-          "role": "Ingénieur d'études et développement - alternance",
+          "role": "Software Engineer",
           "descriptions": ["Developed new features", "Developed unit tests", "Fixed bugs"]
         },
         "sii": {
@@ -83,26 +83,26 @@
   },
   "workout": {
     "form": {
-      "title": "Formulaire"
+      "title": "Form"
     },
     "result": {
-      "title": "Résultat"
+      "title": "Result"
     },
-    "day": "Jour",
+    "day": "Day",
     "weekDay": {
-      "MONDAY": "Lundi",
-      "TUESDAY": "Mardi",
-      "WEDNESDAY": "Mercredi",
-      "THURSDAY": "Jeudi",
-      "FRIDAY": "Vendredi",
-      "SATURDAY": "Samedi",
-      "SUNDAY": "Dimanche"
+      "MONDAY": "Monday",
+      "TUESDAY": "Tuesday",
+      "WEDNESDAY": "Wednesday",
+      "THURSDAY": "Thursday",
+      "FRIDAY": "Friday",
+      "SATURDAY": "Saturday",
+      "SUNDAY": "Sunday"
     },
     "exercise": "Exercice",
-    "series": "Séries",
-    "repetitions": "Répétitions",
-    "addExercice": "Ajouter un exercice pour @.lower:{0}",
-    "restingDay": "Repos",
+    "series": "Series",
+    "repetitions": "Repetitions",
+    "addExercice": "Add an exercise to @.lower:{0}",
+    "restingDay": "Rest",
     "title": "Workout"
   }
 }
