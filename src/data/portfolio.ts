@@ -19,14 +19,15 @@ export interface Contributor {
   lastname: string;
 }
 
-const contributors = {
+const contributors: Record<string, Contributor> = {
   tkint: { firstname: 'Thomas', lastname: 'Kint' },
   kbouzan: { firstname: 'Kevin', lastname: 'Bouzan' },
   bdomange: { firstname: 'Baptiste', lastname: 'Domange' },
-} as Record<string, Contributor>;
+};
 
-export const projects = computed(() => {
+export const projects = computed<Project[]>(() => {
   const { t } = useI18n();
+
   return [
     {
       name: 'hocon-parser',
@@ -75,5 +76,5 @@ export const projects = computed(() => {
         },
       ],
     },
-  ] as Project[];
+  ];
 });

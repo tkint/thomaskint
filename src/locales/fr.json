@@ -1,4 +1,7 @@
 {
+  "common": {
+    "today": "Aujourd'hui"
+  },
   "navbar": {
     "resume": "Expériences",
     "contact": "Contact",
@@ -22,7 +25,7 @@
       "error": "Erreur"
     },
     "landing": {
-      "role": "Développeur"
+      "role": "Software Engineer"
     },
     "portfolio": {
       "title": "Portfolio",
@@ -49,58 +52,31 @@
       "experiences": {
         "oceanis": {
           "name": "Océanis Promotion",
-          "role": "Développeur informatique - alternance",
-          "descriptions": [
-            "Gestion de projet de refonte d'un site web",
-            "Conception, développement et déploiement de Web Services",
-            "Extractions de données SQL",
-            "Formation des utilisateurs"
-          ]
+          "role": "Développeur informatique",
+          "descriptions": ["Conception et développement d'APIs", "Extractions de données SQL"]
         },
-        "capgemini-orange-bank": {
-          "name": "Capgemini - Orange Bank",
-          "role": "Ingénieur d'études et développement - alternance",
+        "capgemini": {
+          "name": "Capgemini",
+          "role": "Ingénieur d'études et développement",
           "descriptions": [
-            "Développement de tests unitaires",
+            "Développement de nouvelles fonctionnalités",
+            "Mise en place de tests unitaires",
             "Correction d'anomalies"
           ]
         },
-        "capgemini-internal": {
-          "name": "Capgemini - Projet interne",
-          "role": "Ingénieur d'études et développement - alternance",
-          "descriptions": [
-            "Conception et développement de fonctionnalités",
-            "Correction d'anomalies"
-          ]
-        },
-        "capgemini-bpi-france": {
-          "name": "Capgemini - Bpifrance",
-          "role": "Ingénieur d'études et développement - alternance",
-          "descriptions": [
-            "Conception, chiffrage et développement de fonctionnalités",
-            "Correction d'anomalies",
-            "Maintenance et évolution de la documentation",
-            "Livraison de nouvelles versions"
-          ]
-        },
-        "sii-orange": {
-          "name": "Groupe SII - Orange",
+        "sii": {
+          "name": "Orange - Groupe SII",
           "role": "Consultant",
-          "descriptions": [
-            "Conception, chiffrage et développement de fonctionnalités",
-            "Correction d'anomalies",
-            "Maintenance et évolution de la documentation",
-            "Livraison de nouvelles versions"
-          ]
+          "descriptions": ["Conception et développement de nouvelles fonctionnalités", "Correction d'anomalies"]
         },
         "orange": {
           "name": "Orange",
-          "role": "Ingénieur logiciels",
+          "role": "Ingénieur logiciels - Tech lead",
           "descriptions": [
-            "Conception, chiffrage et développement de fonctionnalités",
-            "Correction d'anomalies",
-            "Maintenance et évolution de la documentation",
-            "Livraison de nouvelles versions"
+            "Etude et mise en place des architectures techniques",
+            "Conception et développement de nouvelles fonctionnalités",
+            "Revue de code et formation des développeurs aux différentes technologies",
+            "Création d'outils de gestion et d'automatisation"
           ]
         }
       }

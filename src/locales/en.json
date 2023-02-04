@@ -1,9 +1,12 @@
 {
+  "common": {
+    "today": "Today"
+  },
   "navbar": {
     "resume": "Resume",
     "portfolio": "Portfolio",
     "contact": "Contact",
-    "blog": "Blog\n",
+    "blog": "Blog",
     "workout": "Workout"
   },
   "home": {
@@ -26,60 +29,33 @@
       "experiences": {
         "oceanis": {
           "name": "Océanis Promotion",
-          "role": "Développeur informatique - alternance",
-          "descriptions": [
-            "Gestion de projets.",
-            "Développement de Web Services (REST, C#, MS CRM 2011, SQL).",
-            "Extractions de données SQL (reporting d'activité, tableaux croisés dynamiques, Business Intelligence).",
-            "Gestion et migration de MS CRM 2011 et 2016 (Plugins, Workflows, Javascripts).",
-            "Gestion Sage 1000.",
-            "Formation des utilisateurs."
-          ]
+          "role": "Développeur informatique",
+          "descriptions": ["Designed and developed APIs", "Built data reports"]
         },
-        "capgemini-orange-bank": {
-          "name": "Capgemini - Orange Bank",
+        "capgemini": {
+          "name": "Capgemini",
           "role": "Ingénieur d'études et développement - alternance",
-          "descriptions": ["Développement de tests unitaires", "Correction d'anomalies"]
+          "descriptions": ["Developed new features", "Developed unit tests", "Fixed bugs"]
         },
-        "capgemini-internal": {
-          "name": "Capgemini - Projet interne",
-          "role": "Ingénieur d'études et développement - alternance",
-          "descriptions": ["Conception et développement de fonctionnalités", "Correction d'anomalies"]
-        },
-        "capgemini-bpi-france": {
-          "name": "Capgemini - Bpifrance",
-          "role": "Ingénieur d'études et développement - alternance",
-          "descriptions": [
-            "Design, costing and development of features",
-            "Correction d'anomalies",
-            "Maintenance et évolution de la documentation",
-            "Livraison de nouvelles versions"
-          ]
-        },
-        "sii-orange": {
-          "name": "Groupe SII - Orange",
+        "sii": {
+          "name": "Orange - Groupe SII",
           "role": "Consultant",
-          "descriptions": [
-            "Conception, chiffrage et développement de fonctionnalités",
-            "Correction d'anomalies",
-            "Maintenance et évolution de la documentation",
-            "Livraison de nouvelles versions"
-          ]
+          "descriptions": ["Designed and developed new features", "Fixed bugs"]
         },
         "orange": {
           "name": "Orange",
-          "role": "Ingénieur logiciels",
+          "role": "Software Engineer - Tech lead",
           "descriptions": [
-            "Conception, chiffrage et développement de fonctionnalités",
-            "Correction d'anomalies",
-            "Maintenance et évolution de la documentation",
-            "Livraison de nouvelles versions"
+            "Design and implement software architecture",
+            "Design and develop new features",
+            "Review code and mentor developers throughout all the tech stack",
+            "Develop tools to ease daily tasks and help automation"
           ]
         }
       }
     },
     "landing": {
-      "role": "Developer"
+      "role": "Software Engineer"
     },
     "portfolio": {
       "project": {
@@ -106,6 +82,27 @@
     "title": "Blog"
   },
   "workout": {
-    "addExercice": "Add an exercise"
+    "form": {
+      "title": "Formulaire"
+    },
+    "result": {
+      "title": "Résultat"
+    },
+    "day": "Jour",
+    "weekDay": {
+      "MONDAY": "Lundi",
+      "TUESDAY": "Mardi",
+      "WEDNESDAY": "Mercredi",
+      "THURSDAY": "Jeudi",
+      "FRIDAY": "Vendredi",
+      "SATURDAY": "Samedi",
+      "SUNDAY": "Dimanche"
+    },
+    "exercise": "Exercice",
+    "series": "Séries",
+    "repetitions": "Répétitions",
+    "addExercice": "Ajouter un exercice pour @.lower:{0}",
+    "restingDay": "Repos",
+    "title": "Workout"
   }
 }

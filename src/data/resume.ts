@@ -9,7 +9,7 @@ export interface Experience {
   endDate?: string;
 }
 
-export const experiences = computed(() => {
+export const experiences = computed<Experience[]>(() => {
   const { t, tm } = useI18n();
 
   return [
@@ -21,30 +21,16 @@ export const experiences = computed(() => {
       endDate: '01/08/2017',
     },
     {
-      name: t('home.resume.experiences.capgemini-orange-bank.name'),
-      role: t('home.resume.experiences.capgemini-orange-bank.role'),
-      descriptions: tm('home.resume.experiences.capgemini-orange-bank.descriptions'),
+      name: t('home.resume.experiences.capgemini.name'),
+      role: t('home.resume.experiences.capgemini.role'),
+      descriptions: tm('home.resume.experiences.capgemini.descriptions'),
       startDate: '01/09/2017',
-      endDate: '01/03/2018',
+      endDate: '31/08/2019',
     },
     {
-      name: t('home.resume.experiences.capgemini-internal.name'),
-      role: t('home.resume.experiences.capgemini-internal.role'),
-      descriptions: tm('home.resume.experiences.capgemini-internal.descriptions'),
-      startDate: '01/03/2018',
-      endDate: '01/06/2018',
-    },
-    {
-      name: t('home.resume.experiences.capgemini-bpi-france.name'),
-      role: t('home.resume.experiences.capgemini-bpi-france.role'),
-      descriptions: tm('home.resume.experiences.capgemini-bpi-france.descriptions'),
-      startDate: '01/06/2018',
-      endDate: '01/08/2019',
-    },
-    {
-      name: t('home.resume.experiences.sii-orange.name'),
-      role: t('home.resume.experiences.sii-orange.role'),
-      descriptions: tm('home.resume.experiences.sii-orange.descriptions'),
+      name: t('home.resume.experiences.sii.name'),
+      role: t('home.resume.experiences.sii.role'),
+      descriptions: tm('home.resume.experiences.sii.descriptions'),
       startDate: '01/09/2019',
       endDate: '01/11/2020',
     },
@@ -52,7 +38,7 @@ export const experiences = computed(() => {
       name: t('home.resume.experiences.orange.name'),
       role: t('home.resume.experiences.orange.role'),
       descriptions: tm('home.resume.experiences.orange.descriptions'),
-      startDate: '01/11/2020',
+      startDate: '15/11/2020',
     },
-  ] as Experience[];
+  ];
 });

@@ -9,7 +9,7 @@ interface Network {
   css?: string;
 }
 
-const networks = [
+const networks: Network[] = [
   {
     name: 'Github',
     icon: 'github',
@@ -28,7 +28,7 @@ const networks = [
     url: 'https://stackoverflow.com/users/9852414/tkint',
     css: 'text-danger',
   },
-] as Network[];
+];
 </script>
 
 <template>

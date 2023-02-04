@@ -1,23 +1,25 @@
 <script lang="ts" setup>
-import { watch } from 'vue';
-import { useI18n } from 'vue-i18n';
-import useCookies from '@/composables/useCookies';
-import i18n, { localeCookieKey } from '@/i18n';
 import frFlag from '@/assets/flags/fr.svg';
 import enFlag from '@/assets/flags/gb.svg';
+import useCookies from '@/composables/useCookies';
+import i18n, { localeCookieKey } from '@/i18n';
+import dayjs from 'dayjs';
+import { watch } from 'vue';
+import { Locale, useI18n } from 'vue-i18n';
 
 const cookies = useCookies();
 
 const { availableLocales } = i18n.global;
 const { locale: currentLocale } = useI18n();
 
-const flags = {
+const flags: Record<Locale, string> = {
   fr: frFlag,
   en: enFlag,
 };
 
 watch(currentLocale, (newLocale) => {
   cookies.set(localeCookieKey, newLocale);
+  dayjs.locale(newLocale);
 });
 </script>
 
